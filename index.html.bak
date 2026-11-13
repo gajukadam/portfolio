@@ -1,0 +1,2146 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gajanan Sanjay Kadam | Second-Year CSE Student | SSGMCE Shegaon</title>
+  <meta name="description" content="Personal Portfolio of Gajanan Sanjay Kadam - Second-Year Computer Science and Engineering Student at SSGMCE Shegaon (Ex-Navodayan). Cyber Sunset Orange & Hot Pink Edition for ARISE Diwali Portfolio Competition 2026." />
+
+  <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Centralized Portfolio Configuration (Source of Truth) -->
+  <script src="portfolio-data.js"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            display: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            dark: {
+              bg: '#0B0410',
+              card: '#140A1F',
+              surface: '#1A0D28',
+              border: 'rgba(255, 107, 53, 0.2)',
+            },
+            sunset: {
+              400: '#FF8A50',
+              500: '#FF6B35', // Bold Electric Orange
+              600: '#FF5722',
+              glow: 'rgba(255, 107, 53, 0.4)',
+            },
+            cyberpink: {
+              400: '#FF5C9D',
+              500: '#FF2A85', // Bold Electric Hot Pink
+              600: '#E11D48',
+              glow: 'rgba(255, 42, 133, 0.4)',
+            },
+            amber: {
+              400: '#FBBF24',
+              500: '#FFAE33',
+            }
+          },
+          animation: {
+            'spin-slow': 'spin 20s linear infinite',
+            'spin-reverse': 'spinReverse 25s linear infinite',
+            'pulse-subtle': 'pulseSubtle 3.5s ease-in-out infinite',
+            'float-slow': 'floatSlow 5s ease-in-out infinite',
+            'float-delayed': 'floatSlow 5.5s ease-in-out 2s infinite',
+            'fade-in': 'fadeIn 0.35s ease-out forwards',
+            'gradient-x': 'gradientX 6s ease infinite',
+          },
+          keyframes: {
+            spinReverse: {
+              '0%': { transform: 'rotate(360deg)' },
+              '100%': { transform: 'rotate(0deg)' },
+            },
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-7px)' },
+            },
+            pulseSubtle: {
+              '0%, 100%': { opacity: '0.45', transform: 'scale(1)' },
+              '50%': { opacity: '0.8', transform: 'scale(1.03)' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(10px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            gradientX: {
+              '0%, 100%': { 'background-size': '200% 200%', 'background-position': 'left center' },
+              '50%': { 'background-size': '200% 200%', 'background-position': 'right center' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* Custom Scrollbar - Bold Sunset Orange & Cyber Pink */
+    ::-webkit-scrollbar {
+      width: 9px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B0410;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #FF6B35, #FF2A85);
+      border-radius: 5px;
+      border: 2px solid #0B0410;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #FF2A85;
+    }
+
+    /* Cosmic Grid Motif */
+    .bg-cyber-grid {
+      background-image: 
+        linear-gradient(to right, rgba(255, 107, 53, 0.08) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 42, 133, 0.08) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    /* Aesthetic Glass Card with Gradient Border on Hover */
+    .aesthetic-card {
+      background: rgba(20, 10, 31, 0.85);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 107, 53, 0.22);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.6);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .aesthetic-card:hover {
+      border-color: rgba(255, 42, 133, 0.6);
+      box-shadow: 0 16px 40px -10px rgba(255, 42, 133, 0.22), 0 0 20px rgba(255, 107, 53, 0.15);
+      transform: translateY(-3px);
+    }
+
+    /* Bold Gradient Text */
+    .gradient-text {
+      background: linear-gradient(135deg, #FF8A50 0%, #FF6B35 25%, #FF2A85 75%, #FFAE33 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Glowing Button */
+    .btn-sunset {
+      background: linear-gradient(135deg, #FF6B35 0%, #FF2A85 100%);
+      color: #FFFFFF;
+      box-shadow: 0 0 25px rgba(255, 107, 53, 0.35);
+      transition: all 0.25s ease;
+    }
+    .btn-sunset:hover {
+      box-shadow: 0 0 35px rgba(255, 42, 133, 0.6);
+      transform: scale(1.03);
+    }
+
+    /* Nav Tab Active Indicator */
+    .nav-tab.active {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.2) 0%, rgba(255, 42, 133, 0.2) 100%);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 42, 133, 0.5);
+      box-shadow: 0 0 15px rgba(255, 42, 133, 0.25);
+    }
+
+    /* Animated Glowing Diya Flame */
+    @keyframes diyaFlicker {
+      0%, 100% { transform: scale(1) rotate(-1deg); filter: drop-shadow(0 0 6px #FF6B35); }
+      50% { transform: scale(1.15) rotate(2deg); filter: drop-shadow(0 0 12px #FF2A85); }
+    }
+    .diya-flame {
+      animation: diyaFlicker 2s ease-in-out infinite alternate;
+    }
+  </style>
+</head>
+
+<body class="bg-[#0B0410] text-[#FFFFFF] antialiased selection:bg-[#FF2A85] selection:text-white min-h-screen relative overflow-x-hidden">
+
+  <!-- Interactive Constellation Spark Canvas -->
+  <canvas id="spark-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-60"></canvas>
+
+  <!-- Ambient Glowing Aurora Orbs -->
+  <div class="fixed top-[-100px] left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-[#FF6B35]/20 via-[#FF2A85]/20 to-transparent blur-[120px] pointer-events-none z-0"></div>
+  <div class="fixed bottom-[-100px] right-10 w-[450px] h-[450px] rounded-full bg-gradient-to-br from-[#FF2A85]/15 via-[#FFAE33]/15 to-transparent blur-[130px] pointer-events-none z-0"></div>
+
+  <div class="relative z-10 flex flex-col min-h-screen">
+
+    <!-- ========================================================================= -->
+    <!-- TOP COMPETITION & DIWALI 2026 FESTIVE BANNER                             -->
+    <!-- ========================================================================= -->
+    <header class="bg-gradient-to-r from-[#170824] via-[#240C33] to-[#170824] border-b border-[#FF6B35]/30 text-white text-xs font-mono py-2.5 px-4 sticky top-0 z-50 shadow-lg">
+      <div class="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <!-- Festive Animated Diya Icon -->
+          <span class="diya-flame text-base inline-block">🪔</span>
+          <span class="px-2 py-0.5 rounded-full bg-gradient-to-r from-[#FF6B35] to-[#FF2A85] text-[10px] font-bold tracking-wide uppercase text-white shadow-sm">
+            ARISE Diwali 2026
+          </span>
+          <span class="text-[#FF8A50] font-medium hidden sm:inline">•</span>
+          <span class="text-[#D1C4E9] hidden sm:inline">
+            Diwali Portfolio Competition • <span class="text-white font-semibold">SSGMCE, Shegaon</span>
+          </span>
+        </div>
+        
+        <div class="flex items-center gap-3 text-[11px] text-[#C4B5CD]">
+          <span class="flex items-center gap-1 text-[#FFAE33]">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#FFAE33] animate-pulse"></i>
+            <span class="font-bold text-white">AI-Engineered</span>
+          </span>
+          <span class="text-white/20">|</span>
+          <button onclick="openAIArchitectureModal()" class="text-[#FF5C9D] hover:text-[#FFAE33] underline underline-offset-2 flex items-center gap-1 transition-colors">
+            <span>Judge Inspection</span>
+            <i data-lucide="external-link" class="w-3 h-3"></i>
+          </button>
+          <span class="text-white/20 hidden md:inline">|</span>
+          <span class="text-white/70 hidden md:inline">Final Deadline: 14 Nov 2026</span>
+        </div>
+      </div>
+    </header>
+
+    <!-- ========================================================================= -->
+    <!-- GLOBAL NAVIGATION BAR (Multi-Page Route Controller)                      -->
+    <!-- ========================================================================= -->
+    <nav class="sticky top-[41px] z-40 bg-[#0B0410]/90 backdrop-blur-xl border-b border-[#FF6B35]/20 shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        
+        <!-- Brand Identity / Home Trigger -->
+        <a href="#/" onclick="navigateTo('home', event)" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#FF6B35] via-[#FF2A85] to-[#FFAE33] text-white flex items-center justify-center font-display font-extrabold text-sm tracking-tight shadow-[0_0_15px_rgba(255,42,133,0.4)] group-hover:scale-105 transition-all">
+            <span id="nav-initials">GK</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-base font-bold text-white tracking-tight group-hover:text-[#FF8A50] transition-colors font-display" id="nav-name">
+              Gajanan Sanjay Kadam
+            </span>
+            <span class="text-[10px] font-mono text-[#FF5C9D] tracking-wide flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FF6B35] animate-ping"></span>
+              2nd Year CSE • SSGMCE
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Multi-Page Nav Links -->
+        <div class="hidden md:flex items-center gap-1 bg-[#140A1F]/90 p-1.5 rounded-2xl border border-white/10 shadow-inner">
+          <a href="#/" onclick="navigateTo('home', event)" class="nav-tab active px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="home">
+            Home
+          </a>
+          <a href="#/about" onclick="navigateTo('about', event)" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="about">
+            About Me
+          </a>
+          <a href="#/skills" onclick="navigateTo('skills', event)" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="skills">
+            Skills
+          </a>
+          <a href="#/projects" onclick="navigateTo('projects', event)" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="projects">
+            Projects
+          </a>
+          <a href="#/education" onclick="navigateTo('education', event)" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="education">
+            Education
+          </a>
+          <a href="#/achievements" onclick="navigateTo('achievements', event)" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="achievements">
+            Achievements
+          </a>
+          <a href="#/contact" onclick="navigateTo('contact', event)" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="contact">
+            Contact
+          </a>
+        </div>
+
+        <!-- Quick CTAs: Resume & Contact -->
+        <div class="hidden md:flex items-center gap-2.5">
+          <button onclick="openResumeModal()" class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/15 text-[#FFAE33] hover:border-[#FFAE33] hover:bg-[#FFAE33]/10 text-xs font-mono font-semibold transition-all flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+            <span>Resume</span>
+          </button>
+          <a href="#/contact" onclick="navigateTo('contact', event)" class="btn-sunset px-4 py-1.5 rounded-xl text-xs font-mono font-bold tracking-tight shadow-md flex items-center gap-1.5">
+            <span>Get in Touch</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Toggle -->
+        <div class="flex items-center gap-2 md:hidden">
+          <button onclick="openResumeModal()" class="p-2 rounded-xl bg-white/5 border border-white/10 text-[#FFAE33] text-xs">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+          </button>
+          <button id="mobile-menu-btn" class="p-2 rounded-xl bg-[#140A1F] border border-white/15 text-[#D1C4E9] hover:text-white hover:border-[#FF2A85] transition-colors" aria-label="Toggle navigation menu" aria-expanded="false">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div id="mobile-menu" class="hidden md:hidden bg-[#0F0617] border-b border-[#FF6B35]/30 px-4 py-4 space-y-2 shadow-2xl">
+        <a href="#/" onclick="navigateTo('home', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="home">
+          01. Home
+        </a>
+        <a href="#/about" onclick="navigateTo('about', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="about">
+          02. About Me
+        </a>
+        <a href="#/skills" onclick="navigateTo('skills', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="skills">
+          03. Skills
+        </a>
+        <a href="#/projects" onclick="navigateTo('projects', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="projects">
+          04. Projects
+        </a>
+        <a href="#/education" onclick="navigateTo('education', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="education">
+          05. Education
+        </a>
+        <a href="#/achievements" onclick="navigateTo('achievements', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="achievements">
+          06. Achievements
+        </a>
+        <a href="#/contact" onclick="navigateTo('contact', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="contact">
+          07. Contact
+        </a>
+        <div class="pt-2 border-t border-white/10 flex gap-2">
+          <button onclick="openResumeModal(); toggleMobileMenu(false);" class="flex-1 py-2 rounded-xl bg-white/5 border border-white/15 text-xs font-mono text-[#FFAE33] flex items-center justify-center gap-1.5">
+            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+            <span>Resume</span>
+          </button>
+          <a href="#/contact" onclick="navigateTo('contact', event); toggleMobileMenu(false);" class="flex-1 py-2 rounded-xl btn-sunset text-xs font-mono font-bold text-center">
+            Contact Me
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========================================================================= -->
+    <!-- MAIN CONTENT VIEW CONTAINER (SPA Target Pages)                           -->
+    <!-- ========================================================================= -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 1: HOME (Hero + Quick Highlights + Featured Teaser)                -->
+      <!-- ======================================================================= -->
+      <section id="page-home" class="space-y-16 animate-fade-in">
+        
+        <!-- Hero Two-Column Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-2 pb-6">
+          
+          <!-- Left Column: Expressive Typography & Pitch -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- Badges Bar -->
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#FF6B35]/20 to-[#FF2A85]/20 border border-[#FF6B35]/40 text-[#FFAE33] text-xs font-mono font-semibold shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-[#FF6B35] animate-ping"></span>
+                <span>Second-Year CSE Undergraduate</span>
+              </span>
+              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#C4B5CD] text-xs font-mono">
+                <i data-lucide="award" class="w-3 h-3 text-[#FF5C9D]"></i>
+                <span>Ex-Navodayan (JNV Parbhani)</span>
+              </span>
+              <span class="inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#C4B5CD] text-xs font-mono">
+                <i data-lucide="map-pin" class="w-3 h-3 text-[#FF6B35]"></i>
+                <span>SSGMCE, Shegaon</span>
+              </span>
+            </div>
+
+            <!-- Main Name & Expressive Title -->
+            <div class="space-y-2">
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white leading-[1.1]">
+                Hi, I'm <br class="sm:hidden" />
+                <span class="gradient-text" id="hero-name">Gajanan Sanjay Kadam</span>
+              </h1>
+              
+              <!-- Dynamic Word Rotator / Typing Effect -->
+              <div class="h-8 flex items-center">
+                <p class="text-lg sm:text-xl font-mono text-[#D1C4E9] font-medium flex items-center gap-2">
+                  <span class="text-[#FF6B35]">&gt;</span>
+                  <span id="hero-typewriter" class="text-white border-r-2 border-[#FF2A85] pr-1">Second-Year CSE Student @ SSGMCE</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Authentic Summary from Resume -->
+            <p class="text-base sm:text-lg text-[#C4B5CD] leading-relaxed max-w-2xl font-sans" id="hero-desc">
+              2nd-year Computer Science & Engineering student (Ex-Navodayan, JNV Parbhani) at SSGMCE Shegaon with a strong foundation in C programming, web development (HTML/CSS), and analytical problem solving. Seeking an entry-level technical role or fellowship to apply my skills, gain hands-on experience, and learn new technologies.
+            </p>
+
+            <!-- Action CTAs -->
+            <div class="flex flex-wrap items-center gap-4 pt-2">
+              <a href="#/projects" onclick="navigateTo('projects', event)" class="btn-sunset px-6 py-3 rounded-2xl text-sm font-mono font-bold tracking-tight shadow-xl flex items-center gap-2">
+                <i data-lucide="layout" class="w-4 h-4"></i>
+                <span>Explore Projects</span>
+              </a>
+              <button onclick="openResumeModal()" class="px-5 py-3 rounded-2xl bg-white/5 border border-white/20 text-[#FFAE33] hover:border-[#FFAE33] hover:bg-[#FFAE33]/10 text-sm font-mono font-semibold transition-all flex items-center gap-2 shadow-sm">
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+                <span>View Resume</span>
+              </button>
+              <a href="#/contact" onclick="navigateTo('contact', event)" class="px-5 py-3 rounded-2xl bg-transparent border border-white/20 text-[#D1C4E9] hover:text-white hover:border-[#FF2A85] text-sm font-mono font-semibold transition-all flex items-center gap-2">
+                <span>Contact Me</span>
+              </a>
+            </div>
+
+            <!-- Key Metric Cards (Semester SGPA & Authentic Stats) -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-white/10">
+              <div class="p-3.5 rounded-2xl aesthetic-card">
+                <div class="text-[10px] font-mono text-[#FFAE33] uppercase tracking-wider">[01] Semester 1 SGPA</div>
+                <div class="text-lg font-bold text-white mt-0.5 font-display stat-counter" data-target="8.14" data-decimals="2">8.14 / 10</div>
+                <div class="text-[11px] text-[#FF5C9D] font-mono">First Sem Result</div>
+              </div>
+              <div class="p-3.5 rounded-2xl aesthetic-card">
+                <div class="text-[10px] font-mono text-[#FF8A50] uppercase tracking-wider">[02] Semester 2 SGPA</div>
+                <div class="text-lg font-bold text-white mt-0.5 font-display stat-counter" data-target="8.32" data-decimals="2">8.32 / 10</div>
+                <div class="text-[11px] text-[#FFAE33] font-mono">Second Sem Result</div>
+              </div>
+              <div class="p-3.5 rounded-2xl aesthetic-card">
+                <div class="text-[10px] font-mono text-[#FFAE33] uppercase tracking-wider">[03] HSC (Science)</div>
+                <div class="text-lg font-bold text-white mt-0.5 font-display stat-counter" data-target="83.5" data-decimals="1" data-suffix="%">83.5%</div>
+                <div class="text-[11px] text-[#C4B5CD]">JNV Parbhani</div>
+              </div>
+              <div class="p-3.5 rounded-2xl aesthetic-card">
+                <div class="text-[10px] font-mono text-[#FF8A50] uppercase tracking-wider">[04] Core Foundation</div>
+                <div class="text-lg font-bold text-white mt-0.5 font-display">C & Core Java</div>
+                <div class="text-[11px] text-[#FF5C9D]">OOP in Progress</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Aesthetic Circular Profile Frame with Rotating Orbit Rings -->
+          <div class="lg:col-span-5 flex justify-center items-center py-6">
+            <div class="relative w-80 h-80 sm:w-96 sm:h-96 flex items-center justify-center select-none">
+              
+              <!-- Ambient Multi-Gradient Glow Behind Circle -->
+              <div class="absolute inset-4 rounded-full bg-gradient-to-tr from-[#FF6B35]/40 via-[#FF2A85]/40 to-[#FFAE33]/30 blur-2xl animate-pulse-subtle pointer-events-none"></div>
+
+              <!-- Outer Rotating Dashed Ring (Clockwise) -->
+              <svg class="absolute inset-0 w-full h-full animate-spin-slow pointer-events-none" viewBox="0 0 400 400">
+                <circle cx="200" cy="200" r="185" fill="none" stroke="url(#sunsetGradient)" stroke-width="2.5" stroke-dasharray="14 18" opacity="0.75" />
+                <defs>
+                  <linearGradient id="sunsetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#FF6B35" />
+                    <stop offset="50%" stop-color="#FF2A85" />
+                    <stop offset="100%" stop-color="#FFAE33" />
+                  </linearGradient>
+                </defs>
+              </svg>
+
+              <!-- Counter-Rotating Secondary Ring (Counter-Clockwise) -->
+              <svg class="absolute inset-6 w-[calc(100%-48px)] h-[calc(100%-48px)] animate-spin-reverse pointer-events-none" viewBox="0 0 350 350">
+                <circle cx="175" cy="175" r="165" fill="none" stroke="rgba(255, 42, 133, 0.4)" stroke-width="1.5" stroke-dasharray="6 20" />
+                <circle cx="175" cy="10" r="5" fill="#FF6B35" />
+                <circle cx="175" cy="340" r="5" fill="#FF2A85" />
+              </svg>
+
+              <!-- The Central Round Profile Photo Container -->
+              <div class="relative w-64 h-64 sm:w-72 sm:h-72 rounded-full p-1.5 bg-gradient-to-tr from-[#FF6B35] via-[#FF2A85] to-[#FFAE33] shadow-[0_0_40px_rgba(255,42,133,0.35)] group">
+                <div class="w-full h-full rounded-full overflow-hidden bg-[#140A1F] border-2 border-white/20 relative flex items-center justify-center">
+                  
+                  <!-- Real Photo (Shown if configured or uploaded) -->
+                  <img id="hero-profile-img" src="" alt="Gajanan Sanjay Kadam" class="w-full h-full object-cover hidden transition-transform duration-500 group-hover:scale-105 rounded-full" />
+                  
+                  <!-- Circular Fallback Visual with Monogram & Code Icon -->
+                  <div id="hero-profile-fallback" class="w-full h-full flex flex-col items-center justify-center text-center p-6 bg-gradient-to-b from-[#1E0D30] to-[#0E0617] rounded-full">
+                    <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-[#FF6B35] via-[#FF2A85] to-[#FFAE33] text-white flex items-center justify-center mb-2 shadow-lg group-hover:scale-105 transition-transform">
+                      <i data-lucide="code-2" class="w-10 h-10 text-white"></i>
+                    </div>
+                    <div class="font-display font-extrabold text-base text-white tracking-tight" id="hero-avatar-name">Gajanan Kadam</div>
+                    <div class="text-[11px] font-mono text-[#FFAE33] mt-0.5 font-semibold">B.E. CSE @ SSGMCE</div>
+                    <div class="text-[10px] font-mono text-[#C4B5CD] mt-1 border-t border-white/10 pt-1 max-w-[160px]">
+                      Ex-Navodayan • 8.14 & 8.32 SGPA
+                    </div>
+                  </div>
+
+                  <!-- Hover Trigger to Add Custom Photo (Circular Overlay) -->
+                  <label for="avatar-file-input" class="absolute inset-0 rounded-full bg-[#0B0410]/85 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col items-center justify-center text-center p-4 cursor-pointer z-20">
+                    <i data-lucide="camera" class="w-8 h-8 text-[#FFAE33] mb-1 animate-bounce"></i>
+                    <span class="text-xs font-bold text-white font-display">Update Photo</span>
+                    <span class="text-[9px] text-[#FF8A50] font-mono mt-0.5">Click to choose image</span>
+                  </label>
+                  <input type="file" id="avatar-file-input" accept="image/*" class="hidden" />
+
+                </div>
+              </div>
+
+              <!-- 4 Orbiting Floating Badges (Positioned around the circular avatar) -->
+              <!-- Badge 1: Top-Right -->
+              <div class="absolute -top-1 -right-2 sm:top-2 sm:right-0 px-3 py-1.5 rounded-2xl aesthetic-card text-white text-[11px] font-mono font-bold flex items-center gap-1.5 shadow-lg animate-float-slow z-20">
+                <span class="w-2 h-2 rounded-full bg-[#FF6B35]"></span>
+                <i data-lucide="code" class="w-3.5 h-3.5 text-[#FF6B35]"></i>
+                <span>C Language</span>
+              </div>
+
+              <!-- Badge 2: Top-Left -->
+              <div class="absolute top-4 -left-4 sm:top-6 sm:-left-6 px-3 py-1.5 rounded-2xl aesthetic-card text-white text-[11px] font-mono font-bold flex items-center gap-1.5 shadow-lg animate-float-delayed z-20">
+                <i data-lucide="award" class="w-3.5 h-3.5 text-[#FFAE33]"></i>
+                <span class="text-[#FFAE33]">Ex-Navodayan</span>
+              </div>
+
+              <!-- Badge 3: Bottom-Left -->
+              <div class="absolute -bottom-2 -left-2 sm:bottom-4 sm:-left-2 px-3 py-1.5 rounded-2xl aesthetic-card text-white text-[11px] font-mono font-bold flex items-center gap-1.5 shadow-lg animate-float-slow z-20">
+                <i data-lucide="star" class="w-3.5 h-3.5 text-[#FF5C9D]"></i>
+                <span>Sem 1: 8.14 | Sem 2: 8.32 SGPA</span>
+              </div>
+
+              <!-- Badge 4: Bottom-Right -->
+              <div class="absolute bottom-2 -right-4 sm:bottom-6 sm:-right-4 px-3 py-1.5 rounded-2xl aesthetic-card text-white text-[11px] font-mono font-bold flex items-center gap-1.5 shadow-lg animate-float-delayed z-20">
+                <i data-lucide="layout" class="w-3.5 h-3.5 text-[#FFAE33]"></i>
+                <span>HTML5 / CSS3</span>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Featured Projects Preview Row -->
+        <div class="space-y-6 pt-6">
+          <div class="flex items-end justify-between border-b border-white/10 pb-4">
+            <div>
+              <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                <span>Verified Practical Work</span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-bold font-display text-white mt-1">Featured Projects</h2>
+            </div>
+            <a href="#/projects" onclick="navigateTo('projects', event)" class="text-xs font-mono text-[#FFAE33] hover:text-white flex items-center gap-1 transition-colors">
+              <span>View All Projects</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            
+            <!-- Project 1: Forest Ecosystem -->
+            <div class="aesthetic-card rounded-3xl p-6 space-y-4 group">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="px-2.5 py-1 rounded-full bg-[#FF6B35]/20 text-[#FF8A50] border border-[#FF6B35]/30">
+                  Web Development
+                </span>
+                <span class="text-[#C4B5CD]">Real Project</span>
+              </div>
+              <h3 class="text-xl font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors">
+                Forest Ecosystem & Wildlife Awareness Platform
+              </h3>
+              <p class="text-sm text-[#C4B5CD] leading-relaxed">
+                Developed an educational website focused on awareness around forest ecosystems and wildlife protection. Applied semantic HTML markup for structured content and custom CSS for responsive visual presentation.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-[#FF5C9D]">HTML5</span>
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-[#FFAE33]">CSS3</span>
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-[#C4B5CD]">Responsive Design</span>
+              </div>
+              <div class="pt-2 flex items-center gap-3">
+                <a href="#/projects" onclick="navigateTo('projects', event)" class="text-xs font-mono text-[#FF6B35] hover:text-[#FFAE33] flex items-center gap-1 font-semibold">
+                  <span>Explore Case Study</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Project 2: JNV Memories Gallery -->
+            <div class="aesthetic-card rounded-3xl p-6 space-y-4 group">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="px-2.5 py-1 rounded-full bg-[#FF2A85]/20 text-[#FF5C9D] border border-[#FF2A85]/30">
+                  Media Showcase
+                </span>
+                <span class="text-[#C4B5CD]">Ex-Navodayan</span>
+              </div>
+              <h3 class="text-xl font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors">
+                JNV Memories – Personal Memory Gallery Webpage
+              </h3>
+              <p class="text-sm text-[#C4B5CD] leading-relaxed">
+                Built a personal memory gallery webpage dedicated to high school memories with JNV classmates. Styled media galleries, text layouts, and navigation sections to create an engaging user experience.
+              </p>
+              <div class="flex flex-wrap gap-2 pt-2">
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-[#FF5C9D]">HTML5</span>
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-[#FFAE33]">CSS Flexbox/Grid</span>
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-[#C4B5CD]">Media Galleries</span>
+              </div>
+              <div class="pt-2 flex items-center gap-3">
+                <a href="#/projects" onclick="navigateTo('projects', event)" class="text-xs font-mono text-[#FF2A85] hover:text-[#FFAE33] flex items-center gap-1 font-semibold">
+                  <span>Explore Case Study</span>
+                  <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 2: ABOUT ME (Editorial Narrative + SSGMCE Dossier + Navodaya Story) -->
+      <!-- ======================================================================= -->
+      <section id="page-about" class="hidden space-y-12 animate-fade-in">
+        
+        <!-- Page Header -->
+        <div class="border-b border-white/10 pb-6">
+          <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+            <i data-lucide="user" class="w-3.5 h-3.5"></i>
+            <span>02. Dossier & Background</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">About Gajanan Sanjay Kadam</h1>
+          <p class="text-sm text-[#C4B5CD] font-mono mt-1">Second-Year Computer Science & Engineering Undergraduate • SSGMCE Shegaon</p>
+        </div>
+
+        <!-- Narrative & Dossier Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          <!-- Narrative Left Column -->
+          <div class="lg:col-span-7 space-y-6">
+            <div class="aesthetic-card rounded-3xl p-6 sm:p-8 space-y-4">
+              <h2 class="text-xl font-bold font-display text-white flex items-center gap-2">
+                <i data-lucide="compass" class="w-5 h-5 text-[#FF6B35]"></i>
+                <span>Journey & Engineering Mindset</span>
+              </h2>
+              
+              <div class="space-y-4 text-sm sm:text-base text-[#D1C4E9] leading-relaxed" id="about-paragraphs">
+                <p>
+                  Hello! I am <strong class="text-white font-semibold">Gajanan Sanjay Kadam</strong>, a second-year Computer Science & Engineering undergraduate at Shri Sant Gajanan Maharaj College of Engineering (SSGMCE), Shegaon, and a proud alumnus of <strong class="text-[#FFAE33] font-semibold">Jawahar Navodaya Vidyalaya (JNV), Parbhani</strong>.
+                </p>
+                <p>
+                  I have built a strong foundational understanding in C programming, structured algorithmic logic, and web development using semantic HTML and CSS. I pride myself on being a disciplined, quick learner with sharp analytical thinking and methodical problem-solving skills honed through rigorous Navodaya schooling and engineering coursework.
+                </p>
+                <p>
+                  My academic journey at SSGMCE is driven by a passion for software development, data structuring, and building practical technology. I am actively seeking an entry-level technical role, internship, or fellowship where I can apply my skills, gain hands-on production experience, and collaborate on impactful engineering projects.
+                </p>
+              </div>
+
+              <!-- Core Soft Skills from Resume -->
+              <div class="pt-4 border-t border-white/10 space-y-2">
+                <div class="text-xs font-mono text-[#FFAE33] uppercase font-bold tracking-wider">Key Soft Skills & Attributes:</div>
+                <div class="flex flex-wrap gap-2">
+                  <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Logical Reasoning</span>
+                  <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Quick Learning Ability</span>
+                  <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Attention to Detail</span>
+                  <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Analytical Thinking</span>
+                  <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Team Collaboration</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Languages Known -->
+            <div class="aesthetic-card rounded-3xl p-6 space-y-3">
+              <h3 class="text-sm font-mono text-[#FF8A50] font-bold uppercase tracking-wider flex items-center gap-2">
+                <i data-lucide="languages" class="w-4 h-4 text-[#FF8A50]"></i>
+                <span>Languages Known</span>
+              </h3>
+              <div class="grid grid-cols-3 gap-3">
+                <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
+                  <div class="text-sm font-bold text-white font-display">English</div>
+                  <div class="text-[11px] font-mono text-[#C4B5CD]">Professional</div>
+                </div>
+                <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
+                  <div class="text-sm font-bold text-[#FFAE33] font-display">Marathi</div>
+                  <div class="text-[11px] font-mono text-[#C4B5CD]">Native</div>
+                </div>
+                <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-center">
+                  <div class="text-sm font-bold text-[#FF5C9D] font-display">Hindi</div>
+                  <div class="text-[11px] font-mono text-[#C4B5CD]">Fluent</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dossier Right Column -->
+          <div class="lg:col-span-5 space-y-6">
+            
+            <!-- Academic Credentials Card -->
+            <div class="aesthetic-card rounded-3xl p-6 space-y-4">
+              <h3 class="text-sm font-mono text-[#FFAE33] font-bold uppercase tracking-wider flex items-center gap-2">
+                <i data-lucide="graduation-cap" class="w-4 h-4 text-[#FFAE33]"></i>
+                <span>Academic Record</span>
+              </h3>
+              <div class="space-y-3 font-mono text-xs">
+                <div class="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+                  <div class="text-[#FF8A50] font-bold">B.E. Computer Science & Engineering</div>
+                  <div class="text-white text-sm font-bold mt-0.5">First Semester SGPA: 8.14 / 10</div>
+                  <div class="text-[#FFAE33] text-sm font-bold">Second Semester SGPA: 8.32 / 10</div>
+                  <div class="text-[#C4B5CD] text-[11px]">SSGMCE Shegaon (2024–2028)</div>
+                </div>
+                <div class="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+                  <div class="text-[#FF5C9D] font-bold">Higher Secondary Certificate (HSC) — Science</div>
+                  <div class="text-white text-sm font-bold mt-0.5">Percentage: 83.5%</div>
+                  <div class="text-[#C4B5CD] text-[11px]">Jawahar Navodaya Vidyalaya (JNV), Parbhani</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Schooling Background Highlight -->
+            <div class="aesthetic-card rounded-3xl p-6 space-y-3 bg-gradient-to-br from-[#1E0D30] to-[#140A1F]">
+              <div class="flex items-center gap-2 text-xs font-mono text-[#FFAE33] font-bold">
+                <i data-lucide="award" class="w-4 h-4 text-[#FFAE33]"></i>
+                <span>Ex-Navodayan Heritage</span>
+              </div>
+              <h4 class="text-base font-bold font-display text-white">Jawahar Navodaya Vidyalaya (JNV) Parbhani</h4>
+              <p class="text-xs text-[#C4B5CD] leading-relaxed">
+                Selected through the highly competitive national entrance test for JNV Parbhani. Navodaya education instills deep discipline, resilience, peer collaboration, and strong academic rigour.
+              </p>
+            </div>
+
+            <!-- SSGMCE Institutional Dossier -->
+            <div class="aesthetic-card rounded-3xl p-6 space-y-3">
+              <div class="flex items-center gap-2 text-xs font-mono text-[#FF6B35] font-bold">
+                <i data-lucide="building-2" class="w-4 h-4 text-[#FF6B35]"></i>
+                <span>College Affiliation</span>
+              </div>
+              <h4 class="text-base font-bold font-display text-white">Shri Sant Gajanan Maharaj College of Engineering</h4>
+              <p class="text-xs text-[#C4B5CD] leading-relaxed">
+                Shegaon, Maharashtra • One of the premier engineering institutions in the Vidarbha region, renowned for technical excellence, discipline, and strong alumni network.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 3: TECHNICAL SKILLS (Matrix with Category Filter)                  -->
+      <!-- ======================================================================= -->
+      <section id="page-skills" class="hidden space-y-8 animate-fade-in">
+        
+        <!-- Page Header -->
+        <div class="border-b border-white/10 pb-6 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+              <i data-lucide="cpu" class="w-3.5 h-3.5"></i>
+              <span>03. Technical Competencies</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Skills & Technical Toolkit</h1>
+            <p class="text-sm text-[#C4B5CD] font-mono mt-1">Honest, verified skills directly from Gajanan's academic and practical work</p>
+          </div>
+
+          <!-- Category Filter Buttons -->
+          <div class="flex flex-wrap gap-1.5 bg-[#140A1F] p-1.5 rounded-2xl border border-white/10">
+            <button class="skill-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-medium bg-[#FF6B35] text-white shadow-sm" data-filter="all">All</button>
+            <button class="skill-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white" data-filter="prog">Programming</button>
+            <button class="skill-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white" data-filter="web">Web Tech</button>
+            <button class="skill-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white" data-filter="tools">Data & Productivity</button>
+            <button class="skill-filter-btn px-3 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white" data-filter="cs">Core Logic</button>
+          </div>
+        </div>
+
+        <!-- Skills Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- Category 1: Programming Languages -->
+          <div class="aesthetic-card rounded-3xl p-6 space-y-4 skill-card-group" data-category="prog">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <h3 class="text-lg font-bold font-display text-white flex items-center gap-2">
+                <i data-lucide="code" class="w-5 h-5 text-[#FF6B35]"></i>
+                <span>Programming Languages</span>
+              </h3>
+              <span class="text-xs font-mono text-[#FFAE33]">Primary Focus</span>
+            </div>
+            
+            <div class="space-y-3">
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white font-mono text-sm">C Language</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#FF6B35]/20 text-[#FF8A50] border border-[#FF6B35]/30">Strong Foundation</span>
+                </div>
+                <p class="text-xs text-[#C4B5CD] leading-relaxed">
+                  Structured programming, Pointers, Memory management, Arrays, Modular functions, and Algorithmic problem solving.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white font-mono text-sm">Core Java</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#FFAE33]/20 text-[#FFAE33] border border-[#FFAE33]/30">Currently Learning in Depth</span>
+                </div>
+                <p class="text-xs text-[#C4B5CD] leading-relaxed">
+                  Actively strengthening my understanding of Core Java, exploring programming fundamentals, syntax, methods, classes, objects, and writing practical Java programs.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white font-mono text-sm">Object-Oriented Programming (OOP)</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#FF2A85]/20 text-[#FF5C9D] border border-[#FF2A85]/30">Currently Learning</span>
+                </div>
+                <p class="text-xs text-[#C4B5CD] leading-relaxed">
+                  Developing a deeper understanding of object-oriented programming concepts, including classes, objects, encapsulation, inheritance, polymorphism, and abstraction.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 2: Web Technologies -->
+          <div class="aesthetic-card rounded-3xl p-6 space-y-4 skill-card-group" data-category="web">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <h3 class="text-lg font-bold font-display text-white flex items-center gap-2">
+                <i data-lucide="globe" class="w-5 h-5 text-[#FF2A85]"></i>
+                <span>Web Technologies</span>
+              </h3>
+              <span class="text-xs font-mono text-[#FF5C9D]">Frontend Practical</span>
+            </div>
+            
+            <div class="space-y-3">
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white font-mono text-sm">HTML5</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#FFAE33]/20 text-[#FFAE33] border border-[#FFAE33]/30">Proficient</span>
+                </div>
+                <p class="text-xs text-[#C4B5CD] leading-relaxed">
+                  Semantic tags, Document outline, Accessible markup, Forms, and Structured web presentation.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white font-mono text-sm">CSS3 & Responsive Layouts</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#FFAE33]/20 text-[#FFAE33] border border-[#FFAE33]/30">Proficient</span>
+                </div>
+                <p class="text-xs text-[#C4B5CD] leading-relaxed">
+                  Flexbox, CSS Grid, Media queries, Custom media galleries, Color palettes, and Transition animations.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 3: Productivity & Data Management -->
+          <div class="aesthetic-card rounded-3xl p-6 space-y-4 skill-card-group" data-category="tools">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <h3 class="text-lg font-bold font-display text-white flex items-center gap-2">
+                <i data-lucide="file-spreadsheet" class="w-5 h-5 text-[#FFAE33]"></i>
+                <span>Data & Productivity</span>
+              </h3>
+              <span class="text-xs font-mono text-[#FFAE33]">Data Management</span>
+            </div>
+            
+            <div class="space-y-3">
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white font-mono text-sm">Microsoft Excel</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#FF6B35]/20 text-[#FF8A50] border border-[#FF6B35]/30">Proficient</span>
+                </div>
+                <p class="text-xs text-[#C4B5CD] leading-relaxed">
+                  Data entry, Mathematical and statistical formulas, Cell formatting, Data organization, and Tabular analysis.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white font-mono text-sm">Microsoft Word</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-white border border-white/20">Proficient</span>
+                </div>
+                <p class="text-xs text-[#C4B5CD] leading-relaxed">
+                  Technical report generation, Academic documentation, Structured layout formatting, and Presentation.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Category 4: Core CS Competencies -->
+          <div class="aesthetic-card rounded-3xl p-6 space-y-4 skill-card-group" data-category="cs">
+            <div class="flex items-center justify-between border-b border-white/10 pb-3">
+              <h3 class="text-lg font-bold font-display text-white flex items-center gap-2">
+                <i data-lucide="binary" class="w-5 h-5 text-[#FF5C9D]"></i>
+                <span>Core CS Competencies</span>
+              </h3>
+              <span class="text-xs font-mono text-[#FF5C9D]">Foundations</span>
+            </div>
+            
+            <div class="space-y-3">
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white font-mono text-sm">Problem-Solving & Algorithmic Logic</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#FF6B35]/20 text-[#FF8A50] border border-[#FF6B35]/30">Active Practice</span>
+                </div>
+                <p class="text-xs text-[#C4B5CD] leading-relaxed">
+                  Breaking down problems methodically, flowcharts, step-by-step logic, and edge-case handling.
+                </p>
+              </div>
+
+              <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="font-bold text-white font-mono text-sm">Data Structuring</span>
+                  <span class="text-[11px] font-mono px-2 py-0.5 rounded-full bg-[#FFAE33]/20 text-[#FFAE33] border border-[#FFAE33]/30">In Progress</span>
+                </div>
+                <p class="text-xs text-[#C4B5CD] leading-relaxed">
+                  Arrays, Linear data structures, Sorting algorithms, and algorithmic complexity in C.
+                </p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 4: PROJECTS (Detailed Practical Showcase)                          -->
+      <!-- ======================================================================= -->
+      <section id="page-projects" class="hidden space-y-8 animate-fade-in">
+        
+        <!-- Page Header -->
+        <div class="border-b border-white/10 pb-6 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4">
+          <div>
+            <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+              <i data-lucide="folder-git-2" class="w-3.5 h-3.5"></i>
+              <span>04. Practical Engineering</span>
+            </div>
+            <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Projects & Practical Work</h1>
+            <p class="text-sm text-[#C4B5CD] font-mono mt-1">Real projects developed with semantic HTML, custom CSS, and responsive styling</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+          <!-- Project Card 1: Forest Ecosystem -->
+          <div class="aesthetic-card rounded-3xl p-6 flex flex-col justify-between space-y-4 group">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="px-2.5 py-1 rounded-full bg-[#FF6B35]/20 text-[#FF8A50] border border-[#FF6B35]/30">
+                  Web Development
+                </span>
+                <span class="text-[#FFAE33] flex items-center gap-1">
+                  <i data-lucide="check-circle" class="w-3.5 h-3.5"></i>
+                  <span>Completed</span>
+                </span>
+              </div>
+              <h3 class="text-xl font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors">
+                Forest Ecosystem & Wildlife Awareness Platform
+              </h3>
+              <p class="text-sm text-[#C4B5CD] leading-relaxed">
+                Developed an educational website focused on awareness around forest ecosystems and wildlife protection. Applied semantic HTML markup for structured content and custom CSS for responsive visual presentation.
+              </p>
+              
+              <!-- Features Highlights -->
+              <div class="space-y-1.5 text-xs text-[#D1C4E9] font-mono pt-2 border-t border-white/10">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-[#FF6B35]"></i>
+                  <span>Semantic HTML5 document architecture</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-[#FF6B35]"></i>
+                  <span>Responsive CSS layouts across mobile/desktop</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-[#FF6B35]"></i>
+                  <span>Biodiversity awareness & educational cards</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3 pt-3 border-t border-white/10">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FF8A50]">HTML5</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FFAE33]">CSS3</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#C4B5CD]">Responsive Design</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <a href="https://github.com/gajanankadam2004/forest-ecosystem-awareness" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-white flex items-center gap-1.5 transition-all">
+                  <i data-lucide="github" class="w-3.5 h-3.5 text-[#FF6B35]"></i>
+                  <span>Source Code</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 2: JNV Memories Gallery -->
+          <div class="aesthetic-card rounded-3xl p-6 flex flex-col justify-between space-y-4 group">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="px-2.5 py-1 rounded-full bg-[#FF2A85]/20 text-[#FF5C9D] border border-[#FF2A85]/30">
+                  Media & Community
+                </span>
+                <span class="text-[#FFAE33] flex items-center gap-1">
+                  <i data-lucide="heart" class="w-3.5 h-3.5 text-[#FF2A85]"></i>
+                  <span>Navodayan Bond</span>
+                </span>
+              </div>
+              <h3 class="text-xl font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors">
+                JNV Memories – Personal Memory Gallery Webpage
+              </h3>
+              <p class="text-sm text-[#C4B5CD] leading-relaxed">
+                Built a personal memory gallery webpage dedicated to high school memories with JNV Parbhani classmates. Styled media galleries, text layouts, and navigation sections to create an engaging user experience.
+              </p>
+              
+              <!-- Features Highlights -->
+              <div class="space-y-1.5 text-xs text-[#D1C4E9] font-mono pt-2 border-t border-white/10">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-[#FF2A85]"></i>
+                  <span>Dynamic media grid layout using CSS Flexbox</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-[#FF2A85]"></i>
+                  <span>Classmate memory tags & nostalgic storytelling</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-[#FF2A85]"></i>
+                  <span>Mobile-friendly photo view navigation</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3 pt-3 border-t border-white/10">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FF5C9D]">HTML5</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FFAE33]">CSS Media Queries</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#C4B5CD]">Gallery UI</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <a href="https://github.com/gajanankadam2004/jnv-memories-gallery" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-white flex items-center gap-1.5 transition-all">
+                  <i data-lucide="github" class="w-3.5 h-3.5 text-[#FF2A85]"></i>
+                  <span>Source Code</span>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project Card 3: ARISE Diwali 2026 Showcase -->
+          <div class="aesthetic-card rounded-3xl p-6 flex flex-col justify-between space-y-4 group">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="px-2.5 py-1 rounded-full bg-gradient-to-r from-[#FF6B35]/20 to-[#FF2A85]/20 text-[#FFAE33] border border-[#FF6B35]/40">
+                  AI Engineering
+                </span>
+                <span class="text-[#FFAE33] flex items-center gap-1">
+                  <i data-lucide="award" class="w-3.5 h-3.5 text-[#FFAE33]"></i>
+                  <span>ARISE 2026</span>
+                </span>
+              </div>
+              <h3 class="text-xl font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors">
+                ARISE 2026 AI-Powered Developer Portfolio
+              </h3>
+              <p class="text-sm text-[#C4B5CD] leading-relaxed">
+                The current portfolio website engineered for the ARISE Diwali Portfolio Competition 2026 at SSGMCE Shegaon. Built with advanced AI tools featuring Cyber Sunset aesthetics, spark constellation canvas, circular avatar, and SPA routing.
+              </p>
+              
+              <!-- Features Highlights -->
+              <div class="space-y-1.5 text-xs text-[#D1C4E9] font-mono pt-2 border-t border-white/10">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-[#FFAE33]"></i>
+                  <span>7 distinct dedicated pages via hybrid SPA router</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-[#FFAE33]"></i>
+                  <span>Interactive HTML5 spark canvas with mouse physics</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="check" class="w-3.5 h-3.5 text-[#FFAE33]"></i>
+                  <span>100% verified, authentic resume data mapping</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="space-y-3 pt-3 border-t border-white/10">
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FF8A50]">Tailwind</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FF5C9D]">Canvas API</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FFAE33]">SPA Router</span>
+              </div>
+              <div class="flex items-center gap-3">
+                <button onclick="openAIArchitectureModal()" class="px-3.5 py-1.5 rounded-xl btn-sunset text-xs font-mono font-bold flex items-center gap-1.5">
+                  <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+                  <span>AI Architecture</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 5: EDUCATION (Authentic Academic Journey + Learning Vector)        -->
+      <!-- ======================================================================= -->
+      <section id="page-education" class="hidden space-y-10 animate-fade-in">
+        
+        <!-- Page Header -->
+        <div class="border-b border-white/10 pb-6">
+          <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+            <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>
+            <span>05. Academic Qualifications</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Education & Active Learning</h1>
+          <p class="text-sm text-[#C4B5CD] font-mono mt-1">Verified academic milestones from SSGMCE Shegaon & Jawahar Navodaya Vidyalaya Parbhani</p>
+        </div>
+
+        <!-- Academic Timeline Cards -->
+        <div class="space-y-6">
+
+          <!-- 1. B.E. at SSGMCE -->
+          <div class="aesthetic-card rounded-3xl p-6 sm:p-8 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-white/10 pb-4">
+              <div>
+                <span class="px-2.5 py-1 rounded-full bg-[#FF6B35]/20 text-[#FF8A50] border border-[#FF6B35]/30 text-xs font-mono font-bold">
+                  Undergraduate Engineering (2024 – 2028)
+                </span>
+                <h2 class="text-2xl font-bold font-display text-white mt-2">
+                  Bachelor of Engineering – Computer Science & Engineering
+                </h2>
+                <div class="text-sm font-mono text-[#FFAE33] mt-0.5">
+                  Shri Sant Gajanan Maharaj College of Engineering, Shegaon
+                </div>
+              </div>
+
+              <!-- High-Contrast Semester-Wise SGPA Badges -->
+              <div class="flex flex-wrap sm:flex-nowrap gap-3">
+                <div class="p-3 sm:p-3.5 rounded-2xl bg-gradient-to-tr from-[#FF6B35]/20 to-[#FF2A85]/20 border border-[#FF6B35]/40 text-center min-w-[130px]">
+                  <div class="text-[10px] font-mono text-[#C4B5CD] uppercase">Sem 1 SGPA</div>
+                  <div class="text-xl sm:text-2xl font-extrabold font-display text-white">8.14 <span class="text-xs text-[#FFAE33]">/ 10</span></div>
+                  <div class="text-[10px] font-mono text-[#FF5C9D]">First Semester</div>
+                </div>
+                <div class="p-3 sm:p-3.5 rounded-2xl bg-gradient-to-tr from-[#FF2A85]/20 to-[#FFAE33]/20 border border-[#FF2A85]/40 text-center min-w-[130px]">
+                  <div class="text-[10px] font-mono text-[#C4B5CD] uppercase">Sem 2 SGPA</div>
+                  <div class="text-xl sm:text-2xl font-extrabold font-display text-white">8.32 <span class="text-xs text-[#FFAE33]">/ 10</span></div>
+                  <div class="text-[10px] font-mono text-[#FFAE33]">Second Semester</div>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-sm text-[#C4B5CD] leading-relaxed">
+              Enrolled in the B.E. Computer Science & Engineering program at SSGMCE Shegaon. Actively building strong algorithmic problem-solving abilities, structured programming discipline in C, exploring Core Java in depth, and learning Object-Oriented Programming (OOP).
+            </p>
+
+            <div class="space-y-2 pt-2">
+              <div class="text-xs font-mono text-[#FFAE33] font-bold uppercase tracking-wider">Key Coursework:</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Data Structures</span>
+                <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">C Programming</span>
+                <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Core Java & OOP</span>
+                <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Web Basics</span>
+                <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Engineering Mathematics</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. HSC at JNV Parbhani -->
+          <div class="aesthetic-card rounded-3xl p-6 sm:p-8 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 border-b border-white/10 pb-4">
+              <div>
+                <span class="px-2.5 py-1 rounded-full bg-[#FF2A85]/20 text-[#FF5C9D] border border-[#FF2A85]/30 text-xs font-mono font-bold">
+                  Higher Secondary Certificate (HSC) • Science Stream
+                </span>
+                <h2 class="text-2xl font-bold font-display text-white mt-2">
+                  Higher Secondary Certificate – Science Stream
+                </h2>
+                <div class="text-sm font-mono text-[#FFAE33] mt-0.5">
+                  Jawahar Navodaya Vidyalaya (JNV), Parbhani
+                </div>
+              </div>
+
+              <!-- High-Contrast Percentage Badge -->
+              <div class="p-3 sm:p-4 rounded-2xl bg-gradient-to-tr from-[#FF2A85]/20 to-[#FFAE33]/20 border border-[#FF2A85]/40 text-center sm:text-right">
+                <div class="text-[10px] font-mono text-[#C4B5CD] uppercase">Score Achieved</div>
+                <div class="text-2xl sm:text-3xl font-extrabold font-display text-white">83.5%</div>
+                <div class="text-[10px] font-mono text-[#FFAE33]">Science Stream</div>
+              </div>
+            </div>
+
+            <p class="text-sm text-[#C4B5CD] leading-relaxed">
+              Graduated higher secondary schooling from Jawahar Navodaya Vidyalaya, Parbhani with 83.5% in the Science stream. Built strong foundational mathematical logic and scientific curiosity that paved the path for Computer Science Engineering.
+            </p>
+
+            <div class="space-y-2 pt-2">
+              <div class="text-xs font-mono text-[#FF5C9D] font-bold uppercase tracking-wider">Key Coursework:</div>
+              <div class="flex flex-wrap gap-2">
+                <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Physics</span>
+                <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Chemistry</span>
+                <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Mathematics</span>
+                <span class="px-3 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Computer Basics</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Growth Roadmap / Currently Learning -->
+        <div class="space-y-4 pt-4">
+          <h3 class="text-xl font-bold font-display text-white flex items-center gap-2">
+            <i data-lucide="trending-up" class="w-5 h-5 text-[#FF6B35]"></i>
+            <span>Active Growth Vectors & Learning Roadmap</span>
+          </h3>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <div class="p-4 rounded-2xl aesthetic-card space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white text-sm font-display">Core Java</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#FFAE33]/20 text-[#FFAE33]">Learning in Depth</span>
+              </div>
+              <p class="text-xs text-[#C4B5CD]">Actively strengthening my understanding of Core Java, exploring programming fundamentals, syntax, methods, classes, objects, and writing practical Java programs.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl aesthetic-card space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white text-sm font-display">OOP</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#FF2A85]/20 text-[#FF5C9D]">Currently Learning</span>
+              </div>
+              <p class="text-xs text-[#C4B5CD]">Developing a deeper understanding of object-oriented programming concepts, including classes, objects, encapsulation, inheritance, polymorphism, and abstraction.</p>
+            </div>
+
+            <div class="p-4 rounded-2xl aesthetic-card space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white text-sm font-display">Data Structures in C</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-[#FF6B35]/20 text-[#FF8A50]">Active Practice</span>
+              </div>
+              <p class="text-xs text-[#C4B5CD]">Arrays, Linked Lists, Stacks, Searching & Sorting algorithms</p>
+            </div>
+
+            <div class="p-4 rounded-2xl aesthetic-card space-y-2">
+              <div class="flex items-center justify-between">
+                <span class="font-bold text-white text-sm font-display">Frontend Web</span>
+                <span class="text-[10px] font-mono px-2 py-0.5 rounded-full bg-white/10 text-white">Actively Building</span>
+              </div>
+              <p class="text-xs text-[#C4B5CD]">CSS Grid/Flexbox, UI component styling, Media galleries</p>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 6: ACHIEVEMENTS (Milestones & Authentic Distinction)               -->
+      <!-- ======================================================================= -->
+      <section id="page-achievements" class="hidden space-y-8 animate-fade-in">
+        
+        <!-- Page Header -->
+        <div class="border-b border-white/10 pb-6">
+          <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+            <i data-lucide="award" class="w-3.5 h-3.5"></i>
+            <span>06. Milestones & Authentic Records</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Honors & Milestones</h1>
+          <p class="text-sm text-[#C4B5CD] font-mono mt-1">Real academic and competitive milestones without invented credentials</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+          <!-- Card 1: ARISE 2026 -->
+          <div class="aesthetic-card rounded-3xl p-6 space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#FF6B35] to-[#FF2A85] text-white flex items-center justify-center shadow-lg">
+              <i data-lucide="award" class="w-6 h-6"></i>
+            </div>
+            <div class="text-xs font-mono text-[#FFAE33]">November 2026</div>
+            <h3 class="text-lg font-bold font-display text-white">
+              ARISE Diwali Portfolio Competition 2026 Participant
+            </h3>
+            <p class="text-xs text-[#C4B5CD] leading-relaxed">
+              Designed and engineered an aesthetic, interactive personal developer portfolio utilizing advanced AI tools to compete in the prestigious Diwali Portfolio Competition organized by ARISE at SSGMCE Shegaon.
+            </p>
+            <div class="text-[11px] font-mono text-[#FF8A50] font-semibold">ARISE • SSGMCE Shegaon</div>
+          </div>
+
+          <!-- Card 2: Academic Standing -->
+          <div class="aesthetic-card rounded-3xl p-6 space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#FF2A85] to-[#FFAE33] text-white flex items-center justify-center shadow-lg">
+              <i data-lucide="star" class="w-6 h-6"></i>
+            </div>
+            <div class="text-xs font-mono text-[#FFAE33]">2024 – Present</div>
+            <h3 class="text-lg font-bold font-display text-white">
+              Strong Engineering Academic Results
+            </h3>
+            <p class="text-xs text-[#C4B5CD] leading-relaxed">
+              Achieved First Semester SGPA of 8.14 / 10 and Second Semester SGPA of 8.32 / 10 in Computer Science & Engineering coursework at SSGMCE Shegaon.
+            </p>
+            <div class="text-[11px] font-mono text-[#FF5C9D] font-semibold">Sem 1: 8.14 SGPA | Sem 2: 8.32 SGPA</div>
+          </div>
+
+          <!-- Card 3: JNV Selection & 83.5% -->
+          <div class="aesthetic-card rounded-3xl p-6 space-y-4">
+            <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-[#FFAE33] to-[#FF6B35] text-white flex items-center justify-center shadow-lg">
+              <i data-lucide="shield-check" class="w-6 h-6"></i>
+            </div>
+            <div class="text-xs font-mono text-[#FFAE33]">Completed</div>
+            <h3 class="text-lg font-bold font-display text-white">
+              JNV Parbhani Selection & 83.5% HSC
+            </h3>
+            <p class="text-xs text-[#C4B5CD] leading-relaxed">
+              Selected through nationwide competitive entrance exam to study at Jawahar Navodaya Vidyalaya, Parbhani; graduated with 83.5% in the Science stream.
+            </p>
+            <div class="text-[11px] font-mono text-[#FFAE33] font-semibold">Navodaya Vidyalaya Samiti (NVS)</div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 7: CONTACT (Communication Dossier + Dispatch Form)                 -->
+      <!-- ======================================================================= -->
+      <section id="page-contact" class="hidden space-y-8 animate-fade-in">
+        
+        <!-- Page Header -->
+        <div class="border-b border-white/10 pb-6">
+          <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+            <span>07. Communication Dossier</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1">Get in Touch with Gajanan</h1>
+          <p class="text-sm text-[#C4B5CD] font-mono mt-1">Available for technical roles, internships, fellowships, and college collaborations</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+
+          <!-- Left Column: Contact Channels -->
+          <div class="lg:col-span-5 space-y-4">
+            
+            <!-- Email Channel Card -->
+            <div class="aesthetic-card rounded-3xl p-5 space-y-2">
+              <div class="flex items-center justify-between text-xs font-mono text-[#FFAE33]">
+                <span class="flex items-center gap-1.5">
+                  <i data-lucide="mail" class="w-4 h-4 text-[#FF6B35]"></i>
+                  <span>Email Channel</span>
+                </span>
+                <span class="text-[10px] text-[#C4B5CD]">Primary</span>
+              </div>
+              <div class="text-base font-mono font-bold text-white break-all select-all">
+                gajanan.kadam2004@gmail.com
+              </div>
+              <div class="pt-2 flex items-center gap-2">
+                <button onclick="copyEmailToClipboard()" class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-[#FF8A50] flex items-center gap-1.5 transition-all">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                  <span>Copy Address</span>
+                </button>
+                <a href="mailto:gajanan.kadam2004@gmail.com" class="px-3 py-1.5 rounded-xl btn-sunset text-xs font-mono font-bold flex items-center gap-1.5">
+                  <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                  <span>Send Mail</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Phone Channel Card -->
+            <div class="aesthetic-card rounded-3xl p-5 space-y-2">
+              <div class="flex items-center justify-between text-xs font-mono text-[#FF5C9D]">
+                <span class="flex items-center gap-1.5">
+                  <i data-lucide="phone" class="w-4 h-4 text-[#FF2A85]"></i>
+                  <span>Phone Number</span>
+                </span>
+                <span class="text-[10px] text-[#C4B5CD]">Call / WhatsApp</span>
+              </div>
+              <div class="text-base font-mono font-bold text-white">
+                +91 93092 41434
+              </div>
+              <div class="pt-2 flex items-center gap-2">
+                <a href="tel:9309241434" class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-[#FFAE33] flex items-center gap-1.5 transition-all">
+                  <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+                  <span>Call Directly</span>
+                </a>
+                <button onclick="copyPhoneToClipboard()" class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-[#C4B5CD] flex items-center gap-1.5">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Location & Academic Base -->
+            <div class="aesthetic-card rounded-3xl p-5 space-y-2">
+              <div class="text-xs font-mono text-[#FFAE33] flex items-center gap-1.5">
+                <i data-lucide="map-pin" class="w-4 h-4 text-[#FFAE33]"></i>
+                <span>Location & Institution</span>
+              </div>
+              <div class="text-sm font-bold text-white font-display">
+                Shegaon, Maharashtra, India
+              </div>
+              <p class="text-xs text-[#C4B5CD] font-mono">
+                Shri Sant Gajanan Maharaj College of Engineering (SSGMCE)
+              </p>
+            </div>
+
+            <!-- Resume Download Card -->
+            <div class="aesthetic-card rounded-3xl p-5 space-y-3 bg-gradient-to-br from-[#1E0D30] to-[#140A1F]">
+              <div class="text-xs font-mono text-[#FF8A50] font-bold flex items-center gap-1.5">
+                <i data-lucide="file-text" class="w-4 h-4 text-[#FF8A50]"></i>
+                <span>Resume Dossier</span>
+              </div>
+              <h4 class="text-sm font-bold font-display text-white">Complete One-Page Resume</h4>
+              <p class="text-xs text-[#C4B5CD]">
+                View or save the complete resume format of Gajanan Sanjay Kadam for evaluators and recruiters.
+              </p>
+              <button onclick="openResumeModal()" class="w-full py-2.5 rounded-xl btn-sunset text-xs font-mono font-bold flex items-center justify-center gap-2">
+                <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                <span>View Full Resume</span>
+              </button>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Dispatch Form -->
+          <div class="lg:col-span-7">
+            <div class="aesthetic-card rounded-3xl p-6 sm:p-8 space-y-6">
+              <div>
+                <h3 class="text-xl font-bold font-display text-white">Send Direct Message</h3>
+                <p class="text-xs text-[#C4B5CD] font-mono mt-1">Dispatches directly to Gajanan's verified email address</p>
+              </div>
+
+              <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-1">
+                    <label for="form-name" class="block text-xs font-mono text-[#FFAE33] uppercase">Your Name</label>
+                    <input type="text" id="form-name" required placeholder="Aditya Sharma / Evaluator" class="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white placeholder-white/30 text-sm font-mono focus:border-[#FF2A85] focus:outline-none transition-all" />
+                  </div>
+                  <div class="space-y-1">
+                    <label for="form-email" class="block text-xs font-mono text-[#FFAE33] uppercase">Your Email</label>
+                    <input type="email" id="form-email" required placeholder="evaluator@ssgmce.ac.in" class="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white placeholder-white/30 text-sm font-mono focus:border-[#FF2A85] focus:outline-none transition-all" />
+                  </div>
+                </div>
+
+                <div class="space-y-1">
+                  <label for="form-subject" class="block text-xs font-mono text-[#FFAE33] uppercase">Subject / Opportunity</label>
+                  <input type="text" id="form-subject" required placeholder="ARISE 2026 Evaluation / Technical Role" class="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white placeholder-white/30 text-sm font-mono focus:border-[#FF2A85] focus:outline-none transition-all" />
+                </div>
+
+                <div class="space-y-1">
+                  <label for="form-message" class="block text-xs font-mono text-[#FFAE33] uppercase">Message</label>
+                  <textarea id="form-message" rows="4" required placeholder="Hello Gajanan, I reviewed your portfolio for the ARISE competition..." class="w-full px-3.5 py-2.5 rounded-xl bg-white/5 border border-white/15 text-white placeholder-white/30 text-sm font-mono focus:border-[#FF2A85] focus:outline-none transition-all resize-none"></textarea>
+                </div>
+
+                <div class="flex items-center justify-between pt-2">
+                  <button type="submit" class="btn-sunset px-6 py-3 rounded-2xl text-xs font-mono font-bold flex items-center gap-2">
+                    <i data-lucide="send" class="w-4 h-4"></i>
+                    <span>Transmit Message</span>
+                  </button>
+                  <button type="button" onclick="sendViaMailClient()" class="text-xs font-mono text-[#C4B5CD] hover:text-[#FFAE33] transition-colors underline underline-offset-2">
+                    Open in default mail client
+                  </button>
+                </div>
+              </form>
+
+              <!-- Success Alert Box -->
+              <div id="form-success-box" class="hidden p-4 rounded-2xl bg-[#FF6B35]/20 border border-[#FF6B35]/40 text-xs font-mono text-white space-y-2">
+                <div class="flex items-center gap-2 font-bold text-[#FFAE33]">
+                  <i data-lucide="check-circle" class="w-4 h-4"></i>
+                  <span>Message Recorded!</span>
+                </div>
+                <p class="text-[#C4B5CD]">
+                  Click the button below to dispatch this message directly via your email client to <strong class="text-white">gajanan.kadam2004@gmail.com</strong>.
+                </p>
+                <button id="launch-email-btn" class="px-3.5 py-1.5 rounded-xl btn-sunset text-xs font-mono font-bold flex items-center gap-1.5">
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                  <span>Launch in Mail Client</span>
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- GLOBAL FOOTER (High-Contrast Bold Orange & Cyber Pink)                    -->
+    <!-- ========================================================================= -->
+    <footer class="mt-16 bg-[#0E0515] border-t border-[#FF6B35]/20 text-[#C4B5CD] py-12 px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-8 items-start">
+        
+        <!-- Brand & Student Dossier -->
+        <div class="md:col-span-5 space-y-3">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-gradient-to-tr from-[#FF6B35] to-[#FF2A85] text-white flex items-center justify-center font-display font-extrabold text-sm shadow-[0_0_15px_rgba(255,42,133,0.4)]">
+              GK
+            </div>
+            <span class="text-base font-bold text-white font-display">Gajanan Sanjay Kadam</span>
+          </div>
+          <p class="text-xs text-[#C4B5CD] leading-relaxed max-w-sm font-sans">
+            Second-Year Computer Science and Engineering Student at SSGMCE Shegaon. Ex-Navodayan (JNV Parbhani). Passionate about C programming, data structures, and web technologies.
+          </p>
+          <div class="text-[11px] font-mono text-[#FF8A50]">
+            ARISE – Diwali Portfolio Competition 2026 • SSGMCE Shegaon
+          </div>
+        </div>
+
+        <!-- Quick Page Links -->
+        <div class="md:col-span-4 space-y-3">
+          <div class="text-xs font-mono text-[#FFAE33] uppercase font-bold tracking-wider">Site Navigation</div>
+          <div class="grid grid-cols-2 gap-2 text-xs font-mono">
+            <a href="#/" onclick="navigateTo('home', event)" class="hover:text-[#FFAE33] transition-colors">Home</a>
+            <a href="#/about" onclick="navigateTo('about', event)" class="hover:text-[#FFAE33] transition-colors">About Me</a>
+            <a href="#/skills" onclick="navigateTo('skills', event)" class="hover:text-[#FFAE33] transition-colors">Skills Matrix</a>
+            <a href="#/projects" onclick="navigateTo('projects', event)" class="hover:text-[#FFAE33] transition-colors">Projects</a>
+            <a href="#/education" onclick="navigateTo('education', event)" class="hover:text-[#FFAE33] transition-colors">Education</a>
+            <a href="#/achievements" onclick="navigateTo('achievements', event)" class="hover:text-[#FFAE33] transition-colors">Achievements</a>
+            <a href="#/contact" onclick="navigateTo('contact', event)" class="hover:text-[#FFAE33] transition-colors">Contact</a>
+          </div>
+        </div>
+
+        <!-- Direct Contact Info -->
+        <div class="md:col-span-3 space-y-3 text-xs font-mono">
+          <div class="text-xs font-mono text-[#FF5C9D] uppercase font-bold tracking-wider">Direct Contacts</div>
+          <div>
+            <div class="text-white font-semibold">Email:</div>
+            <div class="text-[#FFAE33] break-all">gajanan.kadam2004@gmail.com</div>
+          </div>
+          <div>
+            <div class="text-white font-semibold">Phone:</div>
+            <div class="text-[#C4B5CD]">+91 93092 41434</div>
+          </div>
+          <div>
+            <div class="text-white font-semibold">Location:</div>
+            <div class="text-[#C4B5CD]">Shegaon, Maharashtra, India</div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Copyright & Back to Top -->
+      <div class="max-w-7xl mx-auto pt-8 mt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-mono text-[#8E7B9B]">
+        <div>
+          © 2026 Gajanan Sanjay Kadam. Built with AI for ARISE Diwali Portfolio Competition.
+        </div>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-[#FFAE33] hover:text-white hover:border-[#FF2A85] transition-colors flex items-center gap-1.5" title="Back to top">
+          <span>Top</span>
+          <i data-lucide="arrow-up" class="w-3.5 h-3.5"></i>
+        </button>
+      </div>
+    </footer>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none px-4 py-3 rounded-2xl aesthetic-card text-white text-xs font-mono shadow-2xl flex items-center gap-2 border border-[#FF6B35]">
+      <i data-lucide="check" class="w-4 h-4 text-[#FFAE33]"></i>
+      <span id="toast-message">Notification message</span>
+    </div>
+
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL 1: RESUME VIEWER (Exact Resume from PDF)                            -->
+  <!-- ========================================================================= -->
+  <div id="resume-modal" class="fixed inset-0 z-50 hidden bg-[#0B0410]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div class="relative w-full max-w-3xl bg-[#140A1F] border border-[#FF6B35]/40 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6 max-h-[90vh] overflow-y-auto">
+      
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between border-b border-white/10 pb-4">
+        <div>
+          <div class="text-xs font-mono text-[#FF6B35] font-bold uppercase">Resume Dossier</div>
+          <h2 class="text-2xl font-bold font-display text-white mt-0.5">Gajanan Sanjay Kadam</h2>
+          <div class="text-xs font-mono text-[#C4B5CD]">Second Year CSE Student • SSGMCE Shegaon</div>
+        </div>
+        <button onclick="closeResumeModal()" class="p-2 rounded-xl bg-white/5 border border-white/15 text-[#C4B5CD] hover:text-white hover:border-[#FF2A85] transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <!-- Resume Content Matching Resume Exactly -->
+      <div class="space-y-6 text-sm text-[#D1C4E9] font-sans">
+        
+        <!-- Contact Strip -->
+        <div class="flex flex-wrap items-center gap-4 text-xs font-mono pb-4 border-b border-white/10 text-[#C4B5CD]">
+          <span class="flex items-center gap-1.5"><i data-lucide="phone" class="w-3.5 h-3.5 text-[#FF6B35]"></i> 9309241434</span>
+          <span class="flex items-center gap-1.5"><i data-lucide="mail" class="w-3.5 h-3.5 text-[#FF2A85]"></i> gajanan.kadam2004@gmail.com</span>
+          <span class="flex items-center gap-1.5"><i data-lucide="map-pin" class="w-3.5 h-3.5 text-[#FFAE33]"></i> Shegaon, Maharashtra</span>
+        </div>
+
+        <!-- About Me Section -->
+        <div class="space-y-1.5">
+          <h4 class="text-xs font-mono uppercase text-[#FFAE33] font-bold tracking-wider">About Me</h4>
+          <p class="text-xs sm:text-sm leading-relaxed text-[#C4B5CD]">
+            2nd-year Computer Science & Engineering student (Ex-Navodayan, JNV Parbhani) with a strong foundation in C programming, web development (HTML/CSS), and Microsoft Excel. Quick learner with analytical thinking and strong problem-solving skills. Seeking an entry-level technical role or fellowship to apply my skills, gain hands-on experience, and learn new technologies.
+          </p>
+        </div>
+
+        <!-- Education Section -->
+        <div class="space-y-2">
+          <h4 class="text-xs font-mono uppercase text-[#FFAE33] font-bold tracking-wider">Education</h4>
+          
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+            <div class="flex flex-wrap justify-between items-center text-xs font-mono gap-1">
+              <span class="text-white font-bold">Bachelor of Engineering – Computer Science & Engineering</span>
+              <span class="text-[#FFAE33] font-bold">Sem 1: 8.14 SGPA | Sem 2: 8.32 SGPA</span>
+            </div>
+            <div class="text-xs text-[#FF8A50]">Shri Sant Gajanan Maharaj College of Engineering, Shegaon</div>
+            <div class="text-xs text-[#C4B5CD]">First Semester SGPA: 8.14 / 10 • Second Semester SGPA: 8.32 / 10</div>
+            <div class="text-xs text-[#C4B5CD]">Key Coursework: Data Structures, C Programming, Core Java & OOP, Web Basics.</div>
+          </div>
+
+          <div class="p-3.5 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+            <div class="flex justify-between items-center text-xs font-mono">
+              <span class="text-white font-bold">Higher Secondary Certificate (HSC)</span>
+              <span class="text-[#FFAE33] font-bold">83.5%</span>
+            </div>
+            <div class="text-xs text-[#FF5C9D]">Jawahar Navodaya Vidyalaya (JNV), Parbhani</div>
+            <div class="text-xs text-[#C4B5CD]">Stream: Science</div>
+          </div>
+        </div>
+
+        <!-- Technical Skills Section -->
+        <div class="space-y-2">
+          <h4 class="text-xs font-mono uppercase text-[#FFAE33] font-bold tracking-wider">Technical Skills</h4>
+          <div class="space-y-1 text-xs font-mono text-[#C4B5CD]">
+            <div>• <strong class="text-white">Programming Languages:</strong> C Language, Core Java (Currently Learning in Depth), Object-Oriented Programming (OOP — Currently Learning)</div>
+            <div>• <strong class="text-white">Web Technologies:</strong> HTML, CSS</div>
+            <div>• <strong class="text-white">Productivity & Data Management:</strong> Microsoft Excel (Data Entry, Formulas, Formatting), Microsoft Word</div>
+            <div>• <strong class="text-white">Core Competencies:</strong> Problem-Solving, Algorithmic Logic, Data Structuring, Team Collaboration</div>
+          </div>
+        </div>
+
+        <!-- Projects Section -->
+        <div class="space-y-2">
+          <h4 class="text-xs font-mono uppercase text-[#FFAE33] font-bold tracking-wider">Projects & Practical Work</h4>
+          <div class="space-y-2 text-xs">
+            <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+              <div class="text-white font-bold font-mono">Forest Ecosystem & Wildlife Awareness Platform</div>
+              <div class="text-[#C4B5CD] mt-0.5">Developed an educational website focused on awareness around forest ecosystems and wildlife protection. Applied semantic HTML markup for structured content and custom CSS for responsive visual presentation.</div>
+            </div>
+            <div class="p-3 rounded-2xl bg-white/5 border border-white/10">
+              <div class="text-white font-bold font-mono">JNV Memories – Personal Memory Gallery Webpage</div>
+              <div class="text-[#C4B5CD] mt-0.5">Built a personal memory gallery webpage dedicated to high school memories with JNV classmates. Styled media galleries, text layouts, and navigation sections to create an engaging user experience.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Additional Information Section -->
+        <div class="space-y-1 text-xs font-mono text-[#C4B5CD] border-t border-white/10 pt-3">
+          <h4 class="text-xs font-mono uppercase text-[#FFAE33] font-bold tracking-wider">Additional Information</h4>
+          <div>• <strong class="text-white">School Background:</strong> Jawahar Navodaya Vidyalaya (JNV) Parbhani Alumnus</div>
+          <div>• <strong class="text-white">Languages:</strong> English, Marathi, Hindi</div>
+          <div>• <strong class="text-white">Soft Skills:</strong> Logical Reasoning, Quick Learning Ability, Attention to Detail</div>
+        </div>
+
+      </div>
+
+      <!-- Modal Footer -->
+      <div class="flex items-center justify-between border-t border-white/10 pt-4">
+        <button onclick="window.print()" class="px-4 py-2 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-mono text-white flex items-center gap-1.5 transition-colors">
+          <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+          <span>Print / Save as PDF</span>
+        </button>
+        <button onclick="closeResumeModal()" class="px-5 py-2 rounded-xl btn-sunset text-xs font-mono font-bold">
+          Close Preview
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- MODAL 2: AI ARCHITECTURE SHOWCASE (For Competition Judges)               -->
+  <!-- ========================================================================= -->
+  <div id="ai-modal" class="fixed inset-0 z-50 hidden bg-[#0B0410]/90 backdrop-blur-md flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div class="relative w-full max-w-2xl bg-[#140A1F] border border-[#FF2A85]/50 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
+      
+      <div class="flex items-start justify-between border-b border-white/10 pb-4">
+        <div>
+          <div class="text-xs font-mono text-[#FF2A85] font-bold uppercase flex items-center gap-1">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>ARISE Diwali Competition 2026 Evaluation</span>
+          </div>
+          <h2 class="text-xl font-bold font-display text-white mt-1">AI-Engineered Architecture</h2>
+          <div class="text-xs font-mono text-[#C4B5CD]">How AI Tools Were Utilized to Build This Portfolio</div>
+        </div>
+        <button onclick="closeAIArchitectureModal()" class="p-2 rounded-xl bg-white/5 border border-white/15 text-[#C4B5CD] hover:text-white transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-xs sm:text-sm text-[#D1C4E9] font-mono leading-relaxed">
+        <div class="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+          <div class="text-[#FF8A50] font-bold">[1] Hybrid Client-Side SPA Engine</div>
+          <div class="text-xs text-[#C4B5CD]">Engineered a zero-dependency multi-page architecture with 7 dedicated page views, browser back/forward history management, and seamless URL routing.</div>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+          <div class="text-[#FF5C9D] font-bold">[2] Interactive HTML5 Particle Canvas</div>
+          <div class="text-xs text-[#C4B5CD]">Simulates constellation physics with Sunset Orange and Neon Pink floating spark nodes with real-time mouse interaction.</div>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+          <div class="text-[#FFAE33] font-bold">[3] Cyber Sunset Color Science</div>
+          <div class="text-xs text-[#C4B5CD]">Departed from generic templates by combining bold Sunset Orange (#FF6B35) and Cyber Pink (#FF2A85) against Cosmic Obsidian (#0B0410).</div>
+        </div>
+
+        <div class="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+          <div class="text-[#FF8A50] font-bold">[4] 100% Authentic Resume Integrity</div>
+          <div class="text-xs text-[#C4B5CD]">Directly mapped Gajanan Sanjay Kadam's verified resume (SSGMCE First Sem SGPA 8.14 / Second Sem SGPA 8.32, JNV Parbhani HSC 83.5%, C Language, Core Java & OOP, real projects) with zero fabricated credentials.</div>
+        </div>
+      </div>
+
+      <div class="pt-2 text-right">
+        <button onclick="closeAIArchitectureModal()" class="px-5 py-2 rounded-xl btn-sunset text-xs font-mono font-bold">
+          Understood
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Centralized Data Script -->
+  <script src="portfolio-data.js"></script>
+
+  <!-- Application Logic, Multi-Page Router, Dynamic Typewriter, Spark Canvas -->
+  <script>
+    // -------------------------------------------------------------------------
+    // 1. MULTI-PAGE CLIENT-SIDE ROUTER (SPA Engine)
+    // -------------------------------------------------------------------------
+    const validPages = ['home', 'about', 'skills', 'projects', 'education', 'achievements', 'contact'];
+
+    function getRouteFromUrl() {
+      const hash = window.location.hash.replace(/^#\/?/, '').toLowerCase().trim();
+      if (validPages.includes(hash)) return hash;
+
+      const path = window.location.pathname.replace(/^\/|\/$/g, '').toLowerCase().trim();
+      if (validPages.includes(path)) return path;
+
+      return 'home';
+    }
+
+    function navigateTo(page, event) {
+      if (event && event.preventDefault) {
+        event.preventDefault();
+      }
+
+      const targetPage = validPages.includes(page) ? page : 'home';
+
+      // Hide all page views
+      validPages.forEach(p => {
+        const el = document.getElementById(`page-${p}`);
+        if (el) el.classList.add('hidden');
+      });
+
+      // Show targeted page view
+      const activeEl = document.getElementById(`page-${targetPage}`);
+      if (activeEl) activeEl.classList.remove('hidden');
+
+      // Update active nav indicators
+      document.querySelectorAll('.nav-tab').forEach(tab => {
+        if (tab.getAttribute('data-page') === targetPage) {
+          tab.classList.add('active');
+        } else {
+          tab.classList.remove('active');
+        }
+      });
+
+      document.querySelectorAll('.mobile-nav-link').forEach(link => {
+        if (link.getAttribute('data-page') === targetPage) {
+          link.classList.add('bg-white/10', 'text-white', 'border-l-2', 'border-[#FF2A85]');
+        } else {
+          link.classList.remove('bg-white/10', 'text-white', 'border-l-2', 'border-[#FF2A85]');
+        }
+      });
+
+      // Sync URL
+      const newHash = targetPage === 'home' ? '#/' : `#/${targetPage}`;
+      if (window.location.hash !== newHash) {
+        try {
+          window.history.pushState({ page: targetPage }, '', newHash);
+        } catch(e) {
+          window.location.hash = newHash;
+        }
+      }
+
+      // Update page title
+      const pName = (typeof portfolioData !== 'undefined' && portfolioData.personal.name) ? portfolioData.personal.name : 'Gajanan Sanjay Kadam';
+      const pageTitleCapitalized = targetPage.charAt(0).toUpperCase() + targetPage.slice(1);
+      document.title = targetPage === 'home' 
+        ? `${pName} | Second-Year CSE Student | SSGMCE Shegaon`
+        : `${pageTitleCapitalized} | ${pName} | SSGMCE Shegaon`;
+
+      // Smooth scroll to top
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Re-trigger icon rendering
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+    }
+
+    window.addEventListener('popstate', () => navigateTo(getRouteFromUrl()));
+    window.addEventListener('hashchange', () => navigateTo(getRouteFromUrl()));
+
+    // -------------------------------------------------------------------------
+    // 2. DATA INITIALIZATION & DYNAMIC BINDINGS
+    // -------------------------------------------------------------------------
+    document.addEventListener('DOMContentLoaded', () => {
+      navigateTo(getRouteFromUrl());
+
+      if (typeof portfolioData !== 'undefined') {
+        const p = portfolioData.personal;
+        const c = portfolioData.contact;
+
+        if (p.name) {
+          const nameElems = ['nav-name', 'hero-name', 'hero-avatar-name'];
+          nameElems.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = p.name;
+          });
+        }
+
+        if (p.initials) {
+          const initEl = document.getElementById('nav-initials');
+          if (initEl) initEl.textContent = p.initials;
+        }
+
+        // Profile Avatar Hydration
+        const heroImg = document.getElementById('hero-profile-img');
+        const heroFallback = document.getElementById('hero-profile-fallback');
+        const savedAvatar = localStorage.getItem('user_custom_avatar') || p.avatarUrl;
+
+        if (savedAvatar && heroImg && heroFallback) {
+          heroImg.src = savedAvatar;
+          heroImg.classList.remove('hidden');
+          heroFallback.classList.add('hidden');
+        }
+
+        // Avatar file upload handler
+        const avatarInput = document.getElementById('avatar-file-input');
+        if (avatarInput) {
+          avatarInput.addEventListener('change', (e) => {
+            const file = e.target.files && e.target.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.onload = (event) => {
+                const dataUrl = event.target.result;
+                if (heroImg && heroFallback) {
+                  heroImg.src = dataUrl;
+                  heroImg.classList.remove('hidden');
+                  heroFallback.classList.add('hidden');
+                }
+                try {
+                  localStorage.setItem('user_custom_avatar', dataUrl);
+                } catch(err) {}
+                showToast("Profile photograph updated successfully!");
+              };
+              reader.readAsDataURL(file);
+            }
+          });
+        }
+      }
+
+      if (typeof lucide !== 'undefined') {
+        lucide.createIcons();
+      }
+
+      initSparkCanvas();
+      initTypewriter();
+      initMobileMenu();
+      initSkillFilters();
+    });
+
+    // -------------------------------------------------------------------------
+    // 3. TYPEWRITER / WORD CYCLER ANIMATION
+    // -------------------------------------------------------------------------
+    function initTypewriter() {
+      const el = document.getElementById('hero-typewriter');
+      if (!el) return;
+
+      const words = [
+        "Second-Year CSE Student @ SSGMCE",
+        "Ex-Navodayan (JNV Parbhani)",
+        "C Programmer & Algorithmic Thinker",
+        "Frontend & Web Development Enthusiast",
+        "Problem Solver (Sem 1: 8.14 | Sem 2: 8.32 SGPA)"
+      ];
+
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typeSpeed = 65;
+      const deleteSpeed = 35;
+      const delayBetweenWords = 1800;
+
+      function type() {
+        const currentWord = words[wordIndex];
+        
+        if (isDeleting) {
+          el.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          el.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        let currentSpeed = isDeleting ? deleteSpeed : typeSpeed;
+
+        if (!isDeleting && charIndex === currentWord.length) {
+          currentSpeed = delayBetweenWords;
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          currentSpeed = 400;
+        }
+
+        setTimeout(type, currentSpeed);
+      }
+
+      setTimeout(type, 800);
+    }
+
+    // -------------------------------------------------------------------------
+    // 4. SPARK CONSTELLATION CANVAS ENGINE (Sunset Orange & Cyber Pink)
+    // -------------------------------------------------------------------------
+    function initSparkCanvas() {
+      const canvas = document.getElementById('spark-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const count = Math.min(Math.floor(width / 40), 38);
+      const sparks = [];
+      const mouse = { x: -1000, y: -1000, radius: 140 };
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      window.addEventListener('mouseleave', () => {
+        mouse.x = -1000;
+        mouse.y = -1000;
+      });
+
+      class SparkNode {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.45;
+          this.vy = (Math.random() - 0.5) * 0.45;
+          this.radius = Math.random() * 2.2 + 1;
+          this.isPink = Math.random() > 0.5;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (this.x < 0 || this.x > width) this.vx = -this.vx;
+          if (this.y < 0 || this.y > height) this.vy = -this.vy;
+
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            const force = (mouse.radius - dist) / mouse.radius;
+            this.x -= (dx / dist) * force * 1.2;
+            this.y -= (dy / dist) * force * 1.2;
+          }
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = this.isPink ? 'rgba(255, 42, 133, 0.85)' : 'rgba(255, 107, 53, 0.85)';
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = this.isPink ? '#FF2A85' : '#FF6B35';
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      for (let i = 0; i < count; i++) {
+        sparks.push(new SparkNode());
+      }
+
+      let animId;
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < sparks.length; i++) {
+          sparks[i].update();
+          sparks[i].draw();
+
+          for (let j = i + 1; j < sparks.length; j++) {
+            const dx = sparks[i].x - sparks[j].x;
+            const dy = sparks[i].y - sparks[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(sparks[i].x, sparks[i].y);
+              ctx.lineTo(sparks[j].x, sparks[j].y);
+              const opacity = (1 - dist / 120) * 0.25;
+              ctx.strokeStyle = sparks[i].isPink 
+                ? `rgba(255, 42, 133, ${opacity})` 
+                : `rgba(255, 107, 53, ${opacity})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+
+        animId = requestAnimationFrame(animate);
+      }
+
+      animate();
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) cancelAnimationFrame(animId);
+        else animId = requestAnimationFrame(animate);
+      });
+    }
+
+    // -------------------------------------------------------------------------
+    // 5. MOBILE MENU & FILTER LOGIC
+    // -------------------------------------------------------------------------
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (!menuBtn || !mobileMenu) return;
+
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMobileMenu();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+          toggleMobileMenu(false);
+        }
+      });
+    }
+
+    function toggleMobileMenu(forceState) {
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (!menuBtn || !mobileMenu) return;
+
+      const isCurrentlyOpen = !mobileMenu.classList.contains('hidden');
+      const shouldOpen = typeof forceState === 'boolean' ? forceState : !isCurrentlyOpen;
+
+      if (shouldOpen) {
+        mobileMenu.classList.remove('hidden');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        menuBtn.innerHTML = '<i data-lucide="x" class="w-5 h-5"></i>';
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.innerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
+      }
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function initSkillFilters() {
+      const btns = document.querySelectorAll('.skill-filter-btn');
+      const groups = document.querySelectorAll('.skill-card-group');
+
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => {
+            b.classList.remove('bg-[#FF6B35]', 'text-white');
+            b.classList.add('text-[#C4B5CD]');
+          });
+          btn.classList.add('bg-[#FF6B35]', 'text-white');
+          btn.classList.remove('text-[#C4B5CD]');
+
+          const filter = btn.getAttribute('data-filter');
+          groups.forEach(group => {
+            if (filter === 'all' || group.getAttribute('data-category') === filter) {
+              group.style.display = 'block';
+            } else {
+              group.style.display = 'none';
+            }
+          });
+        });
+      });
+    }
+
+    // -------------------------------------------------------------------------
+    // 6. TOAST, CLIPBOARD & MODALS
+    // -------------------------------------------------------------------------
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const msg = document.getElementById('toast-message');
+      if (!toast || !msg) return;
+
+      msg.textContent = message;
+      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+
+    function copyEmailToClipboard() {
+      const email = 'gajanan.kadam2004@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        showToast(`Copied ${email} to clipboard!`);
+      }).catch(() => {
+        showToast(`Email: ${email}`);
+      });
+    }
+
+    function copyPhoneToClipboard() {
+      const phone = '9309241434';
+      navigator.clipboard.writeText(phone).then(() => {
+        showToast(`Copied ${phone} to clipboard!`);
+      }).catch(() => {
+        showToast(`Phone: ${phone}`);
+      });
+    }
+
+    function openResumeModal() {
+      const modal = document.getElementById('resume-modal');
+      if (modal) modal.classList.remove('hidden');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function closeResumeModal() {
+      const modal = document.getElementById('resume-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function openAIArchitectureModal() {
+      const modal = document.getElementById('ai-modal');
+      if (modal) modal.classList.remove('hidden');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function closeAIArchitectureModal() {
+      const modal = document.getElementById('ai-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    // Contact form handler
+    function handleFormSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('form-name').value;
+      const email = document.getElementById('form-email').value;
+      const subject = document.getElementById('form-subject').value;
+      const message = document.getElementById('form-message').value;
+
+      const targetEmail = 'gajanan.kadam2004@gmail.com';
+      const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+
+      const successBox = document.getElementById('form-success-box');
+      const launchBtn = document.getElementById('launch-email-btn');
+
+      if (successBox) {
+        successBox.classList.remove('hidden');
+        if (launchBtn) {
+          launchBtn.onclick = () => { window.location.href = mailtoUrl; };
+        }
+        showToast("Message recorded! Click 'Launch in Mail Client' to dispatch.");
+      }
+
+      event.target.reset();
+    }
+
+    function sendViaMailClient() {
+      const name = (document.getElementById('form-name') && document.getElementById('form-name').value) || 'Visitor';
+      const email = (document.getElementById('form-email') && document.getElementById('form-email').value) || '';
+      const subject = (document.getElementById('form-subject') && document.getElementById('form-subject').value) || 'Portfolio Inquiry';
+      const message = (document.getElementById('form-message') && document.getElementById('form-message').value) || '';
+
+      const mailtoUrl = `mailto:gajanan.kadam2004@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+      window.location.href = mailtoUrl;
+    }
+  </script>
+</body>
+</html>

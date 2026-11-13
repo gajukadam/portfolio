@@ -1,0 +1,3638 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gajanan Sanjay Kadam | Second-Year CSE Student | SSGMCE Shegaon</title>
+  <meta name="description" content="Cinematic Interactive Portfolio of Gajanan Sanjay Kadam - Second-Year Computer Science & Engineering Undergraduate at SSGMCE Shegaon (Ex-Navodayan). Cyber Sunset Edition." />
+
+  <!-- Google Fonts: Space Grotesk, Inter, JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700;800&display=swap" rel="stylesheet" />
+
+  <!-- Centralized Portfolio Configuration (Source of Truth) -->
+  <script src="portfolio-data.js"></script>
+
+  <!-- GSAP 3 CDN for Motion & Timeline Sequencing -->
+  <!-- GSAP 3, ScrollTrigger & Lenis Smooth Scroll CDNs -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://unpkg.com/lenis@1.1.13/dist/lenis.min.js"></script>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+            display: ['"Space Grotesk"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            dark: {
+              bg: '#0B0410',
+              deep: '#06020A',
+              card: '#140A1F',
+              surface: '#1A0D28',
+              border: 'rgba(255, 107, 53, 0.22)',
+            },
+            sunset: {
+              300: '#FFA07A',
+              400: '#FF8A50',
+              500: '#FF6B35', // Electric Sunset Orange
+              600: '#FF5722',
+              glow: 'rgba(255, 107, 53, 0.45)',
+            },
+            cyberpink: {
+              300: '#FF7AA8',
+              400: '#FF5C9D',
+              500: '#FF2A85', // Electric Cyber Hot Pink
+              600: '#E11D48',
+              glow: 'rgba(255, 42, 133, 0.45)',
+            },
+            amber: {
+              400: '#FBBF24',
+              500: '#FFAE33',
+            }
+          },
+          animation: {
+            'spin-slow': 'spin 22s linear infinite',
+            'spin-reverse': 'spinReverse 28s linear infinite',
+            'pulse-subtle': 'pulseSubtle 3.5s ease-in-out infinite',
+            'float-slow': 'floatSlow 5s ease-in-out infinite',
+            'float-delayed': 'floatSlow 5.5s ease-in-out 2s infinite',
+            'fade-in': 'fadeIn 0.35s ease-out forwards',
+            'glow-pulse': 'glowPulse 2.5s ease-in-out infinite',
+            'scanline': 'scanline 8s linear infinite',
+          },
+          keyframes: {
+            spinReverse: {
+              '0%': { transform: 'rotate(360deg)' },
+              '100%': { transform: 'rotate(0deg)' },
+            },
+            floatSlow: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-7px)' },
+            },
+            pulseSubtle: {
+              '0%, 100%': { opacity: '0.45', transform: 'scale(1)' },
+              '50%': { opacity: '0.8', transform: 'scale(1.03)' },
+            },
+            glowPulse: {
+              '0%, 100%': { filter: 'drop-shadow(0 0 10px rgba(255,107,53,0.5))' },
+              '50%': { filter: 'drop-shadow(0 0 25px rgba(255,42,133,0.85))' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(12px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            scanline: {
+              '0%': { transform: 'translateY(-100%)' },
+              '100%': { transform: 'translateY(1000%)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* -------------------------------------------------------------------------
+       LENIS SMOOTH SCROLLING SPECIFICATION
+    ------------------------------------------------------------------------- */
+    html.lenis, html.lenis body {
+      height: auto;
+    }
+    .lenis.lenis-smooth {
+      scroll-behavior: auto !important;
+    }
+    .lenis.lenis-smooth [data-lenis-prevent] {
+      overscroll-behavior: contain;
+    }
+    .lenis.lenis-stopped {
+      overflow: hidden;
+    }
+    .lenis.lenis-scrolling iframe {
+      pointer-events: none;
+    }
+
+    /* -------------------------------------------------------------------------
+       CUSTOM SCROLLBAR & BASE SELECTION
+    ------------------------------------------------------------------------- */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #0B0410;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(180deg, #FF6B35, #FF2A85);
+      border-radius: 4px;
+      border: 1px solid #0B0410;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #FF2A85;
+    }
+
+    ::selection {
+      background: #FF2A85;
+      color: #FFFFFF;
+    }
+
+    @media (hover: none) or (pointer: coarse) {
+      #custom-cursor, #cursor-follower, .cursor-ripple {
+        display: none !important;
+      }
+    }
+
+    /* -------------------------------------------------------------------------
+       ULTRA-FAST RESPONSIVE AURA CURSOR (Zero-Latency Hardware + Cyber Glow Follower)
+    ------------------------------------------------------------------------- */
+    /* System hardware cursor remains visible for 0ms instantaneous clicking & targeting */
+    body {
+      cursor: default;
+    }
+    a, button, [role="button"], .cursor-pointer, .nav-tab, .btn-sunset {
+      cursor: pointer;
+    }
+    input, textarea, select {
+      cursor: text !important;
+    }
+
+    #custom-cursor {
+      display: none !important; /* Hide redundant inner dot so system cursor is crisp and clear */
+    }
+
+    #cursor-follower {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 28px;
+      height: 28px;
+      border: 1.5px solid #FF6B35;
+      background: rgba(255, 107, 53, 0.08);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 99999;
+      box-shadow: 0 0 12px rgba(255, 107, 53, 0.45);
+      transform: translate3d(-50%, -50%, 0);
+      transition: width 0.18s ease-out, height 0.18s ease-out, border-color 0.15s ease, background-color 0.15s ease, opacity 0.2s ease;
+      will-change: transform;
+      opacity: 0;
+    }
+
+    #cursor-follower.hovered {
+      width: 46px;
+      height: 46px;
+      border-color: #FFAE33 !important;
+      background: rgba(255, 42, 133, 0.16) !important;
+      box-shadow: 0 0 22px rgba(255, 174, 51, 0.6) !important;
+    }
+
+    #cursor-follower.clicking {
+      width: 22px;
+      height: 22px;
+      border-color: #FF2A85 !important;
+      background: rgba(255, 42, 133, 0.3) !important;
+    }
+
+    /* -------------------------------------------------------------------------
+       3D TILT CARDS & SPECULAR SPOTLIGHT
+    ------------------------------------------------------------------------- */
+    .tilt-wrapper {
+      perspective: 1200px;
+    }
+
+    .aesthetic-card {
+      background: rgba(20, 10, 31, 0.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 107, 53, 0.22);
+      box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.65);
+      transition: transform 0.15s ease-out, border-color 0.3s ease, box-shadow 0.3s ease;
+      transform-style: preserve-3d;
+      will-change: transform;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .aesthetic-card::before {
+      content: '';
+      position: absolute;
+      top: var(--spotlight-y, -200px);
+      left: var(--spotlight-x, -200px);
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(255, 107, 53, 0.18) 0%, rgba(255, 42, 133, 0.08) 50%, transparent 70%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 1;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .aesthetic-card:hover::before {
+      opacity: 1;
+    }
+
+    .aesthetic-card:hover {
+      border-color: rgba(255, 42, 133, 0.65);
+      box-shadow: 0 16px 40px -10px rgba(255, 42, 133, 0.28), 0 0 25px rgba(255, 107, 53, 0.2);
+    }
+
+    /* -------------------------------------------------------------------------
+       NEON GRADIENT BORDERS & CONIC ENERGY BEAMS
+    ------------------------------------------------------------------------- */
+    .conic-glow-border {
+      position: relative;
+    }
+    .conic-glow-border::after {
+      content: '';
+      position: absolute;
+      inset: -1.5px;
+      background: conic-gradient(from 0deg, #FF6B35, #FF2A85, #FFAE33, #FF6B35);
+      border-radius: inherit;
+      z-index: -1;
+      animation: spin 10s linear infinite;
+      opacity: 0.75;
+      filter: blur(3px);
+    }
+
+    /* -------------------------------------------------------------------------
+       BOLD GRADIENT TEXT & BUTTONS
+    ------------------------------------------------------------------------- */
+    .gradient-text {
+      background: linear-gradient(135deg, #FF8A50 0%, #FF6B35 25%, #FF2A85 75%, #FFAE33 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .btn-sunset {
+      background: linear-gradient(135deg, #FF6B35 0%, #FF2A85 100%);
+      color: #FFFFFF;
+      box-shadow: 0 0 25px rgba(255, 107, 53, 0.38);
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+    }
+    .btn-sunset::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 40%;
+      height: 200%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+      transform: rotate(25deg);
+      transition: transform 0.6s ease;
+    }
+    .btn-sunset:hover::after {
+      transform: translateX(450%) rotate(25deg);
+    }
+    .btn-sunset:hover {
+      box-shadow: 0 0 35px rgba(255, 42, 133, 0.65);
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    /* Nav Tab Active Indicator */
+    .nav-tab.active {
+      background: linear-gradient(135deg, rgba(255, 107, 53, 0.25) 0%, rgba(255, 42, 133, 0.25) 100%);
+      color: #FFFFFF;
+      border: 1px solid rgba(255, 42, 133, 0.65);
+      box-shadow: 0 0 18px rgba(255, 42, 133, 0.3);
+    }
+
+    /* Timeline Keyframe diamond marker */
+    .keyframe-diamond {
+      width: 10px;
+      height: 10px;
+      transform: rotate(45deg);
+      transition: all 0.2s ease;
+      background: #C4B5CD;
+    }
+    .keyframe-diamond.active {
+      background: #FF2A85;
+      box-shadow: 0 0 12px #FF2A85, 0 0 20px #FF6B35;
+      transform: rotate(45deg) scale(1.4);
+    }
+    .keyframe-diamond:hover {
+      background: #FFAE33;
+      transform: rotate(45deg) scale(1.3);
+    }
+
+    /* Diya Flame Animation */
+    @keyframes diyaFlicker {
+      0%, 100% { transform: scale(1) rotate(-1deg); filter: drop-shadow(0 0 6px #FF6B35); }
+      50% { transform: scale(1.18) rotate(2deg); filter: drop-shadow(0 0 14px #FF2A85); }
+    }
+    .diya-flame {
+      animation: diyaFlicker 2s ease-in-out infinite alternate;
+    }
+
+    /* Film Scanline Overlay */
+    .film-scanlines {
+      background: linear-gradient(to bottom, rgba(255,255,255,0), rgba(255,255,255,0) 50%, rgba(0, 0, 0, 0.25) 50%, rgba(0, 0, 0, 0.25));
+      background-size: 100% 4px;
+      pointer-events: none;
+    }
+
+    /* Audio Equalizer Bars */
+    .eq-bar {
+      width: 2.5px;
+      background: linear-gradient(180deg, #FF2A85, #FF6B35);
+      border-radius: 1px;
+      animation: eqBounce 1.2s ease-in-out infinite alternate;
+    }
+    .eq-bar:nth-child(1) { height: 12px; animation-delay: 0.1s; }
+    .eq-bar:nth-child(2) { height: 18px; animation-delay: 0.3s; }
+    .eq-bar:nth-child(3) { height: 8px; animation-delay: 0.5s; }
+    .eq-bar:nth-child(4) { height: 15px; animation-delay: 0.2s; }
+    .eq-bar:nth-child(5) { height: 10px; animation-delay: 0.4s; }
+
+    @keyframes eqBounce {
+      0% { transform: scaleY(0.3); }
+      100% { transform: scaleY(1); }
+    }
+    .eq-paused .eq-bar {
+      animation-play-state: paused;
+      transform: scaleY(0.25) !important;
+    }
+  
+    /* -------------------------------------------------------------------------
+       RGB CHROMATIC ABERRATION GLITCH
+    ------------------------------------------------------------------------- */
+    .chromatic-glitch {
+      text-shadow: -2px 0 0 rgba(255, 42, 133, 0.85), 2px 0 0 rgba(0, 229, 255, 0.85) !important;
+      animation: glitchFlash 0.12s ease infinite alternate;
+    }
+    @keyframes glitchFlash {
+      0% { transform: translate(0, 0); }
+      50% { transform: translate(-1px, 1px); }
+      100% { transform: translate(1px, -1px); }
+    }
+
+    /* -------------------------------------------------------------------------
+       CINEMATIC COLOR-GRADING LUT PRESETS (Cyber Sunset, Matrix Neon, Gold Anamorphic)
+    ------------------------------------------------------------------------- */
+    /* 1. Default: Cyber Sunset */
+    html[data-lut="cyber-sunset"] {
+      --lut-accent: #FF6B35;
+      --lut-secondary: #FF2A85;
+      --lut-amber: #FFAE33;
+    }
+
+    /* 2. Matrix Neon (Emerald & Cyber Cyan) */
+    html[data-lut="matrix-neon"] .gradient-text {
+      background: linear-gradient(135deg, #A3E635 0%, #00FF88 35%, #00E5FF 75%, #38BDF8 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    html[data-lut="matrix-neon"] .btn-sunset {
+      background: linear-gradient(135deg, #00FF88 0%, #00E5FF 100%) !important;
+      color: #020E08 !important;
+      font-weight: 800 !important;
+      box-shadow: 0 0 25px rgba(0, 255, 136, 0.45) !important;
+    }
+    html[data-lut="matrix-neon"] .nav-tab.active {
+      background: linear-gradient(135deg, rgba(0, 255, 136, 0.25) 0%, rgba(0, 229, 255, 0.25) 100%) !important;
+      border-color: rgba(0, 229, 255, 0.8) !important;
+      box-shadow: 0 0 20px rgba(0, 229, 255, 0.4) !important;
+    }
+    html[data-lut="matrix-neon"] .keyframe-diamond.active {
+      background: #00E5FF !important;
+      box-shadow: 0 0 15px #00E5FF, 0 0 25px #00FF88 !important;
+    }
+    html[data-lut="matrix-neon"] #custom-cursor {
+      background: #00FF88 !important;
+      box-shadow: 0 0 12px #00FF88, 0 0 20px #00E5FF !important;
+    }
+    html[data-lut="matrix-neon"] #cursor-follower {
+      border-color: rgba(0, 229, 255, 0.75) !important;
+    }
+    html[data-lut="matrix-neon"] #timeline-playhead > div:first-child {
+      background: #00E5FF !important;
+      box-shadow: 0 0 12px #00E5FF !important;
+    }
+    html[data-lut="matrix-neon"] #lut-switcher-btn {
+      border-color: rgba(0, 255, 136, 0.5) !important;
+      color: #00FF88 !important;
+    }
+
+    /* 3. Gold Anamorphic (Warm Gold & Amber) */
+    html[data-lut="gold-anamorphic"] .gradient-text {
+      background: linear-gradient(135deg, #FDE68A 0%, #F59E0B 35%, #D97706 70%, #FF6B35 100%) !important;
+      -webkit-background-clip: text !important;
+      -webkit-text-fill-color: transparent !important;
+    }
+    html[data-lut="gold-anamorphic"] .btn-sunset {
+      background: linear-gradient(135deg, #F59E0B 0%, #FF6B35 100%) !important;
+      color: #FFFFFF !important;
+      box-shadow: 0 0 25px rgba(245, 158, 11, 0.5) !important;
+    }
+    html[data-lut="gold-anamorphic"] .nav-tab.active {
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.25) 0%, rgba(255, 107, 53, 0.25) 100%) !important;
+      border-color: rgba(245, 158, 11, 0.8) !important;
+      box-shadow: 0 0 20px rgba(245, 158, 11, 0.4) !important;
+    }
+    html[data-lut="gold-anamorphic"] .keyframe-diamond.active {
+      background: #F59E0B !important;
+      box-shadow: 0 0 15px #F59E0B, 0 0 25px #FF6B35 !important;
+    }
+    html[data-lut="gold-anamorphic"] #custom-cursor {
+      background: #F59E0B !important;
+      box-shadow: 0 0 12px #F59E0B, 0 0 20px #FF6B35 !important;
+    }
+    html[data-lut="gold-anamorphic"] #cursor-follower {
+      border-color: rgba(245, 158, 11, 0.75) !important;
+    }
+    html[data-lut="gold-anamorphic"] #timeline-playhead > div:first-child {
+      background: #F59E0B !important;
+      box-shadow: 0 0 12px #F59E0B !important;
+    }
+    html[data-lut="gold-anamorphic"] #lut-switcher-btn {
+      border-color: rgba(245, 158, 11, 0.5) !important;
+      color: #F59E0B !important;
+    }
+
+  </style>
+</head>
+
+  <!-- ========================================================================= -->
+  <!-- SUBTLE ANIMATED FILM GRAIN / NOISE OVERLAY                                -->
+  <!-- ========================================================================= -->
+    <!-- Camera Shutter Flash Overlay for Color Grade LUT Switcher -->
+  <div id="camera-shutter-flash" class="fixed inset-0 bg-white pointer-events-none z-[99999] opacity-0 transition-opacity duration-100"></div>
+<div id="film-grain-overlay" class="fixed inset-0 pointer-events-none z-[80] opacity-[0.04] mix-blend-screen overflow-hidden">
+    <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+      <filter id="film-grain-filter">
+        <feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch">
+          <animate attributeName="seed" from="0" to="100" dur="0.9s" repeatCount="indefinite" />
+        </feTurbulence>
+        <feColorMatrix type="saturate" values="0" />
+      </filter>
+      <rect width="100%" height="100%" filter="url(#film-grain-filter)" />
+    </svg>
+  </div>
+
+<body class="bg-[#0B0410] text-[#FFFFFF] antialiased selection:bg-[#FF2A85] selection:text-white min-h-screen relative overflow-x-hidden">
+
+  <!-- ========================================================================= -->
+  <!-- BRAND-NEW HIGH-TECH CYBER RETICLE ANIMATED CURSOR                         -->
+  <!-- ========================================================================= -->
+  <div id="cyber-cursor-container" class="pointer-events-none fixed inset-0 z-[99999] overflow-hidden">
+    <!-- Instantaneous 0ms Precision Core Pointer -->
+    <div id="cursor-core" class="fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-gradient-to-tr from-[#FF6B35] to-[#FF2A85] shadow-[0_0_12px_#FF6B35,0_0_20px_#FF2A85] pointer-events-none transition-transform duration-75 ease-out"></div>
+    
+    <!-- Smooth Animated Cyber Reticle Ring with Rotating Crosshairs -->
+    <div id="cursor-reticle" class="fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-9 h-9 pointer-events-none border border-[#FF6B35]/70 rounded-full flex items-center justify-center transition-all duration-200">
+      <div class="cursor-spin-ring absolute inset-0 rounded-full border border-dashed border-[#FFAE33]/60"></div>
+      <div class="absolute -top-1 w-0.5 h-1.5 bg-[#FF6B35]"></div>
+      <div class="absolute -bottom-1 w-0.5 h-1.5 bg-[#FF6B35]"></div>
+      <div class="absolute -left-1 w-1.5 h-0.5 bg-[#FF2A85]"></div>
+      <div class="absolute -right-1 w-1.5 h-0.5 bg-[#FF2A85]"></div>
+    </div>
+
+    <!-- Click Wave Expanding Shockwave Ring -->
+    <div id="cursor-click-wave" class="fixed top-0 left-0 -translate-x-1/2 -translate-y-1/2 w-4 h-4 rounded-full border-2 border-[#FFAE33] opacity-0 pointer-events-none"></div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- FULLSCREEN CINEMATIC INTRO EXPERIENCE                                     -->
+  <!-- ========================================================================= -->
+  <div id="cinematic-intro" onclick="PortfolioAudio.unlockAudio()" class="fixed inset-0 z-[9999] bg-[#06020A] flex flex-col justify-between p-6 sm:p-10 select-none overflow-hidden transition-opacity duration-700 cursor-pointer">
+    
+    <!-- Cinematic Top Letterbox Bar & Timecode Header -->
+    <div class="flex items-center justify-between text-xs font-mono text-[#D1C4E9] border-b border-white/10 pb-4 z-20">
+      <div class="flex items-center gap-3">
+        <span class="w-2.5 h-2.5 rounded-full bg-[#FF2A85] animate-ping"></span>
+        <span class="text-[#FF6B35] font-bold tracking-widest uppercase">REC ● 60FPS // 4K CINEMATIC</span>
+        <span class="text-white/30">|</span>
+        <span class="text-[#FFAE33]" id="intro-fps">60.00 FPS</span>
+        <span class="text-white/30 hidden sm:inline">|</span>
+        <span class="text-[#C4B5CD] hidden sm:inline">SSGMCE SHEGAON</span>
+      </div>
+
+      <div class="flex items-center gap-4">
+        <!-- Live Running Timecode Clock -->
+        <div class="px-3 py-1 rounded-lg bg-white/5 border border-white/10 font-mono text-[#FF2A85] text-sm tracking-wider font-bold" id="intro-timecode">
+          00:00:00:00
+        </div>
+        <!-- Skip Intro Button -->
+        <button id="skip-intro-btn" onclick="CinematicEngine.skipIntro()" class="px-3.5 py-1.5 rounded-xl bg-white/10 hover:bg-[#FF6B35] hover:text-white border border-white/20 text-xs font-mono transition-all flex items-center gap-1.5 group">
+          <span>SKIP INTRO</span>
+          <kbd class="text-[10px] bg-black/40 px-1.5 py-0.5 rounded text-[#FFAE33] group-hover:text-white">ESC</kbd>
+        </button>
+      </div>
+    </div>
+
+    <!-- Center Cinematic Stage: Anamorphic Flare, Split Typography & Progress -->
+    <div class="relative z-20 my-auto max-w-4xl mx-auto w-full text-center space-y-6">
+      
+      <!-- Film Flare Glow -->
+      <div class="absolute -top-32 left-1/2 -translate-x-1/2 w-96 h-96 bg-gradient-to-r from-[#FF6B35]/30 via-[#FF2A85]/30 to-[#FFAE33]/20 blur-3xl rounded-full pointer-events-none"></div>
+
+      <!-- Portfolio Identity Tag -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-gradient-to-r from-[#FF6B35]/20 to-[#FF2A85]/20 border border-[#FF6B35]/40 text-xs font-mono text-[#FFAE33] tracking-widest uppercase shadow-sm">
+        <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#FF2A85]"></i>
+        <span>Computer Science &amp; Engineering • SSGMCE Shegaon</span>
+      </div>
+
+      <!-- Hero Cinematic Name Reveal (Split Mask Animation) -->
+      <div class="overflow-hidden py-4 text-center">
+        <h1 id="intro-title" class="text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold font-display tracking-tight text-white leading-none flex flex-wrap justify-center items-center gap-x-3 gap-y-2">
+          <!-- Falling kinetic letters injected dynamically -->
+          <span class="intro-letter inline-block">GAJANAN SANJAY KADAM</span>
+        </h1>
+      </div>
+
+      <!-- Subtitle Vector -->
+      <p id="intro-subtitle" class="text-sm sm:text-lg font-mono text-[#D1C4E9] tracking-wide font-medium">
+        SECOND-YEAR COMPUTER SCIENCE &amp; ENGINEERING • SSGMCE SHEGAON
+      </p>
+
+      <!-- Interactive Audio Cue if Autoplay is gated by browser -->
+      <div id="intro-audio-prompt" class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 hover:bg-[#FF2A85]/30 border border-white/20 text-xs font-mono text-white cursor-pointer transition-all animate-pulse shadow-lg mx-auto" onclick="PortfolioAudio.unlockAudio(); event.stopPropagation();">
+        <i data-lucide="volume-2" class="w-3.5 h-3.5 text-[#FFAE33]"></i>
+        <span>CLICK ANYWHERE FOR CINEMATIC SOUND</span>
+      </div>
+
+      <!-- Shimmering Progress Bar & Keyframes -->
+      <div class="max-w-md mx-auto space-y-2 pt-4">
+        <div class="flex items-center justify-between text-[11px] font-mono text-[#C4B5CD]">
+          <span id="intro-status-text" class="text-[#FFAE33]">INITIALIZING INTERACTIVE MATRIX...</span>
+          <span id="intro-percent" class="text-white font-bold">0%</span>
+        </div>
+        <div class="h-1.5 w-full bg-white/10 rounded-full overflow-hidden p-[1px] border border-white/10">
+          <div id="intro-progress-bar" class="h-full bg-gradient-to-r from-[#FF6B35] via-[#FF2A85] to-[#FFAE33] rounded-full w-0 transition-all duration-100 ease-out"></div>
+        </div>
+        <div class="flex justify-between text-[9px] font-mono text-white/40 pt-1">
+          <span>BOOT_CORE</span>
+          <span>NEURAL_SHADERS</span>
+          <span>TIMELINE_LOCKED</span>
+        </div>
+      </div>
+
+      <!-- Launch Action (Lights up on complete) -->
+      <div class="pt-2">
+        <button id="intro-launch-btn" onclick="CinematicEngine.finishIntro()" class="opacity-0 pointer-events-none transition-all duration-500 btn-sunset px-8 py-3 rounded-2xl text-sm font-mono font-bold tracking-wider uppercase shadow-2xl flex items-center gap-2 mx-auto">
+          <span>ENTER PORTFOLIO</span>
+          <i data-lucide="play" class="w-4 h-4 fill-white"></i>
+        </button>
+      </div>
+
+    </div>
+
+    <!-- Cinematic Bottom Letterbox Bar & System Specs -->
+    <div class="flex flex-col sm:flex-row items-center justify-between text-[11px] font-mono text-[#A792B5] border-t border-white/10 pt-4 z-20 gap-2">
+      <div class="flex items-center gap-3">
+        <span class="text-[#FF5C9D]">DIRECTED &amp; CODED BY:</span>
+        <span class="text-white font-bold">GAJANAN SANJAY KADAM</span>
+        <span class="text-white/20">|</span>
+        <span class="text-[#FFAE33]">EX-NAVODAYAN (JNV PARBHANI)</span>
+      </div>
+      <div class="flex items-center gap-4 text-[10px]">
+        <span>ENGINE: GSAP 3 + CANVAS</span>
+        <span>AUDIO: WEB AUDIO API</span>
+        <span class="text-[#FF6B35]">SEM 1: 8.14 | SEM 2: 8.32 SGPA</span>
+      </div>
+    </div>
+
+    <!-- Dual Shutter Curtains (Wipe open on entry) -->
+    <div id="intro-shutter-top" class="absolute top-0 left-0 w-full h-1/2 bg-[#06020A] z-10 border-b border-[#FF6B35]/40 transition-transform duration-700 ease-in-out pointer-events-none"></div>
+    <div id="intro-shutter-bottom" class="absolute bottom-0 left-0 w-full h-1/2 bg-[#06020A] z-10 border-t border-[#FF2A85]/40 transition-transform duration-700 ease-in-out pointer-events-none"></div>
+    
+    <!-- Anamorphic Laser Seam Flare -->
+    <div id="intro-laser-line" class="absolute top-1/2 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-[#FFAE33] to-transparent z-15 opacity-0 transition-opacity duration-300 pointer-events-none shadow-[0_0_20px_#FF2A85]"></div>
+
+    <!-- Film scanline texture -->
+    <div class="absolute inset-0 film-scanlines opacity-40 pointer-events-none z-1"></div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- CINEMATIC ROUTE TRANSITION WIPE OVERLAY                                   -->
+  <!-- ========================================================================= -->
+  <div id="route-transition-overlay" class="fixed inset-0 z-[9000] pointer-events-none flex flex-col justify-center items-center opacity-0 transition-opacity duration-200">
+    <div id="wipe-bar-top" class="w-full h-1/2 bg-[#0B0410] border-b border-[#FF6B35]/50 transform -translate-y-full transition-transform duration-300 ease-out"></div>
+    <div id="wipe-bar-bottom" class="w-full h-1/2 bg-[#0B0410] border-t border-[#FF2A85]/50 transform translate-y-full transition-transform duration-300 ease-out"></div>
+    <div id="wipe-timecode" class="absolute font-mono text-xs text-[#FFAE33] tracking-widest uppercase opacity-0 transition-opacity duration-200">
+      SWITCHING TIMELINE SEQUENCE...
+    </div>
+  </div>
+
+  <!-- Background Constellation Spark Canvas & Ambient Aura -->
+  <canvas id="spark-canvas" class="fixed inset-0 pointer-events-none z-0 opacity-60"></canvas>
+  <div class="fixed top-[-100px] left-1/4 w-[500px] h-[500px] rounded-full bg-gradient-to-tr from-[#FF6B35]/20 via-[#FF2A85]/20 to-transparent blur-[130px] pointer-events-none z-0"></div>
+  <div class="fixed bottom-[-100px] right-10 w-[450px] h-[450px] rounded-full bg-gradient-to-br from-[#FF2A85]/15 via-[#FFAE33]/15 to-transparent blur-[140px] pointer-events-none z-0"></div>
+
+  <!-- ========================================================================= -->
+  <!-- MAIN APP WRAPPER                                                          -->
+  <!-- ========================================================================= -->
+  <div class="relative z-10 flex flex-col min-h-screen">
+
+    
+
+    <!-- 2. VIDEO-EDITING TIMELINE & SCRUBBER CONTROL BAR (Simplified/Hidden to eliminate visual clutter) -->
+    <aside id="timeline-scrubber-bar" class="hidden">
+    </aside>
+
+    <!-- 3. GLOBAL NAVIGATION BAR (Clean, Single Top Header) -->
+    <nav class="sticky top-0 z-40 bg-[#0B0410]/95 backdrop-blur-xl border-b border-[#FF6B35]/20 shadow-md">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        
+        <!-- Brand Identity / Home Trigger -->
+        <a href="#/" onclick="navigateTo('home', event)" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-[#FF6B35] via-[#FF2A85] to-[#FFAE33] text-white flex items-center justify-center font-display font-extrabold text-sm tracking-tight shadow-[0_0_15px_rgba(255,42,133,0.4)] group-hover:scale-105 transition-all">
+            <span id="nav-initials">GK</span>
+          </div>
+          <div class="flex flex-col">
+            <span class="text-base font-bold text-white tracking-tight group-hover:text-[#FF8A50] transition-colors font-display" id="nav-name">
+              Gajanan Sanjay Kadam
+            </span>
+            <span class="text-[10px] font-mono text-[#FF5C9D] tracking-wide flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-[#FF6B35] animate-ping"></span>
+              2nd Year CSE • SSGMCE
+            </span>
+          </div>
+        </a>
+
+        <!-- Desktop Multi-Page Nav Links -->
+        <div class="hidden md:flex items-center gap-1 bg-[#140A1F]/90 p-1.5 rounded-2xl border border-white/10 shadow-inner">
+          <a href="#/" onclick="navigateTo('home', event)" class="nav-tab active px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="home">
+            01. Home
+          </a>
+          <a href="#/projects" onclick="navigateTo('projects', event)" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="projects">
+            02. Projects
+          </a>
+          <a href="#/about" onclick="navigateTo('about', event)" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="about">
+            03. About
+          </a>
+          <a href="#/education" onclick="navigateTo('education', event)" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="education">
+            04. Education
+          </a>
+          <a href="#/achievements" onclick="navigateTo('achievements', event)" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="achievements">
+            05. Milestones
+          </a>
+          <a href="#/contact" onclick="navigateTo('contact', event)" class="nav-tab px-3.5 py-1.5 rounded-xl text-xs font-mono font-medium text-[#C4B5CD] hover:text-white transition-all" data-page="contact">
+            06. Contact
+          </a>
+        </div>
+
+        <!-- Quick CTAs: SFX, Resume & Contact -->
+        <div class="hidden md:flex items-center gap-2">
+          <!-- Audio SFX Toggle with Equalizer -->
+          <button id="sfx-toggle-btn" onclick="PortfolioAudio.toggleSound()" class="px-2.5 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-[#FF2A85] text-white text-xs font-mono transition-all flex items-center gap-1.5 shadow-sm" title="Toggle sound effects">
+            <div id="audio-eq-bars" class="flex items-end gap-[1.5px] h-3">
+              <span class="eq-bar"></span>
+              <span class="eq-bar"></span>
+              <span class="eq-bar"></span>
+              <span class="eq-bar"></span>
+              <span class="eq-bar"></span>
+            </div>
+            <span id="sfx-status-text" class="text-[11px]">SFX</span>
+          </button>
+          
+          <button onclick="openResumeModal()" class="px-3 py-1.5 rounded-xl bg-white/5 border border-white/15 text-[#FFAE33] hover:border-[#FFAE33] hover:bg-[#FFAE33]/10 text-xs font-mono font-semibold transition-all flex items-center gap-1.5 shadow-sm">
+            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+            <span>Resume</span>
+          </button>
+          <a href="#/contact" onclick="navigateTo('contact', event)" class="btn-sunset px-4 py-1.5 rounded-xl text-xs font-mono font-bold tracking-tight shadow-md flex items-center gap-1.5">
+            <span>Get in Touch</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+        </div>
+
+        <!-- Mobile Hamburger Toggle -->
+        <div class="flex items-center gap-2 md:hidden">
+          <button onclick="openResumeModal()" class="p-2 rounded-xl bg-white/5 border border-white/10 text-[#FFAE33] text-xs">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+          </button>
+          <button id="mobile-menu-btn" class="p-2 rounded-xl bg-[#140A1F] border border-white/15 text-[#D1C4E9] hover:text-white hover:border-[#FF2A85] transition-colors" aria-label="Toggle navigation menu" aria-expanded="false">
+            <i data-lucide="menu" class="w-5 h-5"></i>
+          </button>
+        </div>
+
+      </div>
+
+      <!-- Mobile Dropdown Navigation -->
+      <div id="mobile-menu" class="hidden md:hidden bg-[#0F0617] border-b border-[#FF6B35]/30 px-4 py-4 space-y-2 shadow-2xl">
+        <a href="#/" onclick="navigateTo('home', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="home">
+          01. Home
+        </a>
+        <a href="#/projects" onclick="navigateTo('projects', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="projects">
+          02. Projects
+        </a>
+        <a href="#/about" onclick="navigateTo('about', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="about">
+          03. About Me
+        </a>
+        <a href="#/education" onclick="navigateTo('education', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="education">
+          04. Education
+        </a>
+        <a href="#/achievements" onclick="navigateTo('achievements', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="achievements">
+          05. Milestones
+        </a>
+        <a href="#/contact" onclick="navigateTo('contact', event); toggleMobileMenu(false);" class="mobile-nav-link block px-3 py-2 rounded-xl text-sm font-mono text-[#D1C4E9] hover:text-white hover:bg-white/5" data-page="contact">
+          06. Contact
+        </a>
+        <div class="pt-2 border-t border-white/10 flex gap-2">
+          <button onclick="openResumeModal(); toggleMobileMenu(false);" class="flex-1 py-2 rounded-xl bg-white/5 border border-white/15 text-xs font-mono text-[#FFAE33] flex items-center justify-center gap-1.5">
+            <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+            <span>Resume</span>
+          </button>
+          <a href="#/contact" onclick="navigateTo('contact', event); toggleMobileMenu(false);" class="flex-1 py-2 rounded-xl btn-sunset text-xs font-mono font-bold text-center">
+            Contact Me
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- ========================================================================= -->
+    <!-- MAIN CONTENT VIEW CONTAINER (SPA Target Pages)                           -->
+    <!-- ========================================================================= -->
+    <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 1: HOME (Hero + Quick Highlights + Featured Teaser)                -->
+      <!-- ======================================================================= -->
+      <section id="page-home" class="page-section space-y-16 py-8 sm:py-12 relative">
+        
+        <!-- Hero Two-Column Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center pt-2 pb-6">
+          
+          <!-- Left Column: Expressive Typography & Pitch -->
+          <div class="lg:col-span-7 space-y-6">
+            
+            <!-- Badges Bar with Timecode Stamp -->
+            <div id="hero-badges" class="flex flex-wrap items-center gap-2">
+              <span class="hero-badge-pill inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-gradient-to-r from-[#FF6B35]/20 to-[#FF2A85]/20 border border-[#FF6B35]/40 text-[#FFAE33] text-xs font-mono font-semibold shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-[#FF6B35] animate-ping"></span>
+                <span>Second-Year CSE Undergraduate</span>
+              </span>
+              <span class="hero-badge-pill inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#C4B5CD] text-xs font-mono">
+                <i data-lucide="award" class="w-3 h-3 text-[#FF5C9D]"></i>
+                <span>Ex-Navodayan (JNV Parbhani)</span>
+              </span>
+              <span class="hero-badge-pill inline-flex items-center gap-1 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[#C4B5CD] text-xs font-mono">
+                <i data-lucide="map-pin" class="w-3 h-3 text-[#FF6B35]"></i>
+                <span>SSGMCE, Shegaon</span>
+              </span>
+            </div>
+
+            <!-- Main Name & Expressive Title -->
+            <div class="space-y-2">
+              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-display tracking-tight text-white leading-[1.1] overflow-hidden">
+                <div class="overflow-hidden py-1"><span class="inline-block hero-title-word">Hi, I'm</span></div>
+                <div class="overflow-hidden py-1 whitespace-nowrap"><span class="inline-block hero-title-word gradient-text whitespace-nowrap" id="hero-name" style="white-space: nowrap; font-size: clamp(1.75rem, 4.2vw, 3.75rem); line-height: 1.15;">Gajanan Sanjay Kadam</span></div>
+              </h1>
+              
+              <!-- Dynamic Word Rotator / Typing Effect -->
+              <div class="h-8 flex items-center">
+                <p class="text-lg sm:text-xl font-mono text-[#D1C4E9] font-medium flex items-center gap-2">
+                  <span class="text-[#FF6B35]">&gt;</span>
+                  <span id="hero-typewriter" class="text-white border-r-2 border-[#FF2A85] pr-1">Second-Year CSE Student @ SSGMCE</span>
+                </p>
+              </div>
+            </div>
+
+            <!-- Authentic Summary from Resume -->
+            <p class="text-base sm:text-lg text-[#C4B5CD] leading-relaxed max-w-2xl font-sans" id="hero-desc">
+              2nd-year Computer Science & Engineering student (Ex-Navodayan, JNV Parbhani) at SSGMCE Shegaon with a strong foundation in C programming, web development (HTML/CSS), and analytical problem solving. Seeking an entry-level technical role or fellowship to apply my skills, gain hands-on experience, and learn new technologies.
+            </p>
+
+            <!-- Action CTAs -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <a href="#/projects" onclick="navigateTo('projects', event)" class="btn-sunset px-5 py-2.5 rounded-2xl text-sm font-mono font-bold tracking-tight shadow-xl flex items-center gap-2">
+                <i data-lucide="layout" class="w-4 h-4"></i>
+                <span>Explore Projects</span>
+              </a>
+              <button onclick="openResumeModal()" class="px-4 py-2.5 rounded-2xl bg-white/5 border border-white/20 text-[#FFAE33] hover:border-[#FFAE33] hover:bg-[#FFAE33]/10 text-sm font-mono font-semibold transition-all flex items-center gap-2 shadow-sm">
+                <i data-lucide="file-text" class="w-4 h-4"></i>
+                <span>View Resume</span>
+              </button>
+              <a href="https://github.com/gajukadam" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2.5 rounded-2xl bg-white/5 border border-white/20 text-[#D1C4E9] hover:text-white hover:border-[#FFAE33] hover:bg-white/10 text-sm font-mono transition-all flex items-center gap-2 shadow-sm" title="GitHub: @gajukadam">
+                <i data-lucide="github" class="w-4 h-4 text-[#FFAE33]"></i>
+                <span class="text-xs font-semibold">GitHub</span>
+              </a>
+              <a href="https://www.linkedin.com/in/gajanan-sanjay-kadam" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2.5 rounded-2xl bg-white/5 border border-white/20 text-[#D1C4E9] hover:text-white hover:border-[#FF2A85] hover:bg-white/10 text-sm font-mono transition-all flex items-center gap-2 shadow-sm" title="LinkedIn: Gajanan Sanjay Kadam">
+                <i data-lucide="linkedin" class="w-4 h-4 text-[#FF5C9D]"></i>
+                <span class="text-xs font-semibold">LinkedIn</span>
+              </a>
+            </div>
+
+            <!-- Key Metric Chips (Academic Performance & Core Foundation) -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-5 border-t border-white/10">
+              <div class="p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all cursor-pointer group" onclick="navigateTo('education', event)">
+                <div class="text-[10px] font-mono text-[#FFAE33] uppercase tracking-wider font-semibold">Sem 1 SGPA</div>
+                <div class="text-xl font-bold text-white mt-0.5 font-display stat-counter" data-target="8.14" data-decimals="2">8.14</div>
+                <div class="text-[11px] text-[#C4B5CD] font-mono">SSGMCE Shegaon</div>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all cursor-pointer group" onclick="navigateTo('education', event)">
+                <div class="text-[10px] font-mono text-[#FF8A50] uppercase tracking-wider font-semibold">Sem 2 SGPA</div>
+                <div class="text-xl font-bold text-white mt-0.5 font-display stat-counter" data-target="8.32" data-decimals="2">8.32</div>
+                <div class="text-[11px] text-[#C4B5CD] font-mono">First Year Result</div>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all cursor-pointer group" onclick="navigateTo('education', event)">
+                <div class="text-[10px] font-mono text-[#FFAE33] uppercase tracking-wider font-semibold">HSC Science</div>
+                <div class="text-xl font-bold text-white mt-0.5 font-display stat-counter" data-target="83.5" data-decimals="1" data-suffix="%">83.5%</div>
+                <div class="text-[11px] text-[#C4B5CD] font-mono">JNV Parbhani</div>
+              </div>
+              <div class="p-3 rounded-2xl bg-white/[0.03] hover:bg-white/[0.07] border border-white/10 transition-all cursor-pointer group" onclick="navigateTo('projects', event)">
+                <div class="text-[10px] font-mono text-[#FF5C9D] uppercase tracking-wider font-semibold">Core Foundation</div>
+                <div class="text-xl font-bold text-white mt-0.5 font-display">C &amp; Java</div>
+                <div class="text-[11px] text-[#C4B5CD] font-mono">OOP &amp; Web Basics</div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Seamless Inbuilt Portrait (No Frame, Zero Border, Integrated into Template) -->
+          <div class="lg:col-span-5 flex justify-center items-end py-2 lg:py-0 relative">
+            <div id="hero-avatar-parallax" class="relative w-full max-w-[360px] sm:max-w-[420px] flex flex-col items-center justify-end select-none">
+              
+              <!-- Soft Atmospheric Sunset Glow Behind Silhouette -->
+              <div class="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-80 h-80 rounded-full bg-gradient-to-tr from-[#FF6B35]/25 via-[#FF2A85]/20 to-[#FFAE33]/15 blur-3xl pointer-events-none"></div>
+
+              <!-- Inbuilt Portrait Container (Completely Borderless & Frameless) -->
+              <div id="hero-avatar-circle" class="relative w-full overflow-hidden flex justify-center items-end">
+                
+                <!-- Authentic High-Resolution Portrait Photo -->
+                <img id="hero-profile-img" 
+                     src="https://i.ibb.co/bjdYtYzL/gajuk.jpg" 
+                     onerror="this.onerror=null; this.src='assets/profile/gajanan_portrait.jpg';" 
+                     alt="Gajanan Sanjay Kadam" 
+                     class="w-full h-auto max-h-[520px] sm:max-h-[560px] object-cover object-top select-none pointer-events-none transition-transform duration-700 hover:scale-[1.02]" />
+
+                <!-- Seamless Bottom Edge Dissolution (Dissolves photo smoothly into #0B0410 background canvas) -->
+                <div class="absolute inset-x-0 bottom-0 h-28 sm:h-32 bg-gradient-to-t from-[#0B0410] via-[#0B0410]/80 to-transparent pointer-events-none"></div>
+                <!-- Gentle subtle side feathering so there is no hard cut on the sides -->
+                <div class="absolute inset-y-0 left-0 w-6 bg-gradient-to-r from-[#0B0410]/40 to-transparent pointer-events-none"></div>
+                <div class="absolute inset-y-0 right-0 w-6 bg-gradient-to-l from-[#0B0410]/40 to-transparent pointer-events-none"></div>
+
+                <!-- Hidden fallback element for JS compatibility -->
+                <div id="hero-profile-fallback" class="hidden"></div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Featured Works Gateway (Clean, Breathable & Minimal) -->
+        <div class="pt-8 border-t border-white/10 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+            <div>
+              <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                <i data-lucide="layers" class="w-3.5 h-3.5"></i>
+                <span>Verified Practical Work</span>
+              </div>
+              <h2 class="text-2xl sm:text-3xl font-bold font-display text-white mt-1">Featured Projects</h2>
+            </div>
+            <a href="#/projects" onclick="navigateTo('projects', event)" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 text-xs font-mono text-[#FFAE33] hover:text-white transition-all font-semibold self-start sm:self-auto shadow-sm">
+              <span>View All 4 Projects</span>
+              <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+
+          <!-- Sleek, Uncluttered 4-Project Gateway Grid -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            
+            <!-- Mini Project 1: Lastlight -->
+            <div class="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-[#00FF88]/40 transition-all cursor-pointer group flex flex-col justify-between space-y-3" onclick="navigateTo('projects', event)">
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between text-[10px] font-mono">
+                  <span class="text-[#00FF88] font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#00FF88]"></span>Live App</span>
+                  <span class="text-white/40">GitHub Pages</span>
+                </div>
+                <h3 class="text-base font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors">Lastlight</h3>
+                <p class="text-xs text-[#C4B5CD] line-clamp-2 leading-relaxed">Red Data Book wildlife archive highlighting endangered species with pledge tracker.</p>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-white/5 text-[11px] font-mono text-[#FFAE33]">
+                <span>Vanilla JS • CSS Grid</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+              </div>
+            </div>
+
+            <!-- Mini Project 2: SuvidhaX -->
+            <div class="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-[#FF2A85]/40 transition-all cursor-pointer group flex flex-col justify-between space-y-3" onclick="navigateTo('projects', event)">
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between text-[10px] font-mono">
+                  <span class="text-[#FF8A50] font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#00FF88]"></span>Cloud Live</span>
+                  <span class="text-white/40">Render Hosted</span>
+                </div>
+                <h3 class="text-base font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors">SuvidhaX</h3>
+                <p class="text-xs text-[#C4B5CD] line-clamp-2 leading-relaxed">Privacy-focused in-browser computational &amp; data-processing utility platform.</p>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-white/5 text-[11px] font-mono text-[#FFAE33]">
+                <span>Zero-Server Privacy</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+              </div>
+            </div>
+
+            <!-- Mini Project 3: CEP STEM -->
+            <div class="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-[#FFAE33]/40 transition-all cursor-pointer group flex flex-col justify-between space-y-3" onclick="navigateTo('projects', event)">
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between text-[10px] font-mono">
+                  <span class="text-[#FFAE33] font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#FFAE33]"></span>Social Project</span>
+                  <span class="text-white/40">Z.P. Chincholi</span>
+                </div>
+                <h3 class="text-base font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors">Rural STEM (CEP)</h3>
+                <p class="text-xs text-[#C4B5CD] line-clamp-2 leading-relaxed">Educational outreach, bilingual EdTech quiz &amp; mentoring for 8th-grade rural students.</p>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-white/5 text-[11px] font-mono text-[#FFAE33]">
+                <span>Team Leader • SSGMCE</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+              </div>
+            </div>
+
+            <!-- Mini Project 4: JNV Memories -->
+            <div class="p-4 rounded-2xl bg-white/[0.03] hover:bg-white/[0.06] border border-white/10 hover:border-[#FF5C9D]/40 transition-all cursor-pointer group flex flex-col justify-between space-y-3" onclick="navigateTo('projects', event)">
+              <div class="space-y-1.5">
+                <div class="flex items-center justify-between text-[10px] font-mono">
+                  <span class="text-[#FF5C9D] font-semibold flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#FF5C9D]"></span>Heritage</span>
+                  <span class="text-white/40">JNV Parbhani</span>
+                </div>
+                <h3 class="text-base font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors">JNV Memories</h3>
+                <p class="text-xs text-[#C4B5CD] line-clamp-2 leading-relaxed">Responsive photo archive celebrating schooling days and Navodayan batch heritage.</p>
+              </div>
+              <div class="flex items-center justify-between pt-2 border-t border-white/5 text-[11px] font-mono text-[#FFAE33]">
+                <span>HTML5 • CSS Grid</span>
+                <i data-lucide="arrow-up-right" class="w-3.5 h-3.5 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform"></i>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 2: ABOUT ME (Editorial Narrative + SSGMCE Dossier + Navodaya Story) -->
+      <!-- ======================================================================= -->
+      <section id="page-about" class="page-section hidden space-y-8 py-6 sm:py-8 relative">
+        <!-- Section Cue Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#FFAE33] mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#FF6B35]"></span>
+          <span>About Gajanan</span>
+        </div>
+        
+        <!-- Page Header -->
+        <div class="border-b border-white/10 pb-5">
+          <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+            <i data-lucide="user" class="w-3.5 h-3.5"></i>
+            <span>Dossier &amp; Background</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1 scramble-title" data-original-text="About Gajanan Sanjay Kadam">About Gajanan Sanjay Kadam</h1>
+          <p class="text-sm text-[#C4B5CD] font-mono mt-1">Second-Year Computer Science &amp; Engineering Undergraduate • SSGMCE Shegaon</p>
+        </div>
+
+        <!-- Narrative & Dossier Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+          
+          <!-- Narrative Left Column -->
+          <div class="lg:col-span-7 space-y-5">
+            <div class="aesthetic-card rounded-3xl p-5 sm:p-6 space-y-3.5">
+              <h2 class="text-xl font-bold font-display text-white flex items-center gap-2">
+                <i data-lucide="compass" class="w-5 h-5 text-[#FF6B35]"></i>
+                <span>Journey &amp; Engineering Mindset</span>
+              </h2>
+              
+              <div class="space-y-3 text-sm sm:text-[15px] text-[#D1C4E9] leading-relaxed" id="about-paragraphs">
+                <p>
+                  Hello! I am <strong class="text-white font-semibold">Gajanan Sanjay Kadam</strong>, a second-year Computer Science &amp; Engineering undergraduate at Shri Sant Gajanan Maharaj College of Engineering (SSGMCE), Shegaon, and an alumnus of <strong class="text-[#FFAE33] font-semibold">Jawahar Navodaya Vidyalaya (JNV), Parbhani</strong>.
+                </p>
+                <p>
+                  I have built a strong foundation in C programming, algorithmic logic, and web development with HTML and CSS, and I am currently exploring Core Java and Object-Oriented Programming (OOP) in depth. With a First Semester SGPA of 8.14 and Second Semester SGPA of 8.32, I am actively seeking an entry-level technical role, internship, or fellowship to apply my skills on impactful software projects.
+                </p>
+              </div>
+
+              <!-- Core Soft Skills from Resume -->
+              <div class="pt-3 border-t border-white/10 space-y-2">
+                <div class="text-xs font-mono text-[#FFAE33] uppercase font-bold tracking-wider">Key Soft Skills &amp; Attributes:</div>
+                <div class="flex flex-wrap gap-1.5">
+                  <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Logical Reasoning</span>
+                  <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Quick Learning</span>
+                  <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Attention to Detail</span>
+                  <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Analytical Thinking</span>
+                  <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Team Collaboration</span>
+                  <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Problem Solving</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Languages Known -->
+            <div class="aesthetic-card rounded-3xl p-5 space-y-3">
+              <h3 class="text-sm font-mono text-[#FF8A50] font-bold uppercase tracking-wider flex items-center gap-2">
+                <i data-lucide="languages" class="w-4 h-4 text-[#FF8A50]"></i>
+                <span>Languages Known</span>
+              </h3>
+              <div class="grid grid-cols-3 gap-2.5">
+                <div class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-center">
+                  <div class="text-sm font-bold text-white font-display">English</div>
+                  <div class="text-[11px] font-mono text-[#C4B5CD]">Professional</div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-center">
+                  <div class="text-sm font-bold text-[#FFAE33] font-display">Marathi</div>
+                  <div class="text-[11px] font-mono text-[#C4B5CD]">Native</div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/5 border border-white/10 text-center">
+                  <div class="text-sm font-bold text-[#FF5C9D] font-display">Hindi</div>
+                  <div class="text-[11px] font-mono text-[#C4B5CD]">Fluent</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Dossier Right Column -->
+          <div class="lg:col-span-5 space-y-5">
+            
+            <!-- Institutional Background Card -->
+            <div class="aesthetic-card rounded-3xl p-5 space-y-3.5">
+              <h3 class="text-sm font-mono text-[#FFAE33] font-bold uppercase tracking-wider flex items-center gap-2">
+                <i data-lucide="graduation-cap" class="w-4 h-4 text-[#FFAE33]"></i>
+                <span>Institutional Affiliation</span>
+              </h3>
+              
+              <div class="space-y-2">
+                <div class="p-3 rounded-2xl bg-white/5 border border-white/10 space-y-1">
+                  <div class="text-xs font-mono text-[#FF6B35] font-semibold">Undergraduate Studies</div>
+                  <div class="text-base font-bold text-white font-display">B.E. Computer Science &amp; Engineering</div>
+                  <div class="text-xs text-[#C4B5CD]">Shri Sant Gajanan Maharaj College of Engineering, Shegaon</div>
+                  <div class="pt-2">
+                    <a href="#/education" onclick="navigateTo('education', event)" class="inline-flex items-center gap-1.5 text-xs font-mono text-[#FFAE33] hover:text-white transition-colors">
+                      <span>View Full Semester Scores in Education &rarr;</span>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Navodaya Vidyalaya Heritage Card -->
+            <div class="aesthetic-card rounded-3xl p-5 space-y-2.5 border-[#FFAE33]/30">
+              <div class="flex items-center gap-3">
+                <div class="w-9 h-9 rounded-xl bg-gradient-to-tr from-[#FFAE33] to-[#FF6B35] text-white flex items-center justify-center font-bold">
+                  <i data-lucide="shield-check" class="w-4 h-4"></i>
+                </div>
+                <div>
+                  <h4 class="text-sm font-bold text-white font-display">Ex-Navodayan Heritage</h4>
+                  <div class="text-[11px] font-mono text-[#FFAE33]">JNV Parbhani Alumnus</div>
+                </div>
+              </div>
+              <p class="text-xs text-[#C4B5CD] leading-relaxed">
+                Selected through nationwide entrance examination. 7 years of residential schooling built deep self-discipline, resilience, analytical curiosity, and seamless teamwork.
+              </p>
+            </div>
+
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 3: TECHNICAL SKILLS (Interactive Constellation + Category Filter)  -->
+      <!-- ======================================================================= -->
+      
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 4: PROJECTS SHOWCASE (Detailed Case Studies + Architecture Modal)  -->
+      <!-- ======================================================================= -->
+      <section id="page-projects" class="page-section hidden py-6 sm:py-8 relative space-y-8">
+        
+        <!-- Track Header -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          <!-- Section Cue Badge -->
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#00FF88] mb-3">
+            <span class="w-1.5 h-1.5 rounded-full bg-[#00FF88]"></span>
+            <span>Practical Engineering Works</span>
+          </div>
+
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-white/10 pb-5">
+            <div>
+              <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+                <i data-lucide="layout" class="w-3.5 h-3.5 text-[#FF2A85]"></i>
+                <span>Featured Work</span>
+              </div>
+              <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1 scramble-title" data-original-text="Flagship Projects">Flagship Projects</h1>
+              <p class="text-sm text-[#C4B5CD] font-mono mt-1">4 software, web engineering and social projects built by Gajanan Sanjay Kadam</p>
+            </div>
+
+            <!-- Clean Tag -->
+            <div class="flex items-center gap-2">
+              <div class="flex items-center gap-2 bg-white/5 px-3 py-1.5 rounded-xl border border-white/10 font-mono text-xs text-[#FFAE33]">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#00FF88]"></span>
+                <span>4 Projects Completed</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Responsive 2x2 Projects Grid (Airy, Spacious & Uncluttered) -->
+        <div id="projects-film-reel" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
+
+          <!-- =============================================================== -->
+          <!-- CARD 01: LASTLIGHT – RED DATA BOOK ARCHIVE                      -->
+          <!-- =============================================================== -->
+          <div class="aesthetic-card rounded-3xl p-4 sm:p-5 space-y-3.5 flex flex-col justify-between group">
+            <div class="space-y-2.5">
+              <!-- 16:9 Cover Image -->
+              <div class="aspect-video w-full rounded-2xl relative overflow-hidden bg-[#0A0311] border border-white/10 group-hover:border-[#00FF88]/70 transition-all shadow-inner cursor-pointer" onclick="openProjectModal('lastlight')">
+                <img src="assets/projects/lastlight_cover.jpg" alt="Lastlight – Red Data Book Wildlife Archive Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0A0311] via-transparent to-transparent"></div>
+
+                <div class="absolute top-2.5 inset-x-3 flex items-center justify-between text-[10px] font-mono z-20 pointer-events-none">
+                  <span class="px-2 py-0.5 rounded bg-black/60 border border-white/10 text-[#00FF88] font-bold backdrop-blur-sm flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#00FF88] animate-pulse"></span> LIVE APP
+                  </span>
+                  <span class="px-2 py-0.5 rounded bg-black/60 border border-white/10 text-white/80 backdrop-blur-sm font-semibold">
+                    GitHub Pages
+                  </span>
+                </div>
+
+                <div class="absolute inset-0 bg-[#0B0410]/75 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-30">
+                  <div class="px-4 py-2 rounded-xl btn-sunset text-xs font-mono font-bold flex items-center gap-2 shadow-2xl transform scale-95 group-hover:scale-100 transition-transform">
+                    <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                    <span>INSPECT ARCHITECTURE</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Meta Header -->
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="px-2.5 py-0.5 rounded-full bg-[#00FF88]/15 text-[#00FF88] border border-[#00FF88]/30 font-bold">
+                  [01] Wildlife Archive
+                </span>
+                <span class="text-[#FFAE33] font-semibold">IUCN Red List</span>
+              </div>
+
+              <h2 class="text-xl sm:text-2xl font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors leading-snug">
+                Lastlight – Red Data Book Wildlife Archive
+              </h2>
+
+              <p class="text-xs sm:text-sm text-[#C4B5CD] leading-relaxed">
+                Interactive IUCN Red List wildlife archive with real-time classification filters and local conservation tracker.
+              </p>
+
+              <!-- Clean Badges -->
+              <div class="flex flex-wrap gap-1.5 pt-0.5">
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#00FF88]">HTML5</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FF5C9D]">CSS3 Grid</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FFAE33]">Vanilla JS</span>
+              </div>
+            </div>
+
+            <!-- Action CTAs -->
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2.5 flex-wrap">
+              <div class="flex items-center gap-2">
+                <button onclick="openProjectModal('lastlight')" class="btn-sunset px-3 py-1.5 rounded-xl text-xs font-mono font-bold flex items-center gap-1.5 shadow-md">
+                  <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                  <span>Inspect</span>
+                </button>
+                <a href="https://gajukadam.github.io/Lastlight/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-[#00FF88]/15 hover:bg-[#00FF88]/25 border border-[#00FF88]/40 text-xs font-mono font-bold text-[#00FF88] hover:text-white flex items-center gap-1.5 transition-all shadow-sm">
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+              <a href="https://github.com/gajukadam/Lastlight" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-[#D1C4E9] hover:text-white flex items-center gap-1.5 transition-all">
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- =============================================================== -->
+          <!-- CARD 02: SUVIDHAX PLATFORM                                      -->
+          <!-- =============================================================== -->
+          <div class="aesthetic-card rounded-3xl p-4 sm:p-5 space-y-3.5 flex flex-col justify-between group">
+            <div class="space-y-2.5">
+              <!-- 16:9 Cover Image -->
+              <div class="aspect-video w-full rounded-2xl relative overflow-hidden bg-[#0A0311] border border-white/10 group-hover:border-[#FF2A85]/70 transition-all shadow-inner cursor-pointer" onclick="openProjectModal('suvidhax')">
+                <img src="assets/projects/suvidhax_cover.jpg" alt="SuvidhaX – Privacy-Focused Client-Side Utility Platform Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0A0311] via-transparent to-transparent"></div>
+
+                <div class="absolute top-2.5 inset-x-3 flex items-center justify-between text-[10px] font-mono z-20 pointer-events-none">
+                  <span class="px-2 py-0.5 rounded bg-black/60 border border-white/10 text-[#00FF88] font-bold backdrop-blur-sm flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#00FF88] animate-pulse"></span> LIVE ON RENDER
+                  </span>
+                  <span class="px-2 py-0.5 rounded bg-black/60 border border-white/10 text-white/80 backdrop-blur-sm font-semibold">
+                    Render Cloud
+                  </span>
+                </div>
+
+                <div class="absolute inset-0 bg-[#0B0410]/75 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-30">
+                  <div class="px-4 py-2 rounded-xl btn-sunset text-xs font-mono font-bold flex items-center gap-2 shadow-2xl transform scale-95 group-hover:scale-100 transition-transform">
+                    <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                    <span>INSPECT ARCHITECTURE</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Meta Header -->
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="px-2.5 py-0.5 rounded-full bg-[#FF6B35]/20 text-[#FF8A50] border border-[#FF6B35]/30 font-bold">
+                  [02] Client Utility Suite
+                </span>
+                <span class="text-[#00FF88] font-semibold flex items-center gap-1">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#00FF88]"></span> Render Cloud
+                </span>
+              </div>
+
+              <h2 class="text-xl sm:text-2xl font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors leading-snug">
+                SuvidhaX – Privacy-Focused Client Platform
+              </h2>
+
+              <p class="text-xs sm:text-sm text-[#C4B5CD] leading-relaxed">
+                Client-side utility platform for instant data tools and document workflows with zero server uploads.
+              </p>
+
+              <!-- Clean Badges -->
+              <div class="flex flex-wrap gap-1.5 pt-0.5">
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#00FF88]">Client-Side</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FF5C9D]">Render Cloud</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FFAE33]">JavaScript</span>
+              </div>
+            </div>
+
+            <!-- Action CTAs -->
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2.5 flex-wrap">
+              <div class="flex items-center gap-2">
+                <button onclick="openProjectModal('suvidhax')" class="btn-sunset px-3 py-1.5 rounded-xl text-xs font-mono font-bold flex items-center gap-1.5 shadow-md">
+                  <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                  <span>Inspect</span>
+                </button>
+                <a href="https://suvidhax-frontend.onrender.com/" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-[#00FF88]/15 hover:bg-[#00FF88]/25 border border-[#00FF88]/40 text-xs font-mono font-bold text-[#00FF88] hover:text-white flex items-center gap-1.5 transition-all shadow-sm">
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                  <span>Live Demo</span>
+                </a>
+              </div>
+              <a href="https://github.com/gajukadam" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-[#D1C4E9] hover:text-white flex items-center gap-1.5 transition-all">
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- =============================================================== -->
+          <!-- CARD 03: COMMUNITY ENGAGEMENT PROJECT (CEP): RURAL STEM         -->
+          <!-- =============================================================== -->
+          <div class="aesthetic-card rounded-3xl p-4 sm:p-5 space-y-3.5 flex flex-col justify-between group">
+            <div class="space-y-2.5">
+              <!-- 16:9 Cover Image -->
+              <div class="aspect-video w-full rounded-2xl relative overflow-hidden bg-[#0A0311] border border-white/10 group-hover:border-[#FF2A85]/70 transition-all shadow-inner cursor-pointer" onclick="openProjectModal('stem')">
+                <img src="assets/projects/cep_cover.jpg" alt="Rural STEM Awareness Outreach (CEP) Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0A0311] via-transparent to-transparent"></div>
+
+                <div class="absolute top-2.5 inset-x-3 flex items-center justify-between text-[10px] font-mono z-20 pointer-events-none">
+                  <span class="px-2 py-0.5 rounded bg-black/70 border border-white/10 text-[#00FF88] font-bold backdrop-blur-sm flex items-center gap-1">
+                    <i data-lucide="check-circle-2" class="w-2.5 h-2.5 text-[#00FF88]"></i> FIELD VERIFIED
+                  </span>
+                  <span class="px-2 py-0.5 rounded bg-black/70 border border-white/10 text-[#FFAE33] font-bold backdrop-blur-sm flex items-center gap-1">
+                    <i data-lucide="map-pin" class="w-3 h-3 text-[#FF2A85]"></i> Z.P. SHALA CHINCHOLI
+                  </span>
+                </div>
+
+                <div class="absolute inset-0 bg-[#0B0410]/75 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-30">
+                  <div class="px-4 py-2 rounded-xl btn-sunset text-xs font-mono font-bold flex items-center gap-2 shadow-2xl transform scale-95 group-hover:scale-100 transition-transform">
+                    <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                    <span>VIEW FIELD WORK &amp; VIDEO</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Meta Header -->
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="px-2.5 py-0.5 rounded-full bg-[#FF2A85]/20 text-[#FF5C9D] border border-[#FF2A85]/30 font-bold">
+                  [03] Field Project (CEP)
+                </span>
+                <span class="text-[#FFAE33] font-semibold">Team Leader • SSGMCE CSE</span>
+              </div>
+
+              <h2 class="text-xl sm:text-2xl font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors leading-snug">
+                Rural STEM Awareness Outreach (CEP)
+              </h2>
+
+              <p class="text-xs sm:text-sm text-[#C4B5CD] leading-relaxed">
+                Rural STEM outreach initiative featuring a bilingual quiz app and interactive mentoring for school students.
+              </p>
+
+              <!-- Clean Badges -->
+              <div class="flex flex-wrap gap-1.5 pt-0.5">
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FF5C9D]">Team Leader</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FFAE33]">Bilingual Quiz App</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#00FF88]">Rural Outreach</span>
+              </div>
+            </div>
+
+            <!-- Action CTAs -->
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-2.5 flex-wrap">
+              <div class="flex items-center gap-2">
+                <button onclick="openProjectModal('stem')" class="btn-sunset px-3 py-1.5 rounded-xl text-xs font-mono font-bold flex items-center gap-1.5 shadow-md">
+                  <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                  <span>Field Work &amp; Docs</span>
+                </button>
+                <a href="https://youtu.be/5_O2UamVMfM?si=lwovgcOZZ5BywJJ5" target="_blank" rel="noopener noreferrer" class="px-3 py-1.5 rounded-xl bg-[#FF0000]/15 hover:bg-[#FF0000]/25 border border-[#FF0000]/40 text-xs font-mono font-bold text-red-400 hover:text-white flex items-center gap-1.5 transition-all shadow-sm">
+                  <i data-lucide="play" class="w-3.5 h-3.5 fill-red-400"></i>
+                  <span>Watch Video</span>
+                </a>
+              </div>
+              <a href="https://github.com/gajukadam" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-[#D1C4E9] hover:text-white flex items-center gap-1.5 transition-all">
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+
+          <!-- =============================================================== -->
+          <!-- CARD 04: JNV MEMORIES PHOTO GALLERY                            -->
+          <!-- =============================================================== -->
+          <div class="aesthetic-card rounded-3xl p-4 sm:p-5 space-y-3.5 flex flex-col justify-between group">
+            <div class="space-y-2.5">
+              <!-- 16:9 Cover Image -->
+              <div class="aspect-video w-full rounded-2xl relative overflow-hidden bg-[#0A0311] border border-white/10 group-hover:border-[#FF2A85]/70 transition-all shadow-inner cursor-pointer" onclick="openProjectModal('jnv')">
+                <img src="assets/projects/jnv_cover.jpg" alt="Jawahar Navodaya Vidyalaya Parbhani Entrance Gate" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 opacity-90" />
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0A0311] via-transparent to-transparent"></div>
+
+                <div class="absolute top-2.5 inset-x-3 flex items-center justify-between text-[10px] font-mono z-20 pointer-events-none">
+                  <span class="px-2 py-0.5 rounded bg-black/70 border border-white/10 text-[#00FF88] font-bold backdrop-blur-sm flex items-center gap-1">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#00FF88]"></span> STANDALONE ARCHIVE
+                  </span>
+                  <span class="px-2 py-0.5 rounded bg-black/70 border border-white/10 text-[#FF5C9D] font-bold backdrop-blur-sm">
+                    JNV Parbhani
+                  </span>
+                </div>
+
+                <div class="absolute inset-0 bg-[#0B0410]/75 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-30">
+                  <div class="px-4 py-2 rounded-xl btn-sunset text-xs font-mono font-bold flex items-center gap-2 shadow-2xl transform scale-95 group-hover:scale-100 transition-transform">
+                    <i data-lucide="play" class="w-3.5 h-3.5 fill-white"></i>
+                    <span>LAUNCH GALLERY</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Meta Header -->
+              <div class="flex items-center justify-between text-xs font-mono">
+                <span class="px-2.5 py-0.5 rounded-full bg-[#FF2A85]/20 text-[#FF5C9D] border border-[#FF2A85]/30 font-bold">
+                  [04] Photo Gallery
+                </span>
+                <span class="text-[#FFAE33] font-semibold">Ex-Navodayan Heritage</span>
+              </div>
+
+              <h2 class="text-xl sm:text-2xl font-bold font-display text-white group-hover:text-[#FFAE33] transition-colors leading-snug">
+                JNV Memories Photo Gallery
+              </h2>
+
+              <p class="text-xs sm:text-sm text-[#C4B5CD] leading-relaxed">
+                Responsive photo archive and digital memory book commemorating Navodayan school heritage.
+              </p>
+
+              <!-- Clean Badges -->
+              <div class="flex flex-wrap gap-1.5 pt-0.5">
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FF5C9D]">HTML5</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#FFAE33]">CSS3</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-[11px] font-mono text-[#00FF88]">Responsive Web</span>
+              </div>
+            </div>
+
+            <!-- Action CTAs -->
+            <div class="pt-3 border-t border-white/10 flex items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <button onclick="openProjectModal('jnv')" class="btn-sunset px-3 py-1.5 rounded-xl text-xs font-mono font-bold flex items-center gap-1.5 shadow-md">
+                  <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                  <span>Inspect</span>
+                </button>
+                <a href="jnv-memories.html" target="_blank" class="px-3 py-1.5 rounded-xl bg-[#FF2A85]/20 hover:bg-[#FF2A85]/35 border border-[#FF2A85]/50 text-xs font-mono text-white flex items-center gap-1.5 transition-all">
+                  <i data-lucide="external-link" class="w-3.5 h-3.5 text-[#FFAE33]"></i>
+                  <span>Launch Gallery</span>
+                </a>
+              </div>
+              <a href="https://github.com/gajukadam" target="_blank" rel="noopener noreferrer" class="px-3 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-[#D1C4E9] hover:text-white flex items-center gap-1.5 transition-all">
+                <i data-lucide="github" class="w-3.5 h-3.5"></i>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 5: EDUCATION (Authentic Academic Journey + Learning Vector)        -->
+      <!-- ======================================================================= -->
+      <section id="page-education" class="page-section hidden space-y-8 py-6 sm:py-8 relative">
+        <!-- Section Cue Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#FFAE33] mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#FFAE33]"></span>
+          <span>Academic Background</span>
+        </div>
+        
+        <!-- Page Header -->
+        <div class="border-b border-white/10 pb-5">
+          <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+            <i data-lucide="graduation-cap" class="w-3.5 h-3.5"></i>
+            <span>Academic Qualifications</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1 scramble-title" data-original-text="Education & Qualifications">Education &amp; Qualifications</h1>
+          <p class="text-sm text-[#C4B5CD] font-mono mt-1">Verified academic milestones from SSGMCE Shegaon &amp; Jawahar Navodaya Vidyalaya Parbhani</p>
+        </div>
+
+        <!-- Academic Timeline Cards with 3D Tilt -->
+        <div class="space-y-5 tilt-wrapper">
+
+          <!-- 1. B.E. at SSGMCE -->
+          <div class="aesthetic-card rounded-3xl p-5 sm:p-6 space-y-3.5">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-white/10 pb-3.5">
+              <div>
+                <span class="px-2.5 py-0.5 rounded-full bg-[#FF6B35]/20 text-[#FF8A50] border border-[#FF6B35]/30 text-xs font-mono font-bold">
+                  Undergraduate Engineering (2024 – 2028)
+                </span>
+                <h2 class="text-xl sm:text-2xl font-bold font-display text-white mt-1.5">
+                  Bachelor of Engineering – Computer Science &amp; Engineering
+                </h2>
+                <div class="text-xs sm:text-sm font-mono text-[#FFAE33] mt-0.5">
+                  Shri Sant Gajanan Maharaj College of Engineering, Shegaon
+                </div>
+              </div>
+
+              <!-- High-Contrast Semester-Wise SGPA Badges -->
+              <div class="flex items-center gap-2">
+                <div class="p-2 sm:p-2.5 rounded-xl bg-white/5 border border-white/10 text-center min-w-[95px]">
+                  <div class="text-[10px] font-mono text-[#C4B5CD] uppercase">Sem 1 SGPA</div>
+                  <div class="text-base sm:text-lg font-bold font-display text-white">8.14 <span class="text-xs text-[#FFAE33]">/ 10</span></div>
+                </div>
+                <div class="p-2 sm:p-2.5 rounded-xl bg-white/5 border border-white/10 text-center min-w-[95px]">
+                  <div class="text-[10px] font-mono text-[#C4B5CD] uppercase">Sem 2 SGPA</div>
+                  <div class="text-base sm:text-lg font-bold font-display text-white">8.32 <span class="text-xs text-[#FFAE33]">/ 10</span></div>
+                </div>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-[#C4B5CD] leading-relaxed">
+              Second-year Computer Science &amp; Engineering student at SSGMCE Shegaon, developing solid fundamentals in data structures, algorithms, C, and Object-Oriented Programming in Java.
+            </p>
+
+            <div class="space-y-1.5 pt-1">
+              <div class="text-xs font-mono text-[#FFAE33] font-bold uppercase tracking-wider">Key Coursework:</div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Data Structures &amp; C</span>
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Core Java &amp; OOP</span>
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Web Basics (HTML/CSS)</span>
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Engineering Mathematics</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. HSC at JNV Parbhani -->
+          <div class="aesthetic-card rounded-3xl p-5 sm:p-6 space-y-3.5">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 border-b border-white/10 pb-3.5">
+              <div>
+                <span class="px-2.5 py-0.5 rounded-full bg-[#FF2A85]/20 text-[#FF5C9D] border border-[#FF2A85]/30 text-xs font-mono font-bold">
+                  Higher Secondary Certificate (HSC) • Science Stream
+                </span>
+                <h2 class="text-xl sm:text-2xl font-bold font-display text-white mt-1.5">
+                  Higher Secondary Certificate – Science Stream
+                </h2>
+                <div class="text-xs sm:text-sm font-mono text-[#FFAE33] mt-0.5">
+                  Jawahar Navodaya Vidyalaya (JNV), Parbhani • Graduated 2024
+                </div>
+              </div>
+
+              <!-- High-Contrast Percentage Badge -->
+              <div class="p-2 sm:p-2.5 rounded-xl bg-white/5 border border-white/10 text-center min-w-[95px]">
+                <div class="text-[10px] font-mono text-[#C4B5CD] uppercase">HSC Score</div>
+                <div class="text-base sm:text-lg font-bold font-display text-white">83.5%</div>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-[#C4B5CD] leading-relaxed">
+              Completed higher secondary education in Science stream at Jawahar Navodaya Vidyalaya, Parbhani with 83.5%, developing mathematical logic and scientific problem-solving.
+            </p>
+
+            <div class="space-y-1.5 pt-1">
+              <div class="text-xs font-mono text-[#FF5C9D] font-bold uppercase tracking-wider">Key Disciplines:</div>
+              <div class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Mathematics &amp; Physics</span>
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Chemistry</span>
+                <span class="px-2.5 py-1 rounded-xl bg-white/5 border border-white/10 text-xs font-mono text-white">Analytical Logic</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 6: ACHIEVEMENTS & AUTHENTIC HONORS                                 -->
+      <!-- ======================================================================= -->
+      <section id="page-achievements" class="page-section hidden space-y-8 py-6 sm:py-8 relative">
+        <!-- Section Cue Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#FF5C9D] mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#FF5C9D]"></span>
+          <span>Milestones &amp; Honors</span>
+        </div>
+        
+        <!-- Page Header -->
+        <div class="border-b border-white/10 pb-5">
+          <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+            <i data-lucide="award" class="w-3.5 h-3.5"></i>
+            <span>Honors &amp; Recognitions</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1 scramble-title" data-original-text="Honors & Certifications">Honors &amp; Certifications</h1>
+          <p class="text-sm text-[#C4B5CD] font-mono mt-1">Verified workshop certifications, technical exhibitions, and community achievements</p>
+        </div>
+
+        <!-- Verified Technical Certification Showcase: AI UNLOCK (ACM SSGMCE) -->
+        <div class="aesthetic-card rounded-3xl p-5 sm:p-6 relative overflow-hidden border border-[#00FF88]/30 bg-gradient-to-br from-[#0F071D] via-[#140824] to-[#0A0413] shadow-xl">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+            
+            <!-- Left: High-Tech Workshop Cover Image Preview Box -->
+            <div class="lg:col-span-5">
+              <div class="aspect-[4/3] w-full rounded-2xl relative overflow-hidden bg-black/60 border border-[#00FF88]/30 group shadow-2xl cursor-pointer" onclick="openCertificateModal()">
+                <!-- High-Tech AI Workshop Cover Image -->
+                <img src="assets/certificates/ai_unlock_cover.jpg" 
+                     alt="AI UNLOCK Technical Workshop - ACM SSGMCE" 
+                     class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" />
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-[#0B0410] via-black/20 to-transparent"></div>
+                
+                <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-black/75 border border-[#00FF88]/40 text-[10px] font-mono text-[#00FF88] backdrop-blur-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-[#00FF88] animate-pulse"></span>
+                  <span>ACM TECHNICAL WORKSHOP</span>
+                </div>
+
+                <div class="absolute bottom-2.5 left-2.5 right-2.5 flex items-center justify-between text-[11px] font-mono text-white/90">
+                  <span class="bg-[#140A1F]/80 px-2 py-0.5 rounded-lg backdrop-blur-md border border-white/10 text-[#FFAE33]">
+                    AI UNLOCK
+                  </span>
+                  <span class="bg-[#140A1F]/80 px-2 py-0.5 rounded-lg backdrop-blur-md border border-white/10 text-[#00FF88]">
+                    ACM SSGMCE
+                  </span>
+                </div>
+
+                <!-- Hover Overlay Triggering PDF Viewer -->
+                <div class="absolute inset-0 bg-[#0B0410]/80 backdrop-blur-xs opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center z-20">
+                  <div class="px-4 py-2 rounded-xl btn-sunset text-xs font-mono font-bold flex items-center gap-2 shadow-2xl transform scale-95 group-hover:scale-100 transition-transform">
+                    <i data-lucide="file-text" class="w-4 h-4"></i>
+                    <span>Inspect Certificate PDF</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Right: Detailed Certification Metadata & Signatories -->
+            <div class="lg:col-span-7 space-y-3.5">
+              <div class="flex items-center gap-2 flex-wrap">
+                <span class="px-2.5 py-0.5 rounded-full bg-[#00FF88]/15 border border-[#00FF88]/40 text-[#00FF88] text-xs font-mono font-bold flex items-center gap-1.5">
+                  <i data-lucide="award" class="w-3.5 h-3.5"></i>
+                  <span>Certificate of Completion</span>
+                </span>
+                <span class="px-2.5 py-0.5 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#FFAE33]">
+                  ACM SSGMCE Student Chapter
+                </span>
+              </div>
+
+              <div>
+                <h2 class="text-xl sm:text-2xl font-extrabold font-display text-white tracking-tight">
+                  AI UNLOCK: Hands-on Technical Workshop
+                </h2>
+                <p class="text-xs font-mono text-[#FF5C9D] mt-0.5">
+                  Presented to: <strong class="text-white">Gajanan Kadam</strong> • SSGMCE Shegaon
+                </p>
+              </div>
+
+              <p class="text-xs sm:text-sm text-[#C4B5CD] leading-relaxed">
+                Completed <strong>"AI UNLOCK"</strong>, an intensive hands-on technical workshop covering Artificial Intelligence, Machine Learning fundamentals, and Generative AI problem-solving organized by the <strong>ACM Student Chapter, SSGMCE</strong>.
+              </p>
+
+              <!-- Signatories & Verification Endorsement -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-0.5 text-xs font-mono">
+                <div class="p-2.5 rounded-xl bg-white/5 border border-white/10 space-y-0.5">
+                  <div class="text-[10px] text-[#A792B5]">FACULTY SPONSOR</div>
+                  <div class="text-white font-bold">Prof. P. A. Lod</div>
+                  <div class="text-[10px] text-[#00FF88]">ACM Student Chapter, SSGMCE</div>
+                </div>
+                <div class="p-2.5 rounded-xl bg-white/5 border border-white/10 space-y-0.5">
+                  <div class="text-[10px] text-[#A792B5]">HEAD OF DEPARTMENT (IT)</div>
+                  <div class="text-white font-bold">Dr. S. D. Padiya</div>
+                  <div class="text-[10px] text-[#00FF88]">SSGMCE Shegaon</div>
+                </div>
+              </div>
+
+              <!-- Topic Badges -->
+              <div class="flex flex-wrap gap-1.5 pt-0.5">
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-[#FF8A50]">Artificial Intelligence</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-[#FFAE33]">Machine Learning</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-[#FF5C9D]">Generative AI</span>
+                <span class="px-2 py-0.5 rounded-lg bg-white/5 border border-white/10 text-xs font-mono text-[#00FF88]">Problem Solving</span>
+              </div>
+
+              <!-- Action Buttons -->
+              <div class="pt-1.5 flex items-center gap-2.5 flex-wrap">
+                <button onclick="openCertificateModal()" class="btn-sunset px-4 py-2 rounded-xl text-xs font-mono font-bold flex items-center gap-2 shadow-md">
+                  <i data-lucide="eye" class="w-3.5 h-3.5"></i>
+                  <span>Inspect Certificate</span>
+                </button>
+                <a href="assets/certificates/ai_unlock_certificate.pdf" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-xs font-mono text-white flex items-center gap-1.5 transition-all">
+                  <i data-lucide="file-text" class="w-3.5 h-3.5 text-[#FFAE33]"></i>
+                  <span>Original PDF</span>
+                  <i data-lucide="external-link" class="w-3 h-3 text-[#A792B5]"></i>
+                </a>
+              </div>
+
+            </div>
+
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 tilt-wrapper">
+
+          <!-- Card 1: TECHNOVATE 2K26 Technical Exhibition -->
+          <div class="aesthetic-card rounded-3xl p-4 sm:p-5 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#FF6B35] to-[#FF2A85] text-white flex items-center justify-center shadow-md">
+              <i data-lucide="award" class="w-5 h-5"></i>
+            </div>
+            <div class="text-[11px] font-mono text-[#FFAE33]">2026</div>
+            <h3 class="text-base font-bold font-display text-white">
+              TECHNOVATE 2K26 Exhibitor
+            </h3>
+            <p class="text-xs text-[#C4B5CD] leading-relaxed">
+              Exhibited flagship project SuvidhaX at TECHNOVATE 2K26 Project Expo at SSGMCE Shegaon, demonstrating client-side computation and privacy-first architecture.
+            </p>
+            <div class="text-[11px] font-mono text-[#FF8A50] font-semibold pt-1 border-t border-white/5">SSGMCE Technical Expo</div>
+          </div>
+
+          <!-- Card 2: ACM Student Chapter -->
+          <div class="aesthetic-card rounded-3xl p-4 sm:p-5 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#FF2A85] to-[#FFAE33] text-white flex items-center justify-center shadow-md">
+              <i data-lucide="code" class="w-5 h-5"></i>
+            </div>
+            <div class="text-[11px] font-mono text-[#FFAE33]">Active Participant</div>
+            <h3 class="text-base font-bold font-display text-white">
+              ACM SSGMCE Student Chapter
+            </h3>
+            <p class="text-xs text-[#C4B5CD] leading-relaxed">
+              Active participant in technical workshops, coding sessions, and guest seminars hosted by the ACM Student Chapter at SSGMCE.
+            </p>
+            <div class="text-[11px] font-mono text-[#FF5C9D] font-semibold pt-1 border-t border-white/5">ACM Student Chapter</div>
+          </div>
+
+          <!-- Card 3: Rural STEM Leadership -->
+          <div class="aesthetic-card rounded-3xl p-4 sm:p-5 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#FFAE33] to-[#FF6B35] text-white flex items-center justify-center shadow-md">
+              <i data-lucide="users" class="w-5 h-5"></i>
+            </div>
+            <div class="text-[11px] font-mono text-[#FFAE33]">Community Project</div>
+            <h3 class="text-base font-bold font-display text-white">
+              Rural STEM Outreach Leadership
+            </h3>
+            <p class="text-xs text-[#C4B5CD] leading-relaxed">
+              Led community engagement outreach at Z.P. Shala Chincholi, creating an interactive bilingual quiz application and conducting hands-on STEM sessions.
+            </p>
+            <div class="text-[11px] font-mono text-[#FFAE33] font-semibold pt-1 border-t border-white/5">Z.P. Shala Chincholi Outreach</div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- ======================================================================= -->
+      <!-- PAGE 7: CONTACT (Communication Dossier + Dispatch Form)                 -->
+      <!-- ======================================================================= -->
+      <section id="page-contact" class="page-section hidden space-y-8 py-6 sm:py-8 relative">
+        <!-- Section Cue Badge -->
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-[#FF6B35] mb-3">
+          <span class="w-1.5 h-1.5 rounded-full bg-[#FF6B35]"></span>
+          <span>Get In Touch</span>
+        </div>
+        
+        <!-- Page Header -->
+        <div class="border-b border-white/10 pb-5">
+          <div class="text-xs font-mono text-[#FF6B35] uppercase tracking-widest font-semibold flex items-center gap-1.5">
+            <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+            <span>Direct Channels</span>
+          </div>
+          <h1 class="text-3xl sm:text-4xl font-extrabold font-display text-white mt-1 scramble-title" data-original-text="Get in Touch with Gajanan">Get in Touch</h1>
+          <p class="text-sm text-[#C4B5CD] font-mono mt-1">Available for technical roles, internships, fellowships, and academic collaborations</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+
+          <!-- Left Column: Contact Channels -->
+          <div class="lg:col-span-5 space-y-3.5">
+            
+            <!-- Email Channel Card -->
+            <div class="aesthetic-card rounded-3xl p-4 sm:p-5 space-y-2">
+              <div class="flex items-center justify-between text-xs font-mono text-[#FFAE33]">
+                <span class="flex items-center gap-1.5">
+                  <i data-lucide="mail" class="w-4 h-4 text-[#FF6B35]"></i>
+                  <span>Email Channel</span>
+                </span>
+                <span class="text-[10px] text-[#C4B5CD]">Primary</span>
+              </div>
+              <div class="text-sm sm:text-base font-mono font-bold text-white break-all select-all">
+                gajanan.kadam2004@gmail.com
+              </div>
+              <div class="pt-1.5 flex items-center gap-2">
+                <button onclick="copyEmailToClipboard()" class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-[#FF8A50] flex items-center gap-1.5 transition-all">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                  <span>Copy Address</span>
+                </button>
+                <a href="mailto:gajanan.kadam2004@gmail.com" class="px-3 py-1.5 rounded-xl btn-sunset text-xs font-mono font-bold flex items-center gap-1.5">
+                  <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                  <span>Send Mail</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Phone Channel Card -->
+            <div class="aesthetic-card rounded-3xl p-4 sm:p-5 space-y-2">
+              <div class="flex items-center justify-between text-xs font-mono text-[#FF5C9D]">
+                <span class="flex items-center gap-1.5">
+                  <i data-lucide="phone" class="w-4 h-4 text-[#FF2A85]"></i>
+                  <span>Phone Number</span>
+                </span>
+                <span class="text-[10px] text-[#C4B5CD]">Call / WhatsApp</span>
+              </div>
+              <div class="text-sm sm:text-base font-mono font-bold text-white">
+                +91 93092 41434
+              </div>
+              <div class="pt-1.5 flex items-center gap-2">
+                <a href="tel:9309241434" class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-[#FFAE33] flex items-center gap-1.5 transition-all">
+                  <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+                  <span>Call Directly</span>
+                </a>
+                <button onclick="copyPhoneToClipboard()" class="px-3 py-1.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-xs font-mono text-[#C4B5CD] flex items-center gap-1.5">
+                  <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                  <span>Copy</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Profiles & Socials Card -->
+            <div class="aesthetic-card rounded-3xl p-4 sm:p-5 space-y-2.5">
+              <div class="text-xs font-mono text-[#FF8A50] font-bold uppercase tracking-wider">
+                Online Profiles &amp; Repositories:
+              </div>
+              <div class="flex flex-col gap-2">
+                <a href="https://github.com/gajukadam" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-between text-xs font-mono text-[#D1C4E9] hover:text-white transition-all">
+                  <span class="flex items-center gap-2">
+                    <i data-lucide="github" class="w-4 h-4 text-[#FFAE33]"></i>
+                    <span>github.com/gajukadam</span>
+                  </span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/gajanan-sanjay-kadam" target="_blank" rel="noopener noreferrer" class="p-2.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 flex items-center justify-between text-xs font-mono text-[#D1C4E9] hover:text-white transition-all">
+                  <span class="flex items-center gap-2">
+                    <i data-lucide="linkedin" class="w-4 h-4 text-[#FF5C9D]"></i>
+                    <span>linkedin.com/in/gajanan-sanjay-kadam</span>
+                  </span>
+                  <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                </a>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Right Column: Interactive Dispatch Message Form -->
+          <div class="lg:col-span-7">
+            <div class="aesthetic-card rounded-3xl p-5 sm:p-6 space-y-4">
+              
+              <div class="border-b border-white/10 pb-3">
+                <h2 class="text-xl font-bold font-display text-white">Send Direct Dispatch</h2>
+                <p class="text-xs font-mono text-[#C4B5CD] mt-0.5">Fill this form to instantly compose a message in your default email client</p>
+              </div>
+
+              <form onsubmit="handleFormSubmit(event)" class="space-y-3.5">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                  <div class="space-y-1">
+                    <label for="form-name" class="block text-xs font-mono text-[#D1C4E9]">Your Name *</label>
+                    <input type="text" id="form-name" required placeholder="John Doe" class="w-full px-3.5 py-2 rounded-xl bg-[#0F0617] border border-white/15 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#FF6B35] font-sans" />
+                  </div>
+                  <div class="space-y-1">
+                    <label for="form-email" class="block text-xs font-mono text-[#D1C4E9]">Your Email Address *</label>
+                    <input type="email" id="form-email" required placeholder="john@example.com" class="w-full px-3.5 py-2 rounded-xl bg-[#0F0617] border border-white/15 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#FF2A85] font-sans" />
+                  </div>
+                </div>
+
+                <div class="space-y-1">
+                  <label for="form-subject" class="block text-xs font-mono text-[#D1C4E9]">Subject *</label>
+                  <input type="text" id="form-subject" required placeholder="Internship Opportunity / Inquiry" class="w-full px-3.5 py-2 rounded-xl bg-[#0F0617] border border-white/15 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#FFAE33] font-sans" />
+                </div>
+
+                <div class="space-y-1">
+                  <label for="form-message" class="block text-xs font-mono text-[#D1C4E9]">Message Content *</label>
+                  <textarea id="form-message" rows="3" required placeholder="Hello Gajanan, I came across your portfolio and would like to connect regarding an opportunity or project..." class="w-full px-3.5 py-2 rounded-xl bg-[#0F0617] border border-white/15 text-white placeholder-white/30 text-sm focus:outline-none focus:border-[#FF6B35] font-sans"></textarea>
+                </div>
+
+                <button type="submit" class="w-full btn-sunset py-2.5 rounded-xl text-sm font-mono font-bold tracking-tight shadow-xl flex items-center justify-center gap-2">
+                  <i data-lucide="send" class="w-4 h-4"></i>
+                  <span>Dispatch Message</span>
+                </button>
+              </form>
+
+              <!-- Success Notification Alert -->
+              <div id="form-success-box" class="hidden p-4 rounded-2xl bg-emerald-950/60 border border-emerald-500/40 text-emerald-200 text-xs font-mono space-y-2">
+                <div class="font-bold flex items-center gap-2 text-white">
+                  <i data-lucide="check-circle" class="w-4 h-4 text-emerald-400"></i>
+                  <span>Message Recorded Successfully!</span>
+                </div>
+                <p>Click below to launch your email client with your message pre-filled directly to Gajanan's address:</p>
+                <button id="launch-email-btn" onclick="sendViaMailClient()" class="mt-2 px-3 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold transition-colors">
+                  Launch in Mail Client &rarr;
+                </button>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+    </main>
+
+    <!-- ========================================================================= -->
+    <!-- CINEMATIC DIRECTOR'S SLATE FOOTER                                         -->
+    <!-- ========================================================================= -->
+    <footer class="mt-auto border-t border-[#FF6B35]/25 bg-gradient-to-b from-[#0E0517] to-[#06020A] py-12 px-4 sm:px-6 lg:px-8 text-xs font-mono">
+      <div class="max-w-7xl mx-auto space-y-8">
+        
+        <!-- Film Slate Card Layout -->
+        <div class="aesthetic-card rounded-3xl p-6 sm:p-8 border-[#FF2A85]/30 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div class="space-y-2 text-center md:text-left">
+            <div class="flex items-center justify-center md:justify-start gap-2 text-[#FFAE33]">
+              <span class="diya-flame text-sm">🪔</span>
+              <span class="font-bold tracking-widest uppercase">GAJANAN SANJAY KADAM // PORTFOLIO</span>
+            </div>
+            <div class="text-xl sm:text-2xl font-bold font-display text-white">
+              Gajanan Sanjay Kadam
+            </div>
+            <div class="text-[#C4B5CD]">
+              Second-Year Computer Science &amp; Engineering • Shri Sant Gajanan Maharaj College of Engineering, Shegaon
+            </div>
+          </div>
+
+          <div class="flex flex-wrap items-center justify-center gap-2.5">
+            <a href="https://github.com/gajukadam" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-[#D1C4E9] hover:text-white transition-all flex items-center gap-1.5 shadow-sm" title="GitHub: @gajukadam">
+              <i data-lucide="github" class="w-4 h-4 text-[#FFAE33]"></i>
+              <span>GitHub</span>
+            </a>
+            <a href="https://www.linkedin.com/in/gajanan-sanjay-kadam" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-white/10 border border-white/15 text-[#D1C4E9] hover:text-white transition-all flex items-center gap-1.5 shadow-sm" title="LinkedIn: Gajanan Sanjay Kadam">
+              <i data-lucide="linkedin" class="w-4 h-4 text-[#FF5C9D]"></i>
+              <span>LinkedIn</span>
+            </a>
+            <button onclick="CinematicEngine.replayIntro()" class="px-3.5 py-2 rounded-xl bg-white/5 hover:bg-[#FF6B35]/20 border border-white/15 text-[#FFAE33] hover:text-white transition-all flex items-center gap-1.5">
+              <i data-lucide="clapperboard" class="w-4 h-4"></i>
+              <span>Replay Intro</span>
+            </button>
+            <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-4 py-2 rounded-xl btn-sunset text-white flex items-center gap-1.5">
+              <i data-lucide="arrow-up" class="w-4 h-4"></i>
+              <span>Back to Top</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Footer Meta Specs & Copyright -->
+        <div class="flex flex-col sm:flex-row items-center justify-between text-[#8A7997] text-[11px] gap-2 pt-2 border-t border-white/5">
+          <div>
+            &copy; 2026 Gajanan Sanjay Kadam. Computer Science &amp; Engineering • SSGMCE Shegaon.
+          </div>
+          <div class="flex items-center gap-3">
+            <span>Scores: Sem 1: 8.14 | Sem 2: 8.32 SGPA</span>
+            <span class="text-white/20">•</span>
+            <span>HSC: 83.5%</span>
+            <span class="text-white/20">•</span>
+            <span class="text-[#FF5C9D]">Cyber Sunset Edition</span>
+          </div>
+        </div>
+
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- PROJECT ARCHITECTURE & DEEP-DIVE MODAL                                    -->
+  <!-- ========================================================================= -->
+  <div id="project-modal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[#140A1F] border border-[#FF6B35]/40 rounded-3xl max-w-2xl w-full p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto shadow-2xl relative">
+      
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <div class="flex items-center gap-2">
+          <i data-lucide="layers" class="w-5 h-5 text-[#FF6B35]"></i>
+          <h3 id="modal-project-title" class="text-xl font-bold font-display text-white">Project Deep-Dive</h3>
+        </div>
+        <button onclick="closeProjectModal()" class="text-[#C4B5CD] hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div id="modal-project-content" class="space-y-4 text-sm text-[#D1C4E9] font-sans leading-relaxed">
+        <!-- Injected via JavaScript -->
+      </div>
+
+      <div class="pt-4 border-t border-white/10 flex items-center justify-end gap-3 font-mono text-xs">
+        <button onclick="closeProjectModal()" class="px-4 py-2 rounded-xl bg-white/10 text-white hover:bg-white/20 transition-all">
+          Close Inspector
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- RESUME PREVIEW & DOWNLOAD MODAL                                           -->
+  <!-- ========================================================================= -->
+  <div id="resume-modal" class="hidden fixed inset-0 z-50 bg-black/85 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[#140A1F] border border-[#FF6B35]/40 rounded-3xl max-w-xl w-full p-6 sm:p-8 space-y-6 max-h-[90vh] overflow-y-auto shadow-2xl relative">
+      
+      <div class="flex items-center justify-between border-b border-white/10 pb-4">
+        <div class="flex items-center gap-2">
+          <i data-lucide="file-text" class="w-5 h-5 text-[#FFAE33]"></i>
+          <h3 class="text-xl font-bold font-display text-white">Resume Dossier Preview</h3>
+        </div>
+        <button onclick="closeResumeModal()" class="text-[#C4B5CD] hover:text-white p-1 rounded-lg hover:bg-white/10 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-xs font-mono text-[#D1C4E9]">
+        <div class="p-4 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+          <div class="text-sm font-bold text-white font-display">Gajanan Sanjay Kadam</div>
+          <div class="text-[#FFAE33]">Second-Year CSE Student • SSGMCE Shegaon</div>
+          <div class="text-[#FF5C9D]">Ex-Navodayan (JNV Parbhani)</div>
+        </div>
+
+        <div class="space-y-1">
+          <div class="font-bold text-white uppercase tracking-wider text-[11px] text-[#FFAE33]">Academic Results:</div>
+          <div>• First Semester SGPA: 8.14 / 10</div>
+          <div>• Second Semester SGPA: 8.32 / 10</div>
+          <div>• HSC (Science): 83.5% (JNV Parbhani)</div>
+        </div>
+
+        <div class="space-y-1">
+          <div class="font-bold text-white uppercase tracking-wider text-[11px] text-[#FF8A50]">Core Technical Skills:</div>
+          <div>• C Programming (Strong Foundation)</div>
+          <div>• Core Java (Currently Learning in Depth)</div>
+          <div>• Object-Oriented Programming (OOP - Currently Learning)</div>
+          <div>• HTML5, CSS3, Responsive Layouts</div>
+          <div>• Microsoft Excel, Git &amp; GitHub, VS Code</div>
+        </div>
+
+        <div class="space-y-1">
+          <div class="font-bold text-white uppercase tracking-wider text-[11px] text-[#FF5C9D]">Contact Details:</div>
+          <div>• Email: gajanan.kadam2004@gmail.com</div>
+          <div>• Phone: +91 93092 41434</div>
+          <div>• Location: Shegaon, Maharashtra, India</div>
+        </div>
+      </div>
+
+      <div class="pt-4 border-t border-white/10 flex items-center justify-between gap-3 font-mono text-xs">
+        <a href="mailto:gajanan.kadam2004@gmail.com?subject=Resume%20Request%20-%20Gajanan%20Kadam" class="btn-sunset px-4 py-2 rounded-xl font-bold flex items-center gap-1.5 shadow-md">
+          <i data-lucide="mail" class="w-3.5 h-3.5"></i>
+          <span>Request Official PDF</span>
+        </a>
+        <button onclick="closeResumeModal()" class="px-4 py-2 rounded-xl bg-white/10 text-white hover:bg-white/20 transition-all">
+          Close Preview
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  
+  <!-- ========================================================================= -->
+  <!-- CERTIFICATE LIGHTBOX MODAL (AI UNLOCK - ACM SSGMCE)                       -->
+  <!-- ========================================================================= -->
+  <div id="certificate-modal" class="hidden fixed inset-0 z-50 bg-black/90 backdrop-blur-md flex items-center justify-center p-4">
+    <div class="bg-[#140A1F] border border-[#FF6B35]/40 rounded-3xl max-w-4xl w-full p-5 sm:p-6 space-y-4 max-h-[95vh] flex flex-col shadow-2xl relative">
+      <div class="flex items-center justify-between border-b border-white/10 pb-3">
+        <div class="flex items-center gap-2">
+          <i data-lucide="award" class="w-5 h-5 text-[#FFAE33]"></i>
+          <div>
+            <h3 class="text-base sm:text-lg font-bold font-display text-white">AI UNLOCK – Certificate of Completion</h3>
+            <p class="text-[11px] font-mono text-[#00FF88]">ACM Student Chapter • Shri Sant Gajanan Maharaj College of Engineering</p>
+          </div>
+        </div>
+        <button onclick="closeCertificateModal()" class="text-[#C4B5CD] hover:text-white p-1.5 rounded-xl hover:bg-white/10 transition-colors">
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="flex-1 overflow-hidden rounded-2xl border border-white/10 bg-black/70 flex items-center justify-center min-h-[60vh] max-h-[75vh]">
+        <iframe src="assets/certificates/ai_unlock_certificate.pdf" class="w-full h-full min-h-[60vh] rounded-xl bg-white" title="AI UNLOCK Certificate of Completion - Gajanan Kadam"></iframe>
+      </div>
+
+      <div class="flex flex-col sm:flex-row items-center justify-between pt-2 border-t border-white/10 text-xs font-mono gap-3">
+        <span class="text-[#C4B5CD] text-[11px]">Presented to: Gajanan Kadam | Signatories: Prof. P. A. Lod &amp; Dr. S. D. Padiya</span>
+        <div class="flex items-center gap-2">
+          <a href="assets/certificates/ai_unlock_certificate.pdf" target="_blank" rel="noopener noreferrer" class="px-4 py-2 rounded-xl bg-white/5 hover:bg-white/15 border border-white/15 text-white flex items-center gap-1.5 transition-all">
+            <i data-lucide="download" class="w-3.5 h-3.5 text-[#FFAE33]"></i>
+            <span>Download PDF</span>
+          </a>
+          <button onclick="closeCertificateModal()" class="btn-sunset px-5 py-2 rounded-xl font-bold">
+            Close Viewer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION CONTAINER -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 bg-[#170924] border border-[#FF6B35] text-white px-5 py-3 rounded-2xl shadow-2xl font-mono text-xs flex items-center gap-2 transform translate-y-24 opacity-0 pointer-events-none transition-all duration-300">
+    <i data-lucide="check-circle" class="w-4 h-4 text-[#FFAE33]"></i>
+    <span id="toast-message">Notification message</span>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- APPLICATION ENGINE SCRIPTS                                                -->
+  <!-- ========================================================================= -->
+  <script>
+    // -------------------------------------------------------------------------
+    // 1. WEB AUDIO API SYNTHESIZER SOUND ENGINE (Zero external dependencies)
+    // -------------------------------------------------------------------------
+    const PortfolioAudio = (() => {
+      let audioCtx = null;
+      let isEnabled = true; // Enabled by default
+      let introSoundStarted = false;
+
+      function getContext() {
+        if (!audioCtx) {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (AudioContextClass) audioCtx = new AudioContextClass();
+        }
+        return audioCtx;
+      }
+
+      function hideAudioPrompt() {
+        const promptEl = document.getElementById('intro-audio-prompt');
+        if (promptEl) {
+          promptEl.style.opacity = '0';
+          setTimeout(() => { if (promptEl) promptEl.style.display = 'none'; }, 400);
+        }
+      }
+
+      // Auto-unlock AudioContext on first user interaction if browser blocks auto-audio
+      const unlockAudio = () => {
+        if (!isEnabled) return;
+        const ctx = getContext();
+        if (ctx) {
+          if (ctx.state === 'suspended') {
+            ctx.resume().then(() => {
+              hideAudioPrompt();
+              const introEl = document.getElementById('cinematic-intro');
+              if (introEl && introEl.style.display !== 'none' && !introSoundStarted) {
+                playIntroBootSound();
+              }
+            }).catch(() => {});
+          } else {
+            hideAudioPrompt();
+            const introEl = document.getElementById('cinematic-intro');
+            if (introEl && introEl.style.display !== 'none' && !introSoundStarted) {
+              playIntroBootSound();
+            }
+          }
+        }
+      };
+
+      // Listen on window for ANY user interaction (click, tap, keypress) to guarantee instant sound
+      ['click', 'pointerdown', 'keydown', 'touchstart', 'mousedown'].forEach(evt => {
+        window.addEventListener(evt, unlockAudio, { passive: true });
+      });
+
+      function toggleSound() {
+        isEnabled = !isEnabled;
+        const btn = document.getElementById('sfx-toggle-btn');
+        const statusText = document.getElementById('sfx-status-text');
+        const eqBars = document.getElementById('audio-eq-bars');
+
+        if (isEnabled) {
+          const ctx = getContext();
+          if (ctx && ctx.state === 'suspended') ctx.resume();
+          playClick(800, 0.08);
+          if (statusText) statusText.textContent = 'SFX: ON';
+          if (eqBars) eqBars.classList.remove('eq-paused');
+          if (btn) {
+            btn.classList.add('border-[#FF2A85]', 'text-white');
+            btn.classList.remove('border-white/10', 'text-[#C4B5CD]');
+          }
+          showToast('Cinematic Audio SFX Enabled');
+        } else {
+          if (statusText) statusText.textContent = 'SFX: OFF';
+          if (eqBars) eqBars.classList.add('eq-paused');
+          if (btn) {
+            btn.classList.remove('border-[#FF2A85]', 'text-white');
+            btn.classList.add('border-white/10', 'text-[#C4B5CD]');
+          }
+          showToast('Audio SFX Muted');
+        }
+      }
+
+      // BRAND-NEW HIGH-IMPACT STUDIO-GRADE CINEMATIC INTRO SOUND (Louder, punchy, rich cinema swell)
+      function playIntroBootSound() {
+        if (!isEnabled) return;
+        const ctx = getContext();
+        if (!ctx) return;
+
+        // If context is suspended by browser autoplay policy, resume first then play!
+        if (ctx.state === 'suspended') {
+          ctx.resume().then(() => {
+            playIntroBootSound();
+          }).catch(() => {});
+          return;
+        }
+
+        introSoundStarted = true;
+        hideAudioPrompt();
+
+        try {
+          const now = ctx.currentTime;
+
+          // Master Output Node with boosted punchy volume (0.95)
+          const master = ctx.createGain();
+          master.gain.setValueAtTime(0.95, now);
+          master.connect(ctx.destination);
+
+          // 1. Cinematic Heavy Sub-Bass Impact Boom (125Hz -> 28Hz)
+          const subOsc = ctx.createOscillator();
+          const subGain = ctx.createGain();
+          subOsc.type = 'sine';
+          subOsc.frequency.setValueAtTime(125, now);
+          subOsc.frequency.exponentialRampToValueAtTime(28, now + 1.2);
+          subGain.gain.setValueAtTime(0.85, now);
+          subGain.gain.exponentialRampToValueAtTime(0.001, now + 1.25);
+          subOsc.connect(subGain);
+          subGain.connect(master);
+          subOsc.start(now);
+          subOsc.stop(now + 1.25);
+
+          // 2. Punchy Mid-Bass Percussion Thud (Kick transient)
+          const kickOsc = ctx.createOscillator();
+          const kickGain = ctx.createGain();
+          kickOsc.type = 'triangle';
+          kickOsc.frequency.setValueAtTime(200, now);
+          kickOsc.frequency.exponentialRampToValueAtTime(42, now + 0.28);
+          kickGain.gain.setValueAtTime(0.75, now);
+          kickGain.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
+          kickOsc.connect(kickGain);
+          kickGain.connect(master);
+          kickOsc.start(now);
+          kickOsc.stop(now + 0.32);
+
+          // 3. Cinematic Studio Power Chime & Swell (Warm Detuned Analog Chorus)
+          const chords = [
+            { f: 146.83, type: 'sine', detune: 0, vol: 0.40 },    // D3 fundamental
+            { f: 220.00, type: 'triangle', detune: 5, vol: 0.42 },// A3
+            { f: 293.66, type: 'sine', detune: -5, vol: 0.42 },   // D4
+            { f: 369.99, type: 'triangle', detune: 3, vol: 0.38 },// F#4 major
+            { f: 440.00, type: 'sine', detune: -3, vol: 0.35 },   // A4
+            { f: 587.33, type: 'sine', detune: 0, vol: 0.30 }     // D5 shimmer
+          ];
+
+          chords.forEach(c => {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = c.type;
+            osc.frequency.setValueAtTime(c.f * 0.65, now + 0.04);
+            osc.frequency.exponentialRampToValueAtTime(c.f, now + 0.4);
+            osc.detune.setValueAtTime(c.detune, now);
+
+            gain.gain.setValueAtTime(0.001, now);
+            gain.gain.linearRampToValueAtTime(c.vol, now + 0.3);
+            gain.gain.exponentialRampToValueAtTime(0.0001, now + 2.4);
+
+            osc.connect(gain);
+            gain.connect(master);
+            osc.start(now + 0.04);
+            osc.stop(now + 2.4);
+          });
+
+          // 4. Ambient Cinematic Drone (A1 55Hz sustained over intro)
+          const droneOsc = ctx.createOscillator();
+          const droneGain = ctx.createGain();
+          droneOsc.type = 'sine';
+          droneOsc.frequency.setValueAtTime(55, now);
+          droneGain.gain.setValueAtTime(0.001, now);
+          droneGain.gain.linearRampToValueAtTime(0.22, now + 0.5);
+          droneGain.gain.exponentialRampToValueAtTime(0.0001, now + 4.8);
+          droneOsc.connect(droneGain);
+          droneGain.connect(master);
+          droneOsc.start(now);
+          droneOsc.stop(now + 4.8);
+
+          // 5. Shimmering Crystal Sparkle & Resonant Optical Sweep
+          const chimeOsc = ctx.createOscillator();
+          const chimeGain = ctx.createGain();
+          chimeOsc.type = 'sine';
+          chimeOsc.frequency.setValueAtTime(740, now + 0.15);
+          chimeOsc.frequency.exponentialRampToValueAtTime(1860, now + 0.65);
+          chimeGain.gain.setValueAtTime(0.001, now + 0.15);
+          chimeGain.gain.linearRampToValueAtTime(0.32, now + 0.35);
+          chimeGain.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+          chimeOsc.connect(chimeGain);
+          chimeGain.connect(master);
+          chimeOsc.start(now + 0.15);
+          chimeOsc.stop(now + 1.2);
+
+        } catch(e) {}
+      }
+
+      function playClick(freq = 900, duration = 0.045) {
+        if (!isEnabled) return;
+        try {
+          const ctx = getContext();
+          if (!ctx) return;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(260, ctx.currentTime + duration);
+          gain.gain.setValueAtTime(0.25, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + duration);
+        } catch(e) {}
+      }
+
+      function playWhoosh() {
+        if (!isEnabled) return;
+        try {
+          const ctx = getContext();
+          if (!ctx) return;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(160, ctx.currentTime);
+          osc.frequency.exponentialRampToValueAtTime(42, ctx.currentTime + 0.32);
+          gain.gain.setValueAtTime(0.35, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.32);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.32);
+        } catch(e) {}
+      }
+
+      function playBeep(freq = 650) {
+        if (!isEnabled) return;
+        try {
+          const ctx = getContext();
+          if (!ctx) return;
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime);
+          gain.gain.setValueAtTime(0.20, ctx.currentTime);
+          gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.08);
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          osc.start();
+          osc.stop(ctx.currentTime + 0.08);
+        } catch(e) {}
+      }
+
+      return { toggleSound, playClick, playWhoosh, playBeep, playIntroBootSound, unlockAudio };
+    })();
+
+    // -------------------------------------------------------------------------
+    // 2. FULLSCREEN CINEMATIC INTRO CONTROLLER (~5.5s Duration & Kinetic Drop)
+    // -------------------------------------------------------------------------
+    const CinematicEngine = (() => {
+      let isCompleted = false;
+      let timer = null;
+      let progress = 0;
+      let frameCount = 0;
+
+      function init() {
+        // Trigger cinematic intro power-up sound immediately
+        PortfolioAudio.playIntroBootSound();
+
+        // Build video editor letter-drop elements
+        const introTitleEl = document.getElementById('intro-title');
+        if (introTitleEl) {
+          const words = ['GAJANAN', 'SANJAY', 'KADAM'];
+          introTitleEl.innerHTML = words.map(w => {
+            const letters = w.split('').map(char => 
+              `<span class="intro-char inline-block" style="display:inline-block; transform-origin: center bottom;">${char}</span>`
+            ).join('');
+            return `<span class="inline-flex whitespace-nowrap">${letters}</span>`;
+          }).join('<span class="inline-block w-3 sm:w-6">&nbsp;</span>');
+
+          // Animate kinetic typography dropping from top with gravity bounce & sound impact
+          if (typeof gsap !== 'undefined') {
+            gsap.fromTo('.intro-char', 
+              { y: -260, opacity: 0, scale: 0.25, rotateZ: () => gsap.utils.random(-35, 35), filter: 'blur(10px)' },
+              { 
+                y: 0, 
+                opacity: 1, 
+                scale: 1, 
+                rotateZ: 0, 
+                filter: 'blur(0px)', 
+                duration: 1.15, 
+                stagger: { 
+                  each: 0.055, 
+                  from: 'start',
+                  onStart: function() {
+                    PortfolioAudio.playClick(420 + Math.random() * 240, 0.028);
+                  }
+                }, 
+                ease: 'bounce.out', 
+                delay: 0.35,
+                onComplete: function() {
+                  PortfolioAudio.playBeep(980);
+                }
+              }
+            );
+          }
+        }
+
+        const timecodeEl = document.getElementById('intro-timecode');
+        const progressBar = document.getElementById('intro-progress-bar');
+        const percentEl = document.getElementById('intro-percent');
+        const statusText = document.getElementById('intro-status-text');
+        const launchBtn = document.getElementById('intro-launch-btn');
+
+        const statusPhrases = [
+          'INITIALIZING INTERACTIVE ARCHITECTURE...',
+          'DROPPING KINETIC TYPOGRAPHY // GAJANAN SANJAY KADAM...',
+          'COMPILING C & CORE JAVA PROBLEM-SOLVING MODULES...',
+          'LINKING ACADEMIC RECORDS • SSGMCE (8.14 & 8.32 SGPA)...',
+          'CALIBRATING RETICLE ENGINE & 60 FPS SHADERS...',
+          'SYSTEM ARMED // TIMELINE LOCKED • CINEMATIC READY'
+        ];
+
+        // Tuned intro progression: runs ~4.35s for progress + 1.1s reveal pause (~5.5s total, reduced by 2s)
+        timer = setInterval(() => {
+          frameCount += 1;
+          progress += 1.15;
+
+          // Format Timecode 00:00:SS:FF
+          const secs = Math.floor(frameCount / 30).toString().padStart(2, '0');
+          const frames = (frameCount % 30).toString().padStart(2, '0');
+          if (timecodeEl) timecodeEl.textContent = `00:00:${secs}:${frames}`;
+
+          if (progressBar) progressBar.style.width = `${Math.min(progress, 100)}%`;
+          if (percentEl) percentEl.textContent = `${Math.min(Math.round(progress), 100)}%`;
+
+          const phraseIndex = Math.min(Math.floor((progress / 100) * statusPhrases.length), statusPhrases.length - 1);
+          if (statusText) statusText.textContent = statusPhrases[phraseIndex];
+
+          if (progress >= 100) {
+            clearInterval(timer);
+            if (launchBtn) {
+              launchBtn.classList.remove('opacity-0', 'pointer-events-none');
+              launchBtn.classList.add('opacity-100', 'pointer-events-auto');
+            }
+            // Auto finish after comfortable viewing pause (~1.1s)
+            setTimeout(() => {
+              if (!isCompleted) finishIntro();
+            }, 1100);
+          }
+        }, 50);
+
+        // Escape Key Listener for Instant Skip
+        window.addEventListener('keydown', (e) => {
+          if (e.key === 'Escape' && !isCompleted) {
+            skipIntro();
+          }
+        });
+      }
+
+      function finishIntro() {
+        if (isCompleted) return;
+        isCompleted = true;
+        clearInterval(timer);
+        sessionStorage.setItem('hasSeenCinematicIntro_gk', 'true');
+
+        PortfolioAudio.playWhoosh();
+
+        const topShutter = document.getElementById('intro-shutter-top');
+        const bottomShutter = document.getElementById('intro-shutter-bottom');
+        const laserLine = document.getElementById('intro-laser-line');
+        const introOverlay = document.getElementById('cinematic-intro');
+
+        if (laserLine) laserLine.style.opacity = '1';
+
+        setTimeout(() => {
+          if (topShutter) topShutter.style.transform = 'translateY(-100%)';
+          if (bottomShutter) bottomShutter.style.transform = 'translateY(100%)';
+          if (laserLine) laserLine.style.opacity = '0';
+        }, 200);
+
+        setTimeout(() => {
+          if (introOverlay) {
+            introOverlay.style.opacity = '0';
+            setTimeout(() => { introOverlay.style.display = 'none'; }, 600);
+          }
+          animateCounters();
+          initHeroChoreography();
+        }, 650);
+      }
+
+      function skipIntro() {
+        finishIntro();
+      }
+
+      function replayIntro() {
+        sessionStorage.removeItem('hasSeenCinematicIntro_gk');
+        window.location.reload();
+      }
+
+      return { init, finishIntro, skipIntro, replayIntro };
+    })();
+
+    // -------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
+    // 3. LENIS SMOOTH SCROLL & VELOCITY SKEW SPEED-RAMP ENGINE
+    // -------------------------------------------------------------------------
+    let lenis = null;
+
+    function initSmoothScroll() {
+      if (typeof Lenis !== 'undefined') {
+        lenis = new Lenis({
+          duration: 1.25,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          orientation: 'vertical',
+          gestureOrientation: 'vertical',
+          smoothWheel: true,
+          smoothTouch: false,
+          wheelMultiplier: 1.0,
+        });
+        window.lenisInstance = lenis;
+
+        // Sync with GSAP ScrollTrigger
+        if (typeof ScrollTrigger !== 'undefined') {
+          lenis.on('scroll', ScrollTrigger.update);
+        }
+
+        // Sync with GSAP Ticker
+        if (typeof gsap !== 'undefined') {
+          gsap.ticker.add((time) => {
+            lenis.raf(time * 1000);
+          });
+          gsap.ticker.lagSmoothing(0);
+        }
+
+        // Velocity Skew on Cards based on Scroll Speed (Video Speed-Ramp effect)
+        lenis.on('scroll', (e) => {
+          // e.velocity is typically between -50 and 50
+          const targetSkew = Math.max(-4.5, Math.min(4.5, e.velocity * 0.12));
+          gsap.to('.aesthetic-card, .tilt-wrapper', {
+            skewY: targetSkew,
+            duration: 0.18,
+            ease: 'power1.out',
+            overwrite: 'auto'
+          });
+
+          // RGB Chromatic Glitch on fast scroll
+          if (Math.abs(e.velocity) > 8) {
+            document.querySelectorAll('h1, h2, #timeline-clock').forEach(el => el.classList.add('chromatic-glitch'));
+          } else {
+            document.querySelectorAll('h1, h2, #timeline-clock').forEach(el => el.classList.remove('chromatic-glitch'));
+          }
+
+          // Update Timeline Scrubber & Real-Time Clock
+          TimelineEngine.updateFromScroll(e.progress);
+        });
+      } else {
+        // Native fallback listener
+        window.addEventListener('scroll', () => {
+          const scrollY = window.scrollY || document.documentElement.scrollTop;
+          const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+          const progress = maxScroll > 0 ? scrollY / maxScroll : 0;
+          TimelineEngine.updateFromScroll(progress);
+        });
+      }
+    }
+
+    
+    // -------------------------------------------------------------------------
+    // KINETIC TYPOGRAPHY & TEXT SCRAMBLE DECODER ENGINE
+    // -------------------------------------------------------------------------
+    class TextScramble {
+      constructor(el) {
+        this.el = el;
+        this.chars = '!<>-_\\/[]{}—=+*^?#________0123456789ABCDEF';
+        this.update = this.update.bind(this);
+      }
+      setText(newText) {
+        const oldText = this.el.innerText || '';
+        const length = Math.max(oldText.length, newText.length);
+        const promise = new Promise((resolve) => this.resolve = resolve);
+        this.queue = [];
+        for (let i = 0; i < length; i++) {
+          const from = oldText[i] || '';
+          const to = newText[i] || '';
+          const start = Math.floor(Math.random() * 15);
+          const end = start + Math.floor(Math.random() * 18);
+          this.queue.push({ from, to, start, end, char: '' });
+        }
+        cancelAnimationFrame(this.frameRequest);
+        this.frame = 0;
+        this.update();
+        return promise;
+      }
+      update() {
+        let output = '';
+        let complete = 0;
+        for (let i = 0, n = this.queue.length; i < n; i++) {
+          let { from, to, start, end, char } = this.queue[i];
+          if (this.frame >= end) {
+            complete++;
+            output += to;
+          } else if (this.frame >= start) {
+            if (!char || Math.random() < 0.3) {
+              char = this.chars[Math.floor(Math.random() * this.chars.length)];
+              this.queue[i].char = char;
+            }
+            output += `<span class="text-[#FF2A85] opacity-80 font-mono">${char}</span>`;
+          } else {
+            output += from;
+          }
+        }
+        this.el.innerHTML = output;
+
+        // Subtle audio tick during scramble
+        if (this.frame % 3 === 0 && complete < this.queue.length) {
+          PortfolioAudio.playBeep(1100 + (this.frame % 5) * 120);
+        }
+
+        if (complete === this.queue.length) {
+          this.resolve();
+        } else {
+          this.frameRequest = requestAnimationFrame(this.update);
+          this.frame++;
+        }
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // HERO CHOREOGRAPHY, CAMERA ZOOM & MULTI-LAYER PARALLAX
+    // -------------------------------------------------------------------------
+    
+    // -------------------------------------------------------------------------
+    // PROJECTS SHOWCASE GRID REVEAL ANIMATIONS
+    // -------------------------------------------------------------------------
+    function initHorizontalProjectsReel() {
+      if (typeof gsap === 'undefined') return;
+      const cards = document.querySelectorAll('#page-projects .aesthetic-card');
+      if (cards.length > 0) {
+        gsap.from(cards, {
+          y: 24,
+          opacity: 0,
+          duration: 0.5,
+          stagger: 0.1,
+          ease: 'power2.out',
+          clearProps: 'all'
+        });
+      }
+    }
+
+    function initHeroChoreography() {
+      if (typeof gsap === 'undefined') return;
+
+      // 1. Stagger-reveal hero badges
+      gsap.from('#hero-badges .hero-badge-pill', {
+        y: -25,
+        opacity: 0,
+        stagger: 0.12,
+        duration: 0.8,
+        ease: 'power3.out',
+        delay: 0.2
+      });
+
+      // 2. Split hero title words sliding up from overflow-hidden mask
+      gsap.from('.hero-title-word', {
+        yPercent: 120,
+        opacity: 0,
+        duration: 1.1,
+        stagger: 0.14,
+        ease: 'power4.out',
+        delay: 0.35
+      });
+
+      // 3. Multi-layer Parallax on avatar and floating badges during scroll
+      if (typeof ScrollTrigger !== 'undefined') {
+        // Main circular avatar camera drift
+        gsap.to('#hero-avatar-circle', {
+          scrollTrigger: {
+            trigger: '#page-home',
+            start: 'top top',
+            end: 'bottom top',
+            scrub: 1.2
+          },
+          y: 70,
+          scale: 0.94,
+          ease: 'none'
+        });
+
+      }
+    }
+
+    // -------------------------------------------------------------------------
+    // CINEMATIC CLIP-PATH SHUTTER WIPE REVEALS ON CARDS
+    // -------------------------------------------------------------------------
+    function initClipPathWipes() {
+      if (typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+
+      const cards = document.querySelectorAll('.aesthetic-card');
+      cards.forEach(card => {
+        gsap.fromTo(card, 
+          {
+            clipPath: 'polygon(0% 0%, 100% 0%, 100% 0%, 0% 0%)',
+            scale: 1.06,
+            opacity: 0.3
+          },
+          {
+            scrollTrigger: {
+              trigger: card,
+              start: 'top 92%',
+              toggleActions: 'play none none none',
+              once: true
+            },
+            clipPath: 'polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%)',
+            scale: 1.0,
+            opacity: 1,
+            duration: 0.85,
+            ease: 'power3.out'
+          }
+        );
+      });
+    }
+
+    // Trigger Chromatic Glitch briefly on headings
+    function triggerChromaticGlitch(duration = 280) {
+      const headings = document.querySelectorAll('h1, h2, #timeline-clock, #active-track-name');
+      headings.forEach(h => h.classList.add('chromatic-glitch'));
+      setTimeout(() => {
+        headings.forEach(h => h.classList.remove('chromatic-glitch'));
+      }, duration);
+    }
+
+    
+        // -------------------------------------------------------------------------
+    // BRAND-NEW HIGH-TECH CYBER RETICLE ANIMATED CURSOR ENGINE
+    const MagneticCursor = (() => {
+      let mouseX = -100, mouseY = -100;
+      let reticleX = -100, reticleY = -100;
+      let isHovered = false;
+      let isClicking = false;
+      let coreEl, reticleEl, waveEl;
+      let rafId;
+
+      function init() {
+        coreEl = document.getElementById('cursor-core');
+        reticleEl = document.getElementById('cursor-reticle');
+        waveEl = document.getElementById('cursor-click-wave');
+        if (!coreEl || !reticleEl) return;
+
+        window.addEventListener('mousemove', (e) => {
+          mouseX = e.clientX;
+          mouseY = e.clientY;
+          // Core tracks instantaneously (0ms lag)
+          coreEl.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%) ${isHovered ? 'scale(1.4)' : 'scale(1)'}`;
+        }, { passive: true });
+
+        window.addEventListener('mousedown', (e) => {
+          isClicking = true;
+          reticleEl.classList.add('clicking');
+          if (waveEl) {
+            waveEl.style.left = `${e.clientX}px`;
+            waveEl.style.top = `${e.clientY}px`;
+            waveEl.style.transition = 'none';
+            waveEl.style.transform = 'translate(-50%, -50%) scale(0.8)';
+            waveEl.style.opacity = '0.9';
+            requestAnimationFrame(() => {
+              waveEl.style.transition = 'transform 0.4s cubic-bezier(0.1, 0.8, 0.2, 1), opacity 0.4s ease-out';
+              waveEl.style.transform = 'translate(-50%, -50%) scale(2.8)';
+              waveEl.style.opacity = '0';
+            });
+          }
+        });
+
+        window.addEventListener('mouseup', () => {
+          isClicking = false;
+          reticleEl.classList.remove('clicking');
+        });
+
+        document.addEventListener('mouseover', (e) => {
+          if (e.target.closest('a, button, [role="button"], input, textarea, select, .cursor-pointer, .nav-tab, .btn-sunset')) {
+            isHovered = true;
+            reticleEl.classList.add('hovered');
+            coreEl.classList.add('hovered');
+          }
+        }, { passive: true });
+
+        document.addEventListener('mouseout', (e) => {
+          if (e.target.closest('a, button, [role="button"], input, textarea, select, .cursor-pointer, .nav-tab, .btn-sunset')) {
+            isHovered = false;
+            reticleEl.classList.remove('hovered');
+            coreEl.classList.remove('hovered');
+          }
+        }, { passive: true });
+
+        // Responsive Reticle loop with high lerp 0.38
+        function loop() {
+          reticleX += (mouseX - reticleX) * 0.38;
+          reticleY += (mouseY - reticleY) * 0.38;
+          reticleEl.style.transform = `translate3d(${reticleX}px, ${reticleY}px, 0) translate(-50%, -50%) ${isClicking ? 'scale(0.8)' : (isHovered ? 'scale(1.3)' : 'scale(1)')}`;
+          rafId = requestAnimationFrame(loop);
+        }
+        loop();
+      }
+      return { init };
+    })();
+
+    // -------------------------------------------------------------------------
+    // COLOR GRADING / THEME LUT SWITCHER ENGINE
+    // -------------------------------------------------------------------------
+    const ColorGradeEngine = (() => {
+      const luts = [
+        { id: 'cyber-sunset', name: 'LUT: CYBER SUNSET', toast: 'Applied LUT Grade: Cyber Sunset [Bold Orange & Hot Pink]' },
+        { id: 'matrix-neon', name: 'LUT: MATRIX NEON', toast: 'Applied LUT Grade: Matrix Neon [Emerald & Cyber Cyan]' },
+        { id: 'gold-anamorphic', name: 'LUT: GOLD ANAMORPHIC', toast: 'Applied LUT Grade: Gold Anamorphic [Warm Gold & Amber]' }
+      ];
+      let currentIndex = 0;
+
+      function init() {
+        const savedLut = localStorage.getItem('gk_portfolio_lut') || 'cyber-sunset';
+        const index = luts.findIndex(l => l.id === savedLut);
+        if (index !== -1) {
+          currentIndex = index;
+          applyLUT(savedLut, false);
+        }
+      }
+
+      function applyLUT(lutId, triggerEffects = true) {
+        document.documentElement.setAttribute('data-lut', lutId);
+        try {
+          localStorage.setItem('gk_portfolio_lut', lutId);
+        } catch(e) {}
+
+        const lut = luts.find(l => l.id === lutId) || luts[0];
+        const statusText = document.getElementById('lut-status-text');
+        if (statusText) statusText.textContent = lut.name;
+
+        if (triggerEffects) {
+          // Camera Shutter Flash Effect
+          const flash = document.getElementById('camera-shutter-flash');
+          if (flash) {
+            flash.style.opacity = '0.35';
+            setTimeout(() => { flash.style.opacity = '0'; }, 90);
+          }
+          PortfolioAudio.playClick(1400, 0.05);
+          showToast(lut.toast);
+        }
+      }
+
+      function cycleLUT() {
+        currentIndex = (currentIndex + 1) % luts.length;
+        applyLUT(luts[currentIndex].id, true);
+      }
+
+      return { init, cycleLUT };
+    })();
+
+    // -------------------------------------------------------------------------
+    // MAGNETIC BUTTON PHYSICS (GSAP quickTo + Elastic Snap)
+    // -------------------------------------------------------------------------
+    function initMagneticButtons() {
+      if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return;
+      if (typeof gsap === 'undefined') return;
+
+      const magneticElements = document.querySelectorAll('.btn-sunset, .nav-tab, #lut-switcher-btn, #auto-tour-btn');
+
+      magneticElements.forEach(el => {
+        const xTo = gsap.quickTo(el, "x", { duration: 0.35, ease: "power3.out" });
+        const yTo = gsap.quickTo(el, "y", { duration: 0.35, ease: "power3.out" });
+
+        el.addEventListener('mousemove', (e) => {
+          const rect = el.getBoundingClientRect();
+          const centerX = rect.left + rect.width / 2;
+          const centerY = rect.top + rect.height / 2;
+          
+          // Max magnetic pull distance
+          const pullX = (e.clientX - centerX) * 0.3;
+          const pullY = (e.clientY - centerY) * 0.3;
+
+          xTo(pullX);
+          yTo(pullY);
+        });
+
+        el.addEventListener('mouseleave', () => {
+          gsap.to(el, {
+            x: 0,
+            y: 0,
+            duration: 0.75,
+            ease: "elastic.out(1, 0.3)",
+            overwrite: "auto"
+          });
+        });
+      });
+    }
+
+    // -------------------------------------------------------------------------
+    // 4. TIMELINE CONTROLLER & REAL-TIME SCROLLYTELLING SCRUBBER
+    // -------------------------------------------------------------------------
+    const TimelineEngine = (() => {
+      let isTouring = false;
+      let tourTimer = null;
+      const pageMap = ['home', 'projects', 'about', 'education', 'achievements', 'contact'];
+      const trackLabels = {
+        'home': '[V1] HOME_HERO_TIMELINE',
+        'projects': '[V2] MASTER_PROJECT_REEL',
+        'about': '[V3] ABOUT_DOSSIER_TIMELINE',
+        'education': '[V4] ACADEMIC_REEL_TIMELINE',
+        'achievements': '[V5] HONORS_MILESTONE_TIMELINE',
+        'contact': '[V6] CONTACT_TERMINAL_TIMELINE'
+      };
+
+      function init() {
+        // Timeline init
+      }
+
+      function updateFromScroll(progress) {
+        const pct = Math.max(0, Math.min(100, progress * 100));
+        const playhead = document.getElementById('timeline-playhead');
+        if (playhead) playhead.style.left = `${pct.toFixed(2)}%`;
+      }
+
+      function setActiveSection(pageName) {
+        // Update active nav tab
+        document.querySelectorAll('.nav-tab').forEach(tab => {
+          if (tab.getAttribute('data-page') === pageName) {
+            tab.classList.add('active');
+          } else {
+            tab.classList.remove('active');
+          }
+        });
+
+        // Update mobile nav links
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+          if (link.getAttribute('data-page') === pageName) {
+            link.classList.add('bg-white/10', 'text-white', 'border-l-2', 'border-[#FF2A85]');
+          } else {
+            link.classList.remove('bg-white/10', 'text-white', 'border-l-2', 'border-[#FF2A85]');
+          }
+        });
+
+        // Update keyframe diamonds
+        document.querySelectorAll('.keyframe-diamond').forEach(kf => {
+          if (kf.getAttribute('data-page') === pageName) {
+            kf.classList.add('active');
+          } else {
+            kf.classList.remove('active');
+          }
+        });
+
+        // Update active track label
+        const trackLabel = document.getElementById('active-track-name');
+        if (trackLabel && trackLabels[pageName]) {
+          trackLabel.textContent = trackLabels[pageName];
+        }
+
+        // Update Playhead position along ruler
+        const idx = pageMap.indexOf(pageName);
+        if (idx !== -1) {
+          const playhead = document.getElementById('timeline-playhead');
+          if (playhead) {
+            const pct = (idx / (pageMap.length - 1)) * 100;
+            playhead.style.left = `${pct.toFixed(1)}%`;
+          }
+        }
+
+        // Update URL hash
+        const targetHash = pageName === 'home' ? '#/' : `#/${pageName}`;
+        if (window.location.hash !== targetHash) {
+          try {
+            window.history.replaceState({ page: pageName }, '', targetHash);
+          } catch(e) {}
+        }
+
+        // Update Title
+        const pName = (typeof portfolioData !== 'undefined' && portfolioData.personal.name) ? portfolioData.personal.name : 'Gajanan Sanjay Kadam';
+        const pageTitleCapitalized = pageName.charAt(0).toUpperCase() + pageName.slice(1);
+        document.title = pageName === 'home' 
+          ? `${pName} | Second-Year CSE Student | SSGMCE Shegaon`
+          : `${pageTitleCapitalized} | ${pName} | SSGMCE Shegaon`;
+      }
+
+      function onRulerClick(e) {
+        const ruler = document.getElementById('timeline-ruler');
+        if (!ruler) return;
+        const rect = ruler.getBoundingClientRect();
+        const clickX = e.clientX - rect.left;
+        const pct = Math.max(0, Math.min(1, clickX / rect.width));
+        const index = Math.round(pct * (pageMap.length - 1));
+        navigateTo(pageMap[index]);
+      }
+
+      function toggleAutoTour() {
+        isTouring = !isTouring;
+        const tourBtn = document.getElementById('auto-tour-btn');
+        const tourLabel = document.getElementById('tour-label');
+
+        if (isTouring) {
+          if (tourLabel) tourLabel.textContent = 'STOP TOUR';
+          if (tourBtn) tourBtn.classList.add('border-[#FF2A85]', 'bg-[#FF2A85]/20', 'text-white');
+          showToast('Auto-Tour Started: Cycling through portfolio sequence');
+
+          let currentIndex = 0;
+          tourTimer = setInterval(() => {
+            currentIndex = (currentIndex + 1) % pageMap.length;
+            navigateTo(pageMap[currentIndex]);
+          }, 4500);
+        } else {
+          clearInterval(tourTimer);
+          if (tourLabel) tourLabel.textContent = 'AUTO-TOUR';
+          if (tourBtn) tourBtn.classList.remove('border-[#FF2A85]', 'bg-[#FF2A85]/20', 'text-white');
+          showToast('Auto-Tour Paused');
+        }
+      }
+
+      return { init, updateFromScroll, setActiveSection, onRulerClick, toggleAutoTour };
+    })();
+
+    // -------------------------------------------------------------------------
+    // 5. SMOOTH SCROLLYTELLING NAVIGATION ROUTER
+    // -------------------------------------------------------------------------
+    const validPages = ['home', 'projects', 'about', 'education', 'achievements', 'contact'];
+
+    function getRouteFromUrl() {
+      const hash = window.location.hash || '';
+      const match = hash.match(/^#\/([a-z0-9_-]*)/i);
+      if (match && match[1] && validPages.includes(match[1].toLowerCase())) {
+        return match[1].toLowerCase();
+      }
+      return 'home';
+    }
+
+    function navigateTo(targetPage, event) {
+      if (event) event.preventDefault();
+      if (!validPages.includes(targetPage)) targetPage = 'home';
+
+      PortfolioAudio.playWhoosh();
+      triggerChromaticGlitch(300);
+
+      // Hide all pages, show target page with smooth GSAP fade & slide
+      validPages.forEach(p => {
+        const sec = document.getElementById(`page-${p}`);
+        if (sec) {
+          if (p === targetPage) {
+            sec.classList.remove('hidden');
+            if (typeof gsap !== 'undefined') {
+              gsap.fromTo(sec, { opacity: 0, y: 15 }, { opacity: 1, y: 0, duration: 0.4, ease: 'power2.out' });
+            }
+          } else {
+            sec.classList.add('hidden');
+          }
+        }
+      });
+
+      // Reset scroll position to top of page
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      if (window.lenisInstance) {
+        window.lenisInstance.scrollTo(0, { immediate: true });
+      }
+
+      TimelineEngine.setActiveSection(targetPage);
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+      if (typeof ScrollTrigger !== 'undefined') setTimeout(() => ScrollTrigger.refresh(), 60);
+    }
+
+    // -------------------------------------------------------------------------
+    // 8. DATA INITIALIZATION & DYNAMIC BINDINGS
+    // -------------------------------------------------------------------------
+    document.addEventListener('DOMContentLoaded', () => {
+      CinematicEngine.init();
+      initSmoothScroll();
+      TimelineEngine.init();
+      MagneticCursor.init();
+      initHeroChoreography();
+      initClipPathWipes();
+      initHorizontalProjectsReel();
+      ColorGradeEngine.init();
+      initMagneticButtons();
+      
+      // If page was loaded with a specific hash, scroll to it smoothly
+      const initRoute = getRouteFromUrl();
+      if (initRoute && initRoute !== 'home') {
+        setTimeout(() => navigateTo(initRoute), 700);
+      }
+
+      if (typeof portfolioData !== 'undefined') {
+        const p = portfolioData.personal;
+
+        if (p.name) {
+          const nameElems = ['nav-name', 'hero-name', 'hero-avatar-name', 'intro-name'];
+          nameElems.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.textContent = p.name;
+          });
+        }
+
+        if (p.initials) {
+          const initEl = document.getElementById('nav-initials');
+          if (initEl) initEl.textContent = p.initials;
+        }
+
+        // Profile Portrait Hydration (Seamless inbuilt template photo)
+        const heroImg = document.getElementById('hero-profile-img');
+        const heroFallback = document.getElementById('hero-profile-fallback');
+        try {
+          const stored = localStorage.getItem('user_custom_avatar');
+          if (stored && !stored.startsWith('data:image/')) {
+            localStorage.removeItem('user_custom_avatar');
+          }
+        } catch(e) {}
+
+        const savedAvatar = (p && p.avatarUrl) ? p.avatarUrl : 'https://i.ibb.co/bjdYtYzL/gajuk.jpg';
+
+        if (heroImg) {
+          heroImg.src = savedAvatar;
+          heroImg.onerror = () => {
+            heroImg.onerror = null;
+            heroImg.src = 'assets/profile/gajanan_portrait.jpg';
+          };
+          heroImg.classList.remove('hidden');
+        }
+        if (heroFallback) {
+          heroFallback.classList.add('hidden');
+        }
+
+        // Avatar file upload handler
+        const avatarInput = document.getElementById('avatar-file-input');
+        if (avatarInput) {
+          avatarInput.addEventListener('change', (e) => {
+            const file = e.target.files && e.target.files[0];
+            if (file) {
+              const reader = new FileReader();
+              reader.onload = (event) => {
+                const dataUrl = event.target.result;
+                if (heroImg && heroFallback) {
+                  heroImg.src = dataUrl;
+                  heroImg.classList.remove('hidden');
+                  heroFallback.classList.add('hidden');
+                }
+                try {
+                  localStorage.setItem('user_custom_avatar', dataUrl);
+                } catch(err) {}
+                showToast("Profile photograph updated successfully!");
+              };
+              reader.readAsDataURL(file);
+            }
+          });
+        }
+      }
+
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+
+      initSparkCanvas();
+      initTypewriter();
+      initMobileMenu();
+      initSkillFilters();
+      initTiltCards();
+      initSkillsRadar();
+    });
+
+    // -------------------------------------------------------------------------
+    // 9. ANIMATED STAT COUNTERS
+    // -------------------------------------------------------------------------
+    function animateCounters() {
+      const counters = document.querySelectorAll('.stat-counter');
+      counters.forEach(counter => {
+        const target = parseFloat(counter.getAttribute('data-target'));
+        const decimals = parseInt(counter.getAttribute('data-decimals') || '0', 10);
+        const suffix = counter.getAttribute('data-suffix') || '';
+        let current = 0;
+        const step = target / 40;
+
+        const update = () => {
+          current += step;
+          if (current < target) {
+            counter.textContent = current.toFixed(decimals) + (decimals === 2 && !suffix ? ' / 10' : suffix);
+            requestAnimationFrame(update);
+          } else {
+            counter.textContent = target.toFixed(decimals) + (decimals === 2 && !suffix ? ' / 10' : suffix);
+          }
+        };
+        update();
+      });
+    }
+
+    // -------------------------------------------------------------------------
+    // 10. TYPEWRITER EFFECT
+    // -------------------------------------------------------------------------
+    function initTypewriter() {
+      const el = document.getElementById('hero-typewriter');
+      if (!el) return;
+
+      const words = [
+        "Second-Year CSE Student @ SSGMCE",
+        "Ex-Navodayan (JNV Parbhani)",
+        "C Programmer & Algorithmic Thinker",
+        "Frontend & Web Development Enthusiast",
+        "Problem Solver (Sem 1: 8.14 | Sem 2: 8.32 SGPA)"
+      ];
+
+      let wordIndex = 0;
+      let charIndex = 0;
+      let isDeleting = false;
+      const typeSpeed = 65;
+      const deleteSpeed = 35;
+      const delayBetweenWords = 1800;
+
+      function type() {
+        const currentWord = words[wordIndex];
+        
+        if (isDeleting) {
+          el.textContent = currentWord.substring(0, charIndex - 1);
+          charIndex--;
+        } else {
+          el.textContent = currentWord.substring(0, charIndex + 1);
+          charIndex++;
+        }
+
+        let currentSpeed = isDeleting ? deleteSpeed : typeSpeed;
+
+        if (!isDeleting && charIndex === currentWord.length) {
+          currentSpeed = delayBetweenWords;
+          isDeleting = true;
+        } else if (isDeleting && charIndex === 0) {
+          isDeleting = false;
+          wordIndex = (wordIndex + 1) % words.length;
+          currentSpeed = 400;
+        }
+
+        setTimeout(type, currentSpeed);
+      }
+
+      setTimeout(type, 800);
+    }
+
+    // -------------------------------------------------------------------------
+    // 11. SPARK CONSTELLATION CANVAS ENGINE
+    // -------------------------------------------------------------------------
+    function initSparkCanvas() {
+      const canvas = document.getElementById('spark-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let width = (canvas.width = window.innerWidth);
+      let height = (canvas.height = window.innerHeight);
+
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+      window.addEventListener('resize', () => {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+      });
+
+      const count = Math.min(Math.floor(width / 42), 36);
+      const sparks = [];
+      const mouse = { x: -1000, y: -1000, radius: 140 };
+
+      window.addEventListener('mousemove', (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      });
+
+      class SparkNode {
+        constructor() {
+          this.x = Math.random() * width;
+          this.y = Math.random() * height;
+          this.vx = (Math.random() - 0.5) * 0.45;
+          this.vy = (Math.random() - 0.5) * 0.45;
+          this.radius = Math.random() * 2.2 + 1;
+          this.isPink = Math.random() > 0.5;
+        }
+
+        update() {
+          this.x += this.vx;
+          this.y += this.vy;
+
+          if (this.x < 0 || this.x > width) this.vx = -this.vx;
+          if (this.y < 0 || this.y > height) this.vy = -this.vy;
+
+          const dx = mouse.x - this.x;
+          const dy = mouse.y - this.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            const force = (mouse.radius - dist) / mouse.radius;
+            this.x -= (dx / dist) * force * 1.2;
+            this.y -= (dy / dist) * force * 1.2;
+          }
+        }
+
+        draw() {
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+          ctx.fillStyle = this.isPink ? 'rgba(255, 42, 133, 0.85)' : 'rgba(255, 107, 53, 0.85)';
+          ctx.shadowBlur = 8;
+          ctx.shadowColor = this.isPink ? '#FF2A85' : '#FF6B35';
+          ctx.fill();
+          ctx.shadowBlur = 0;
+        }
+      }
+
+      for (let i = 0; i < count; i++) {
+        sparks.push(new SparkNode());
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, width, height);
+
+        for (let i = 0; i < sparks.length; i++) {
+          sparks[i].update();
+          sparks[i].draw();
+
+          for (let j = i + 1; j < sparks.length; j++) {
+            const dx = sparks[i].x - sparks[j].x;
+            const dy = sparks[i].y - sparks[j].y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+
+            if (dist < 120) {
+              ctx.beginPath();
+              ctx.moveTo(sparks[i].x, sparks[i].y);
+              ctx.lineTo(sparks[j].x, sparks[j].y);
+              const opacity = (1 - dist / 120) * 0.25;
+              ctx.strokeStyle = sparks[i].isPink 
+                ? `rgba(255, 42, 133, ${opacity})` 
+                : `rgba(255, 107, 53, ${opacity})`;
+              ctx.lineWidth = 0.8;
+              ctx.stroke();
+            }
+          }
+        }
+        requestAnimationFrame(animate);
+      }
+      animate();
+    }
+
+    // -------------------------------------------------------------------------
+    // 12. MOBILE MENU & SKILL FILTER LOGIC
+    // -------------------------------------------------------------------------
+    function initMobileMenu() {
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (!menuBtn || !mobileMenu) return;
+
+      menuBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMobileMenu();
+      });
+
+      document.addEventListener('click', (e) => {
+        if (!mobileMenu.contains(e.target) && !menuBtn.contains(e.target) && !mobileMenu.classList.contains('hidden')) {
+          toggleMobileMenu(false);
+        }
+      });
+    }
+
+    function toggleMobileMenu(forceState) {
+      const menuBtn = document.getElementById('mobile-menu-btn');
+      const mobileMenu = document.getElementById('mobile-menu');
+      if (!menuBtn || !mobileMenu) return;
+
+      const isCurrentlyOpen = !mobileMenu.classList.contains('hidden');
+      const shouldOpen = typeof forceState === 'boolean' ? forceState : !isCurrentlyOpen;
+
+      if (shouldOpen) {
+        mobileMenu.classList.remove('hidden');
+        menuBtn.setAttribute('aria-expanded', 'true');
+        menuBtn.innerHTML = '<i data-lucide="x" class="w-5 h-5"></i>';
+      } else {
+        mobileMenu.classList.add('hidden');
+        menuBtn.setAttribute('aria-expanded', 'false');
+        menuBtn.innerHTML = '<i data-lucide="menu" class="w-5 h-5"></i>';
+      }
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function initSkillFilters() {
+      const btns = document.querySelectorAll('.skill-filter-btn');
+      const groups = document.querySelectorAll('.skill-card-group');
+
+      btns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          btns.forEach(b => {
+            b.classList.remove('bg-[#FF6B35]', 'text-white');
+            b.classList.add('text-[#C4B5CD]');
+          });
+          btn.classList.add('bg-[#FF6B35]', 'text-white');
+          btn.classList.remove('text-[#C4B5CD]');
+
+          const filter = btn.getAttribute('data-filter');
+          groups.forEach(group => {
+            if (filter === 'all' || group.getAttribute('data-category') === filter) {
+              group.style.display = 'block';
+            } else {
+              group.style.display = 'none';
+            }
+          });
+          PortfolioAudio.playClick(950, 0.02);
+        });
+      });
+    }
+
+    // -------------------------------------------------------------------------
+    // 13. PROJECT ARCHITECTURE DEEP-DIVE MODAL CONTROLLER
+    // -------------------------------------------------------------------------
+    const projectDetailsData = {
+      lastlight: {
+        title: "Lastlight – Red Data Book Wildlife Archive",
+        coverImage: "assets/projects/lastlight_cover.jpg",
+        category: "Interactive Web Archive • IUCN Red List Preservation",
+        liveUrl: "https://gajukadam.github.io/Lastlight/",
+        githubUrl: "https://github.com/gajukadam/Lastlight",
+        overview: "An interactive web archive highlighting endangered animals and plants from the IUCN Red List. Built with HTML5, CSS3, and Vanilla JavaScript featuring responsive grids, detailed species modals, and a localStorage conservation pledge tracker.",
+        architecture: [
+          "Interactive Specimen Grid: Responsive CSS Grid layout dynamically rendering endangered species cards with category filters and conservation status tags",
+          "Comprehensive Species Modals: Detailed modal views displaying scientific classification, habitat geographical ranges, environmental threat factors, and population trends",
+          "Client-Side Conservation Pledge Tracker: Integrated localStorage persistence engine enabling visitors to commit to conservation pledges without requiring back-end servers",
+          "Vanilla JavaScript Architecture: 100% lightweight Vanilla JS with fluid DOM transitions, accessible keyboard navigation, and fast mobile performance"
+        ],
+        codeSnippet: `// LocalStorage Conservation Pledge Engine\nfunction recordPledge(speciesId) {\n  let pledges = JSON.parse(localStorage.getItem('lastlight_pledges') || '[]');\n  if (!pledges.includes(speciesId)) {\n    pledges.push(speciesId);\n    localStorage.setItem('lastlight_pledges', JSON.stringify(pledges));\n    updatePledgeCounter(pledges.length);\n    showPledgeBadge(speciesId);\n  }\n}`
+      },
+      suvidhax: {
+        title: "SuvidhaX – Privacy-Focused Client-Side Utility Platform",
+        coverImage: "assets/projects/suvidhax_cover.jpg",
+        category: "Client-Side Engineering • Hosted on Render • Privacy-First Architecture",
+        liveUrl: "https://suvidhax-frontend.onrender.com/",
+        githubUrl: "https://github.com/gajukadam",
+        overview: "SuvidhaX is a privacy-focused, client-side utility platform designed to handle various everyday computational and data-processing tasks securely in the browser.",
+        architecture: [
+          "Client-Side Processing: All operations and data utilities run locally within the user's browser environment, ensuring that personal data and files remain private and are not uploaded to an external server.",
+          "Utility Suite: Functions as an all-in-one web toolkit offering fast, accessible tools for various utility needs without requiring heavy installations or backend dependencies.",
+          "Modern Interface: Built with a clean, responsive, and lightweight frontend hosted on Render for fast accessibility across devices.",
+          "Zero-Server Exposure: 100% local computation ensuring complete confidentiality for user data and files."
+        ],
+        codeSnippet: `// Client-Side In-Browser Secure Data Pipeline\nasync function processClientSideUtility(dataStream) {\n  // 100% in-browser local execution - zero external server uploads\n  const localBuffer = await dataStream.arrayBuffer();\n  const processedResult = executeLocalTransform(localBuffer);\n  return new Blob([processedResult], { type: 'application/octet-stream' });\n}`
+      },
+      stem: {
+        title: "Community Engagement Project (CEP): Rural STEM Awareness",
+        category: "Location: Zilla Parishad Shala, Chincholi | Role: Team Leader | CSE Dept, SSGMCE",
+        videoUrl: "https://youtu.be/5_O2UamVMfM?si=lwovgcOZZ5BywJJ5",
+        youtubeEmbed: "https://www.youtube.com/embed/5_O2UamVMfM",
+        coverImage: "assets/projects/cep_cover.jpg",
+        gallery: [
+          { src: "assets/projects/cep_cover.jpg", caption: "Rural STEM Awareness Outreach Project Cover – Z.P. Shala Chincholi" },
+          { src: "assets/cep/cep_presentation.jpg", caption: "Gajanan Kadam presenting interactive STEM session to 8th-grade students at digital screen" },
+          { src: "assets/cep/cep_team_school.jpg", caption: "CEP Engineering Team outside Zilla Parishad Shala, Chincholi" },
+          { src: "assets/cep/cep_felicitation.jpg", caption: "Felicitation and project recognition with school headmaster and teachers" },
+          { src: "assets/cep/cep_classroom.jpg", caption: "Live classroom deployment and interactive learning session with rural students" }
+        ],
+        overview: "Led a Community Engagement Project (CEP) at Zilla Parishad Shala, Chincholi, dedicated to bridging the rural STEM education gap and inspiring 8th-grade students to explore career pathways in Science, Technology, Engineering, and Mathematics under the guidance of Prof. T. A. Puranik Madam and HOD Dr. J. M. Patil Sir.",
+        architecture: [
+          "Custom EdTech Solution: Engineered an interactive, bilingual (English & Marathi) web-based quiz platform using HTML, CSS, and JavaScript with gamified audio-visual feedback, logic riddles, and relatable agricultural science concepts",
+          "STEM Career Mentorship: Delivered interactive sessions introducing students to modern career opportunities in software engineering, robotics, agritech, and applied sciences",
+          "Leadership & Execution: Directed team coordination, localized educational content for rural accessibility, and drove this self-learning initiative from concept to live classroom deployment",
+          "Faculty Guidance: Conducted under the esteemed guidance of Prof. T. A. Puranik Madam and Head of Department Dr. J. M. Patil Sir (CSE Department, SSGMCE Shegaon)"
+        ],
+        codeSnippet: `// Bilingual Rural Quiz & Gamified Logic Engine (English & Marathi)\nfunction loadLocalizedQuestion(index, lang = 'mr') {\n  const q = quizBank[index];\n  questionEl.textContent = lang === 'mr' ? q.textMarathi : q.textEnglish;\n  renderRelatableAgriVisual(q.conceptCategory);\n  playAudioFeedback('prompt_chime');\n}`
+      },
+      jnv: {
+        title: "JNV Memories Photo Gallery",
+        coverImage: "assets/projects/jnv_cover.jpg",
+        category: "Media Showcase • Ex-Navodayan Heritage • Standalone Web Archive",
+        liveUrl: "jnv-memories.html",
+        githubUrl: "https://github.com/gajukadam",
+        overview: "A responsive web-based photo gallery designed and built to archive and showcase memorable moments from my school days at Jawahar Navodaya Vidyalaya, Parbhani. Built from scratch using semantic HTML5 and modern CSS3, focusing on clean visual storytelling, intuitive layout, and seamless responsiveness across desktop and mobile devices.",
+        architecture: [
+          "Semantic HTML5 Architecture: Structured outline featuring header hero memory banner, school motto, batch memory timeline, and alumni notes",
+          "Modern Responsive CSS3 System: CSS Grid and Flexbox layouts dynamically adapting across all mobile, tablet, and desktop viewports",
+          "Visual Storytelling: Photo cards with smooth cubic-bezier hover elevation, nostalgic photo frames, and heartfelt captions",
+          "Integrated Live Experience: Built as a standalone archive accessible directly at jnv-memories.html with an instant return navigation bar"
+        ],
+        codeSnippet: `/* Responsive Gallery Architecture - JNV Memories */\n.memory-grid {\n  display: grid;\n  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));\n  gap: 1.5rem;\n}\n.memory-card {\n  border-radius: 1rem;\n  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);\n}\n.memory-card:hover {\n  transform: translateY(-6px);\n}`
+      }
+    };
+
+    function openProjectModal(key) {
+      const data = projectDetailsData[key];
+      if (!data) return;
+
+      const titleEl = document.getElementById('modal-project-title');
+      const contentEl = document.getElementById('modal-project-content');
+      const modal = document.getElementById('project-modal');
+
+      if (titleEl) titleEl.textContent = data.title;
+      if (contentEl) {
+        const liveBtn = data.liveUrl && data.liveUrl !== '#' ? `
+          <div class="p-3.5 rounded-2xl bg-gradient-to-r from-[#FF6B35]/15 to-[#FF2A85]/15 border border-[#FF6B35]/40 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-[#00FF88] animate-pulse"></span>
+              <span class="text-xs font-mono text-white font-bold">Live Deployed Website Available</span>
+            </div>
+            <a href="${data.liveUrl}" target="_blank" rel="noopener noreferrer" class="btn-sunset px-3.5 py-1.5 rounded-xl text-xs font-mono font-bold flex items-center gap-1.5 shadow-md hover:scale-105 transition-transform">
+              <span>Open Live App</span>
+              <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+            </a>
+          </div>
+        ` : '';
+
+        const videoBtn = data.videoUrl ? `
+          <div class="p-3.5 rounded-2xl bg-gradient-to-r from-[#FF0000]/20 via-[#FF2A85]/15 to-[#FF6B35]/15 border border-[#FF0000]/40 flex items-center justify-between gap-3 flex-wrap">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-[#FF0000] animate-pulse"></span>
+              <span class="text-xs font-mono text-white font-bold">Watch Field Work Video on YouTube</span>
+            </div>
+            <a href="${data.videoUrl}" target="_blank" rel="noopener noreferrer" class="px-3.5 py-1.5 rounded-xl bg-[#FF0000] hover:bg-[#CC0000] text-white text-xs font-mono font-bold flex items-center gap-1.5 shadow-md hover:scale-105 transition-transform">
+              <i data-lucide="youtube" class="w-3.5 h-3.5"></i>
+              <span>Watch on YouTube</span>
+              <i data-lucide="arrow-up-right" class="w-3 h-3"></i>
+            </a>
+          </div>
+        ` : '';
+
+        const youtubeEmbedHtml = data.youtubeEmbed ? `
+          <div class="pt-3 border-t border-white/10 space-y-2">
+            <h4 class="text-sm font-bold text-white font-display flex items-center gap-1.5">
+              <i data-lucide="video" class="w-4 h-4 text-[#FF0000]"></i>
+              <span>Field Work Live Video Recording</span>
+            </h4>
+            <div class="aspect-video w-full rounded-2xl overflow-hidden border border-white/15 shadow-xl bg-black">
+              <iframe class="w-full h-full" src="${data.youtubeEmbed}" title="CEP Field Work Video" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </div>
+        ` : '';
+
+        const galleryHtml = data.gallery && data.gallery.length ? `
+          <div class="space-y-3 pt-3 border-t border-white/10">
+            <div class="flex items-center justify-between flex-wrap gap-2">
+              <h4 class="text-sm font-bold text-white font-display flex items-center gap-1.5">
+                <i data-lucide="camera" class="w-4 h-4 text-[#FFAE33]"></i>
+                <span>Field Work Photographic Documentation (${data.gallery.length} Verified Photos)</span>
+              </h4>
+              <span class="text-[10px] font-mono text-[#FFAE33] bg-[#FFAE33]/10 px-2 py-0.5 rounded-md border border-[#FFAE33]/20">Z.P. Shala, Chincholi</span>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              ${data.gallery.map(img => `
+                <div class="rounded-2xl overflow-hidden border border-white/10 bg-black/50 group relative aspect-[4/3] shadow-md">
+                  <img src="${img.src}" alt="${img.caption}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+                  <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent flex items-end p-3">
+                    <span class="text-[11px] font-mono text-white/95 leading-tight font-medium drop-shadow-sm">${img.caption}</span>
+                  </div>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+        ` : '';
+
+        const coverHtml = data.coverImage && (!data.gallery || !data.gallery.length) ? `
+          <div class="aspect-video w-full rounded-2xl overflow-hidden border border-white/15 shadow-xl relative group">
+            <img src="${data.coverImage}" alt="${data.title} Cover" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+            <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent flex items-end p-3">
+              <span class="text-xs font-mono text-white/90 font-medium">${data.title}</span>
+            </div>
+          </div>
+        ` : '';
+
+        contentEl.innerHTML = `
+          <div class="p-3 rounded-2xl bg-white/5 border border-white/10 text-xs font-mono text-[#FFAE33]">
+            ${data.category}
+          </div>
+          ${coverHtml}
+          ${liveBtn}
+          ${videoBtn}
+          <div>
+            <h4 class="text-sm font-bold text-white font-display mb-1">Project &amp; Leadership Overview</h4>
+            <p class="text-xs text-[#C4B5CD] leading-relaxed">${data.overview}</p>
+          </div>
+          <div class="space-y-1 pt-2">
+            <h4 class="text-sm font-bold text-white font-display mb-1">Key Pillars &amp; Execution</h4>
+            <ul class="text-xs text-[#D1C4E9] font-mono space-y-1.5 list-disc list-inside">
+              ${data.architecture.map(item => `<li class="leading-relaxed">${item}</li>`).join('')}
+            </ul>
+          </div>
+          ${youtubeEmbedHtml}
+          ${galleryHtml}
+          <div class="pt-2">
+            <h4 class="text-sm font-bold text-white font-display mb-1">Custom EdTech Source Representation</h4>
+            <pre class="p-3.5 rounded-2xl bg-[#09030E] border border-white/10 text-[#FF8A50] font-mono text-[11px] overflow-x-auto"><code>${data.codeSnippet.replace(/</g, '&lt;').replace(/>/g, '&gt;')}</code></pre>
+          </div>
+        `;
+      }
+
+      if (modal) modal.classList.remove('hidden');
+      PortfolioAudio.playClick(1000, 0.04);
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function closeProjectModal() {
+      const modal = document.getElementById('project-modal');
+      if (modal) modal.classList.add('hidden');
+      PortfolioAudio.playClick(600, 0.02);
+    }
+
+    // -------------------------------------------------------------------------
+    // 14. TOAST, CLIPBOARD & MODALS
+    // -------------------------------------------------------------------------
+    function showToast(message) {
+      const toast = document.getElementById('toast');
+      const msg = document.getElementById('toast-message');
+      if (!toast || !msg) return;
+
+      msg.textContent = message;
+      toast.classList.remove('translate-y-24', 'opacity-0', 'pointer-events-none');
+      toast.classList.add('translate-y-0', 'opacity-100');
+
+      setTimeout(() => {
+        toast.classList.remove('translate-y-0', 'opacity-100');
+        toast.classList.add('translate-y-24', 'opacity-0', 'pointer-events-none');
+      }, 3500);
+    }
+
+    function copyEmailToClipboard() {
+      const email = 'gajanan.kadam2004@gmail.com';
+      navigator.clipboard.writeText(email).then(() => {
+        showToast(`Copied ${email} to clipboard!`);
+        PortfolioAudio.playBeep(880);
+      }).catch(() => {
+        showToast(`Email: ${email}`);
+      });
+    }
+
+    function copyPhoneToClipboard() {
+      const phone = '9309241434';
+      navigator.clipboard.writeText(phone).then(() => {
+        showToast(`Copied ${phone} to clipboard!`);
+        PortfolioAudio.playBeep(880);
+      }).catch(() => {
+        showToast(`Phone: ${phone}`);
+      });
+    }
+
+    function openResumeModal() {
+      const modal = document.getElementById('resume-modal');
+      if (modal) modal.classList.remove('hidden');
+      PortfolioAudio.playClick(1000, 0.04);
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function closeResumeModal() {
+      const modal = document.getElementById('resume-modal');
+      if (modal) modal.classList.add('hidden');
+      PortfolioAudio.playClick(600, 0.02);
+    }
+
+    function openCertificateModal() {
+      const modal = document.getElementById('certificate-modal');
+      if (modal) modal.classList.remove('hidden');
+      PortfolioAudio.playClick(1000, 0.04);
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    function closeCertificateModal() {
+      const modal = document.getElementById('certificate-modal');
+      if (modal) modal.classList.add('hidden');
+      PortfolioAudio.playClick(600, 0.02);
+    }
+
+        function handleFormSubmit(event) {
+      event.preventDefault();
+      const name = document.getElementById('form-name').value;
+      const email = document.getElementById('form-email').value;
+      const subject = document.getElementById('form-subject').value;
+      const message = document.getElementById('form-message').value;
+
+      const targetEmail = 'gajanan.kadam2004@gmail.com';
+      const mailtoUrl = `mailto:${targetEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+
+      const successBox = document.getElementById('form-success-box');
+      const launchBtn = document.getElementById('launch-email-btn');
+
+      if (successBox) {
+        successBox.classList.remove('hidden');
+        if (launchBtn) {
+          launchBtn.onclick = () => { window.location.href = mailtoUrl; };
+        }
+        showToast("Message recorded! Click 'Launch in Mail Client' to dispatch.");
+        PortfolioAudio.playBeep(1200);
+      }
+
+      event.target.reset();
+    }
+
+    function sendViaMailClient() {
+      const name = (document.getElementById('form-name') && document.getElementById('form-name').value) || 'Visitor';
+      const email = (document.getElementById('form-email') && document.getElementById('form-email').value) || '';
+      const subject = (document.getElementById('form-subject') && document.getElementById('form-subject').value) || 'Portfolio Inquiry';
+      const message = (document.getElementById('form-message') && document.getElementById('form-message').value) || '';
+
+      const mailtoUrl = `mailto:gajanan.kadam2004@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent("From: " + name + " (" + email + ")\n\n" + message)}`;
+      window.location.href = mailtoUrl;
+    }
+  </script>
+</body>
+</html>

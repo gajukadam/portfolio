@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Flashback: JNV Parbhani | JNV Memories Photo Gallery</title>
+<style>
+:root {
+--chalkboard: #1b2a26;
+--paper: #f7f3e9;
+--wood: #8c5a3c;
+--accent-gold: #e5a93b;
+--text-dark: #2c2c2c;
+--shadow: rgba(0, 0, 0, 0.15);
+
+/* House Colors */
+--house-aravali: #1e88e5; /* Blue */
+--house-nilgiri: #43a047; /* Green */
+--house-shivalik: #e53935; /* Red */
+--house-udaygiri: #fdd835; /* Yellow */
+}
+
+* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+}
+
+html {
+scroll-behavior: smooth;
+}
+
+body {
+font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+background-color: var(--paper);
+color: var(--text-dark);
+padding-bottom: 40px;
+}
+
+/* Back to Portfolio Bar */
+.back-bar {
+background: #0B0410;
+color: #FFAE33;
+padding: 10px 20px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+font-family: monospace;
+font-size: 13px;
+border-bottom: 2px solid #FF6B35;
+position: sticky;
+top: 0;
+z-index: 1000;
+}
+
+.back-link {
+color: #FFFFFF;
+text-decoration: none;
+display: inline-flex;
+align-items: center;
+gap: 6px;
+background: linear-gradient(135deg, #FF6B35, #FF2A85);
+padding: 5px 14px;
+border-radius: 8px;
+font-weight: bold;
+transition: transform 0.2s;
+}
+
+.back-link:hover {
+transform: scale(1.05);
+}
+
+/* HERO SECTION */
+header {
+background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)),
+url('assets/projects/jnv_cover.jpg') center/cover no-repeat;
+color: white;
+text-align: center;
+padding: 80px 20px 90px 20px;
+position: relative;
+}
+
+header h1 {
+font-size: 3.2rem;
+font-family: Georgia, serif;
+margin-bottom: 8px;
+text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+}
+
+.school-name {
+font-size: 1.6rem;
+color: #ebdcb9;
+font-family: Georgia, serif;
+margin-bottom: 6px;
+font-weight: 500;
+letter-spacing: 0.5px;
+}
+
+.batch-years {
+font-size: 1.05rem;
+color: var(--accent-gold);
+font-weight: bold;
+letter-spacing: 1.5px;
+margin-bottom: 18px;
+text-transform: uppercase;
+}
+
+header p {
+font-size: 1.15rem;
+font-style: italic;
+color: #dddddd;
+max-width: 600px;
+margin: 0 auto;
+}
+
+.badge {
+display: inline-block;
+background: var(--accent-gold);
+color: #111;
+padding: 6px 16px;
+border-radius: 20px;
+font-weight: bold;
+font-size: 0.85rem;
+margin-bottom: 15px;
+text-transform: uppercase;
+letter-spacing: 1px;
+}
+
+/* WINDOW NAVIGATION HUB */
+.windows-container {
+max-width: 1100px;
+margin: 40px auto 40px auto;
+padding: 0 20px;
+position: relative;
+z-index: 5;
+}
+
+.windows-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+gap: 15px;
+}
+
+.window-card {
+background: white;
+border-radius: 12px;
+padding: 18px 10px;
+text-align: center;
+box-shadow: 0 10px 25px var(--shadow);
+border: 2px solid var(--accent-gold);
+text-decoration: none;
+color: var(--text-dark);
+transition: all 0.3s ease;
+cursor: pointer;
+}
+
+.window-card:hover {
+transform: translateY(-8px);
+background: var(--chalkboard);
+color: white;
+border-color: white;
+}
+
+.window-icon {
+font-size: 2.2rem;
+margin-bottom: 6px;
+display: block;
+}
+
+.window-title {
+font-weight: bold;
+font-size: 0.95rem;
+}
+
+/* MEMORY SECTIONS */
+.section-container {
+max-width: 1100px;
+margin: 0 auto 60px auto;
+padding: 20px;
+}
+
+.section-header {
+display: flex;
+align-items: center;
+gap: 15px;
+margin-bottom: 25px;
+border-bottom: 3px dashed var(--wood);
+padding-bottom: 10px;
+}
+
+.section-header h2 {
+font-size: 2rem;
+font-family: Georgia, serif;
+color: var(--wood);
+}
+
+/* DAY-TO-DAY & HOUSE SECTION WRAPPER */
+.schedule-wrapper {
+display: flex;
+flex-wrap: wrap;
+gap: 25px;
+align-items: stretch;
+}
+
+.sidebar-boxes {
+flex: 1;
+min-width: 280px;
+display: flex;
+flex-direction: column;
+gap: 25px;
+}
+
+.schedule-info-box {
+background: var(--chalkboard);
+color: #ebdcb9;
+padding: 22px;
+border-radius: 12px;
+border: 2px solid var(--accent-gold);
+box-shadow: 0 8px 20px var(--shadow);
+}
+
+.schedule-info-box h3 {
+font-size: 1.35rem;
+font-family: Georgia, serif;
+color: var(--accent-gold);
+margin-bottom: 10px;
+}
+
+.schedule-info-box p {
+font-size: 0.95rem;
+line-height: 1.5;
+font-style: italic;
+color: #f0e6d2;
+}
+
+/* HOUSES BOX */
+.houses-box {
+background: white;
+padding: 22px;
+border-radius: 12px;
+border: 2px solid var(--accent-gold);
+box-shadow: 0 8px 20px var(--shadow);
+}
+
+.houses-box h3 {
+font-size: 1.35rem;
+font-family: Georgia, serif;
+color: var(--wood);
+margin-bottom: 8px;
+}
+
+.house-quote {
+font-size: 0.88rem;
+font-style: italic;
+color: #666;
+margin-bottom: 15px;
+line-height: 1.4;
+border-left: 3px solid var(--accent-gold);
+padding-left: 8px;
+}
+
+.house-list {
+display: grid;
+grid-template-columns: 1fr 1fr;
+gap: 10px;
+}
+
+.house-card {
+padding: 10px 12px;
+border-radius: 8px;
+color: white;
+font-weight: bold;
+font-size: 0.9rem;
+display: flex;
+align-items: center;
+justify-content: space-between;
+box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+.house-aravali { background-color: var(--house-aravali); }
+.house-nilgiri { background-color: var(--house-nilgiri); }
+.house-shivalik { background-color: var(--house-shivalik); }
+.house-udaygiri { background-color: var(--house-udaygiri); color: #222; }
+
+.schedule-section {
+flex: 2;
+min-width: 320px;
+background: white;
+border-radius: 12px;
+padding: 25px;
+box-shadow: 0 10px 25px var(--shadow);
+border: 2px solid var(--accent-gold);
+}
+
+.schedule-list {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+gap: 12px;
+}
+
+.schedule-item {
+background: var(--paper);
+padding: 12px 15px;
+border-radius: 8px;
+border-left: 4px solid var(--wood);
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 10px;
+font-size: 0.95rem;
+font-weight: 600;
+color: var(--text-dark);
+transition: transform 0.2s;
+}
+
+.schedule-item:hover {
+transform: translateX(4px);
+background: #eee3d0;
+}
+
+.schedule-time {
+color: var(--wood);
+font-family: Georgia, serif;
+font-size: 0.9rem;
+white-space: nowrap;
+}
+
+.schedule-desc {
+color: #333;
+text-align: right;
+}
+
+/* POLAROID STYLE */
+.photo-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+gap: 25px;
+}
+
+.polaroid {
+background: white;
+padding: 15px 15px 25px 15px;
+border-radius: 4px;
+box-shadow: 0 8px 20px var(--shadow);
+transition: transform 0.3s ease;
+cursor: pointer;
+overflow: hidden;
+}
+
+.polaroid:nth-child(even) { transform: rotate(-1.5deg); }
+.polaroid:nth-child(odd) { transform: rotate(1.5deg); }
+
+.polaroid:hover {
+transform: scale(1.04) rotate(0deg);
+z-index: 2;
+box-shadow: 0 12px 30px rgba(0,0,0,0.25);
+}
+
+.polaroid img {
+width: 100%;
+height: 200px;
+object-fit: cover;
+border-radius: 2px;
+background: #eee;
+}
+
+.rotate-counterclockwise {
+transform: rotate(-90deg) scale(1.25);
+}
+
+.caption {
+margin-top: 14px;
+text-align: center;
+font-family: 'Comic Sans MS', 'Segoe UI', cursive, sans-serif;
+font-size: 0.95rem;
+color: #333;
+line-height: 1.4;
+}
+
+/* PROGRAMS GRID STYLING */
+.program-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+gap: 22px;
+}
+
+.program-card {
+background: white;
+border-radius: 12px;
+padding: 20px;
+border: 2px solid var(--accent-gold);
+box-shadow: 0 8px 20px var(--shadow);
+transition: transform 0.3s ease, background-color 0.3s ease;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+align-items: center;
+text-align: center;
+}
+
+.program-card:hover {
+transform: translateY(-5px);
+background: #fdfbf7;
+border-color: var(--wood);
+}
+
+.program-icon {
+font-size: 2.8rem;
+margin-bottom: 10px;
+}
+
+.program-title {
+font-size: 1.25rem;
+font-family: Georgia, serif;
+font-weight: bold;
+color: var(--chalkboard);
+margin-bottom: 6px;
+}
+
+.program-desc {
+font-size: 0.9rem;
+color: #555;
+font-style: italic;
+margin-bottom: 15px;
+}
+
+.view-photos-btn {
+background: var(--chalkboard);
+color: #ebdcb9;
+border: 1px solid var(--accent-gold);
+padding: 8px 16px;
+border-radius: 20px;
+font-size: 0.85rem;
+font-weight: bold;
+transition: all 0.2s ease;
+}
+
+.program-card:hover .view-photos-btn {
+background: var(--wood);
+color: white;
+}
+
+/* PEOPLE LIST CONTAINERS (CLASSMATES & TEACHERS) */
+.people-container {
+margin-top: 35px;
+background: white;
+border-radius: 12px;
+padding: 25px;
+box-shadow: 0 8px 20px var(--shadow);
+border: 2px solid var(--accent-gold);
+}
+
+.people-title {
+font-size: 1.4rem;
+font-family: Georgia, serif;
+color: var(--chalkboard);
+margin-bottom: 18px;
+display: flex;
+align-items: center;
+gap: 10px;
+border-bottom: 2px dashed #e0d8c3;
+padding-bottom: 8px;
+}
+
+.people-grid {
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+gap: 12px;
+}
+
+.person-card {
+background: var(--paper);
+padding: 12px 15px;
+border-radius: 8px;
+border-left: 4px solid var(--accent-gold);
+font-weight: 600;
+font-size: 0.92rem;
+color: var(--text-dark);
+display: flex;
+align-items: center;
+gap: 10px;
+transition: all 0.2s ease;
+}
+
+.person-card:hover {
+transform: translateY(-2px);
+background: #eee3d0;
+border-left-color: var(--wood);
+}
+
+.teacher-card {
+border-left-color: var(--wood);
+background: #fdfbf7;
+}
+
+.teacher-card:hover {
+border-left-color: var(--accent-gold);
+}
+
+.person-icon {
+font-size: 1.1rem;
+}
+
+/* SAD & EMOTIONAL QUOTE SECTION */
+.quote-section {
+background: var(--chalkboard);
+color: #f0e6d2;
+text-align: center;
+padding: 60px 25px;
+margin: 50px auto 30px auto;
+border-top: 4px solid var(--accent-gold);
+}
+
+.quote-container {
+max-width: 800px;
+margin: 0 auto;
+}
+
+.quote-icon {
+font-size: 3rem;
+margin-bottom: 15px;
+display: block;
+opacity: 0.8;
+}
+
+.quote-text {
+font-family: Georgia, serif;
+font-size: 1.45rem;
+line-height: 1.8;
+font-style: italic;
+margin-bottom: 20px;
+color: #ebdcb9;
+}
+
+.quote-author {
+font-size: 1rem;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(--accent-gold);
+font-weight: bold;
+}
+
+/* CREATOR INTRO FOOTER SECTION */
+.creator-section {
+max-width: 700px;
+margin: 0 auto 20px auto;
+padding: 0 20px;
+}
+
+.creator-card {
+background: white;
+border-radius: 15px;
+padding: 25px;
+text-align: center;
+box-shadow: 0 10px 30px var(--shadow);
+border: 2px solid var(--accent-gold);
+display: flex;
+flex-direction: column;
+align-items: center;
+gap: 12px;
+}
+
+.creator-title {
+font-size: 0.85rem;
+letter-spacing: 2px;
+text-transform: uppercase;
+color: var(--wood);
+font-weight: bold;
+}
+
+.creator-name {
+font-size: 1.8rem;
+font-family: Georgia, serif;
+color: var(--chalkboard);
+font-weight: bold;
+}
+
+.house-badge-aravali {
+display: inline-block;
+background-color: var(--house-aravali);
+color: white;
+padding: 4px 14px;
+border-radius: 20px;
+font-size: 0.88rem;
+font-weight: bold;
+letter-spacing: 0.5px;
+}
+
+.insta-link {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+color: white;
+text-decoration: none;
+padding: 8px 18px;
+border-radius: 25px;
+font-weight: bold;
+font-size: 0.95rem;
+margin-top: 5px;
+transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.insta-link:hover {
+transform: translateY(-3px);
+box-shadow: 0 6px 15px rgba(204, 35, 102, 0.4);
+}
+
+/* LIGHTBOX MODAL */
+.modal {
+display: none;
+position: fixed;
+top: 0; left: 0;
+width: 100%; height: 100%;
+background: rgba(0, 0, 0, 0.9);
+z-index: 100;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+padding: 20px;
+}
+
+.modal img {
+max-width: 90%;
+max-height: 75vh;
+border-radius: 6px;
+}
+
+.modal img.rotate-counterclockwise {
+transform: rotate(-90deg) scale(0.85);
+}
+
+.modal-caption {
+color: white;
+margin-top: 15px;
+font-size: 1.2rem;
+text-align: center;
+max-width: 600px;
+font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.close-btn {
+position: absolute;
+top: 20px; right: 35px;
+color: white;
+font-size: 40px;
+cursor: pointer;
+}
+</style>
+</head>
+<body>
+
+<!-- BACK TO PORTFOLIO TOPBAR -->
+<div class="back-bar">
+  <div>JNV PARBHANI // ARCHIVED TIME CAPSULE</div>
+  <a href="index.html#projects" class="back-link">&larr; Return to Portfolio</a>
+</div>
+
+<!-- HERO SECTION -->
+<header>
+<span class="badge">Time Capsule</span>
+<h1>Stepping Back Into School Days</h1>
+<div class="school-name">Jawahar Navodaya Vidyalaya, Parbhani</div>
+<p>"We didn't realize we were making memories, we just knew we were having fun."</p>
+</header>
+
+<!-- WINDOW NAVIGATION HUB -->
+<div class="windows-container">
+<div class="windows-grid">
+<a href="#schedule" class="window-card">
+<span class="window-icon">⏰</span>
+<span class="window-title">Our Routine</span>
+</a>
+<a href="#campus" class="window-card">
+<span class="window-icon">🏫</span>
+<span class="window-title">Campus</span>
+</a>
+<a href="#friends" class="window-card">
+<span class="window-icon">👥</span>
+<span class="window-title">Friends</span>
+</a>
+<a href="#masti" class="window-card">
+<span class="window-icon">🤪</span>
+<span class="window-title">Masti</span>
+</a>
+<a href="#programs" class="window-card">
+<span class="window-icon">🎉</span>
+<span class="window-title">Programs</span>
+</a>
+<a href="#batchmates" class="window-card">
+<span class="window-icon">🎓</span>
+<span class="window-title">Batchmates</span>
+</a>
+</div>
+</div>
+
+<!-- DAY-TO-DAY & HOSTEL HOUSES SECTION -->
+<section class="section-container" id="schedule">
+<div class="section-header">
+<h2>Our Day-To-Day Life & House Pride</h2>
+</div>
+<div class="schedule-wrapper">
+
+<!-- LEFT SIDEBAR: ROUTINE INFO & HOUSE LIST -->
+<div class="sidebar-boxes">
+
+<div class="schedule-info-box">
+<h3>Navodayan Routine</h3>
+<p>From early morning PT whistles to late-night dormitory talks, this daily clock ruled our entire world for 7 unforgettable years!</p>
+</div>
+
+<!-- HOUSE LIST BOX -->
+<div class="houses-box">
+<h3>The Four Houses</h3>
+<p class="house-quote">"Divided by four flag colors during sports meet, but united as Navodayans forever under one roof!"</p>
+<div class="house-list">
+<div class="house-card house-aravali">
+<span>Aravali</span>
+</div>
+<div class="house-card house-nilgiri">
+<span>Nilgiri</span>
+</div>
+<div class="house-card house-shivalik">
+<span>Shivalik</span>
+</div>
+<div class="house-card house-udaygiri">
+<span>Udaygiri</span>
+</div>
+</div>
+</div>
+
+</div>
+
+<!-- RIGHT SIDE: SCHEDULE LIST -->
+<div class="schedule-section">
+<div class="schedule-list">
+
+<div class="schedule-item">
+<span class="schedule-time">05:45 AM</span>
+<span class="schedule-desc">PT (Physical Torture)</span>
+</div>
+
+<div class="schedule-item">
+<span class="schedule-time">07:30 AM</span>
+<span class="schedule-desc">Mess Madness: Round 1</span>
+</div>
+
+<div class="schedule-item">
+<span class="schedule-time">08:00 AM</span>
+<span class="schedule-desc">Morning Assembly</span>
+</div>
+
+<div class="schedule-item">
+<span class="schedule-time">08:30 AM - 01:30 PM</span>
+<span class="schedule-desc">Academic Coma</span>
+</div>
+
+<div class="schedule-item">
+<span class="schedule-time">01:30 PM</span>
+<span class="schedule-desc">Mess Madness: Round 2</span>
+</div>
+
+<div class="schedule-item">
+<span class="schedule-time">02:00 PM - 03:30 PM</span>
+<span class="schedule-desc">The Golden Hours</span>
+</div>
+
+<div class="schedule-item">
+<span class="schedule-time">03:30 PM</span>
+<span class="schedule-desc">Remedial Class</span>
+</div>
+
+<div class="schedule-item">
+<span class="schedule-time">05:00 PM</span>
+<span class="schedule-desc">Playtime</span>
+</div>
+
+<div class="schedule-item">
+<span class="schedule-time">06:45 PM</span>
+<span class="schedule-desc">Supervised Study</span>
+</div>
+
+<div class="schedule-item">
+<span class="schedule-time">08:30 PM</span>
+<span class="schedule-desc">Mess Madness: Round 3</span>
+</div>
+
+<div class="schedule-item">
+<span class="schedule-time">09:30 PM</span>
+<span class="schedule-desc">Roll Call</span>
+</div>
+
+<div class="schedule-item">
+<span class="schedule-time">10:00 PM</span>
+<span class="schedule-desc">Lights Out</span>
+</div>
+
+</div>
+</div>
+
+</div>
+</section>
+
+<!-- WINDOW 1: CAMPUS MEMORIES -->
+<section class="section-container" id="campus">
+<div class="section-header">
+<h2>Campus Memories</h2>
+</div>
+<div class="photo-grid">
+
+<div class="polaroid" onclick="openModal('https://navguru.in/navodaya/wp-content/uploads/2023/10/2022-07-18.jpg', 'Leaving home in 6th grade crying with small bags, to leaving this same gate 7 years later with heavy hearts.')">
+<img src="https://navguru.in/navodaya/wp-content/uploads/2023/10/2022-07-18.jpg" alt="JNV Gate Memory">
+<div class="caption">Leaving home in 6th grade crying with small bags, to leaving this same gate 7 years later with heavy hearts.</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://storage.googleapis.com/cdn-edustoke/mysql_images/full/de8d01ea-9370-4e89-b17a-662ed7ef5066_0978e3a9.webp', 'The iconic main gate we ran through every morning right before the bell!')">
+<img src="https://storage.googleapis.com/cdn-edustoke/mysql_images/full/de8d01ea-9370-4e89-b17a-662ed7ef5066_0978e3a9.webp" alt="JNV Parbhani Main Gate">
+<div class="caption">The iconic main gate we ran through every morning right before the bell!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo4kyTwIIUSvLiFeR1wroZkQpFQaYm7Wp23gwE3EjxCjasJALVmqIIQQ0&s=10', 'Our favorite assembly point where every morning started together.')">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTo4kyTwIIUSvLiFeR1wroZkQpFQaYm7Wp23gwE3EjxCjasJALVmqIIQQ0&s=10" alt="Assembly Area">
+<div class="caption">Our favorite assembly point where every morning started together.</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://lh3.googleusercontent.com/gps-cs-s/AHRPTWl5kVWtg8Ot1tXTtaeKGzWd0QqeyxxgEj4W0Mw72YGmkcuhmt4TMrfUmNSZ6UWvQu83HFcYTxsAMtVmABcymoWH-ss-TBbpya8rOoAnEt77QWcr5ubEAQBnqah68R6G1YXSEt2Q=s1360-w1360-h1020-rw', 'The quiet academic building where countless memories were made.')">
+<img src="https://lh3.googleusercontent.com/gps-cs-s/AHRPTWl5kVWtg8Ot1tXTtaeKGzWd0QqeyxxgEj4W0Mw72YGmkcuhmt4TMrfUmNSZ6UWvQu83HFcYTxsAMtVmABcymoWH-ss-TBbpya8rOoAnEt77QWcr5ubEAQBnqah68R6G1YXSEt2Q=s1360-w1360-h1020-rw" alt="School Building">
+<div class="caption">The quiet academic building where countless memories were made.</div>
+</div>
+
+</div>
+</section>
+
+<!-- WINDOW 2: FRIENDS -->
+<section class="section-container" id="friends">
+<div class="section-header">
+<h2>Friends</h2>
+</div>
+<div class="photo-grid">
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/mCStcVC8/photo-2026-08-09-02-35-54.jpg', 'Side-by-side through every moment, memories that will never fade!')">
+<img src="https://i.ibb.co/mCStcVC8/photo-2026-08-09-02-35-54.jpg" alt="Friends Together">
+<div class="caption">Side-by-side through every moment, memories that will never fade!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/5xSZxXRh/photo-2023-08-06-11-01-57-2.jpg', 'Unbreakable bonds and endless smiles with the squad!')">
+<img src="https://i.ibb.co/5xSZxXRh/photo-2023-08-06-11-01-57-2.jpg" alt="Friends Special Memory">
+<div class="caption">Unbreakable bonds and endless smiles with the squad!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/zjhzLFX/6055396450315121402-121.jpg', 'Best squad moments together on campus!')">
+<img src="https://i.ibb.co/zjhzLFX/6055396450315121402-121.jpg" alt="Squad Time">
+<div class="caption">Years from now, this photo is going to make me smile the hardest!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/QFmmYWyD/IMG-20220224-145849-180.jpg', 'Hanging out and creating everyday memories.')">
+<img src="https://i.ibb.co/QFmmYWyD/IMG-20220224-145849-180.jpg" alt="Friendship Moment">
+<div class="caption">MOta bhaii , The Backbencher</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/gbQGtP7k/IMG-20220226-215935-662.jpg', 'Late evening chats and priceless smiles.')">
+<img src="https://i.ibb.co/gbQGtP7k/IMG-20220226-215935-662.jpg" alt="Evening Friends">
+<div class="caption">Late evening chats and priceless smiles.</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/k2jxtQkj/IMG-20220814-WA0016.jpg', 'Brotherhood that will stay forever!')">
+<img src="https://i.ibb.co/k2jxtQkj/IMG-20220814-WA0016.jpg" alt="Brothers">
+<div class="caption">Brotherhood that will stay forever!</div>
+</div>
+
+</div>
+</section>
+
+<!-- WINDOW 4: MASTI -->
+<section class="section-container" id="masti">
+<div class="section-header">
+<h2>Masti</h2>
+</div>
+<div class="photo-grid">
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/tnTXcKs/photo-2026-08-09-02-35-41.jpg', 'Unstoppable madness and non-stop fun with the boys!')">
+<img src="https://i.ibb.co/tnTXcKs/photo-2026-08-09-02-35-41.jpg" alt="Masti Special">
+<div class="caption">Late night shakoti!!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/FkTJPHzt/photo-2023-08-06-01-37-04.jpg', 'Unplanned madness and endless laughter with the boys!')">
+<img src="https://i.ibb.co/FkTJPHzt/photo-2023-08-06-01-37-04.jpg" alt="Masti Memory 1">
+<div class="caption">Unplanned madness and endless laughter with the boys!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/MyVSN7QB/photo-2023-08-06-01-37-06.jpg', 'Hostel fun times that we will cherish forever!')">
+<img src="https://i.ibb.co/MyVSN7QB/photo-2023-08-06-01-37-06.jpg" alt="Masti Memory 2">
+<div class="caption">Deva bhaii\'s b\'dy celebration!!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/fVY8qW2T/IMG-20220223-224607-436.jpg', 'Late night dorm shenanigans!')">
+<img src="https://i.ibb.co/fVY8qW2T/IMG-20220223-224607-436.jpg" alt="Hostel Masti 1">
+<div class="caption">Unstoppable madness and non-stop fun with the boys!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/tMpDRJ7P/IMG-20220223-224612-551.jpg', 'Random crazy moments with the hostel gang!')">
+<img src="https://i.ibb.co/tMpDRJ7P/IMG-20220223-224612-551.jpg" alt="Hostel Masti 2">
+<div class="caption">Random crazy moments with the hostel gang!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/21xyLHRy/IMG-20220304-212929.jpg', 'Unfiltered fun and pure chaos!')">
+<img src="https://i.ibb.co/21xyLHRy/IMG-20220304-212929.jpg" alt="Hostel Masti 3">
+<div class="caption">Unfiltered fun and pure chaos!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/0RhC17xw/IMG-20220401-115922.jpg', 'April Fools and campus pranks!')">
+<img src="https://i.ibb.co/0RhC17xw/IMG-20220401-115922.jpg" alt="Hostel Masti 4">
+<div class="caption">Random clicks during practicals !</div>
+</div>
+
+</div>
+</section>
+
+<!-- NEW YEAR PHOTO GALLERY -->
+<div style="margin-top: 35px;" class="section-container">
+<div class="section-header">
+<h2>New Year Memory Gallery</h2>
+</div>
+<div class="photo-grid">
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/239tHzzV/photo-2026-08-09-02-36-00.jpg', 'Counting down the new year surrounded by true brothers!')">
+<img src="https://i.ibb.co/239tHzzV/photo-2026-08-09-02-36-00.jpg" alt="New Year Night">
+<div class="caption">Welcoming brand new beginnings together with big smiles!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/Qv9yXsZZ/photo-2026-08-09-02-35-47.jpg', 'Welcoming brand new beginnings together with big smiles!')">
+<img src="https://i.ibb.co/Qv9yXsZZ/photo-2026-08-09-02-35-47.jpg" alt="New Year Smiles">
+<div class="caption">Farewell of Adhe sir (Housemaster of Aravali jr) an Emotional moment</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/HT79zrdG/photo.jpg', 'Welcoming the new year together with unforgettable moments!')">
+<img src="https://i.ibb.co/HT79zrdG/photo.jpg" alt="New Year Memory 1">
+<div class="caption">Welcoming the new year together with unforgettable moments!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/rRyntDfS/photo-2021-12-30-23-15-48.jpg', 'Late-night hostel New Year celebration squad!', true)">
+<img src="https://i.ibb.co/rRyntDfS/photo-2021-12-30-23-15-48.jpg" alt="New Year Memory 2" class="rotate-counterclockwise">
+<div class="caption">The OG Squad!</div>
+</div>
+
+</div>
+</div>
+
+<!-- HOLI PHOTO GALLERY -->
+<div style="margin-top: 35px;" class="section-container">
+<div class="section-header">
+<h2>Holi Memory Gallery</h2>
+</div>
+<div class="photo-grid">
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/3yGDzQY5/photo-2026-07-25-13-30-07.jpg', 'Epic Chikhal Holi memories with the boys!')">
+<img src="https://i.ibb.co/3yGDzQY5/photo-2026-07-25-13-30-07.jpg" alt="Holi Memory 1">
+<div class="caption">Epic Chikhal Holi memories with the boys!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/dsDrswB6/photo-2026-07-25-13-29-57.jpg', 'Unfiltered Navodayan Holi fun completely unrecognizable!')">
+<img src="https://i.ibb.co/dsDrswB6/photo-2026-07-25-13-29-57.jpg" alt="Holi Memory 2">
+<div class="caption">Unfiltered Navodayan Holi fun completely unrecognizable!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/kLWqyp9/photo-2026-07-25-13-29-41.jpg', 'Madness on the campus grounds during color celebrations!')">
+<img src="https://i.ibb.co/kLWqyp9/photo-2026-07-25-13-29-41.jpg" alt="Holi Memory 3">
+<div class="caption">Madness on the campus grounds during color celebrations!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/XrTLGXfL/photo-2026-07-25-13-29-11.jpg', 'Pure happiness and wild mud-fighting vibes on Holi day!')">
+<img src="https://i.ibb.co/XrTLGXfL/photo-2026-07-25-13-29-11.jpg" alt="Holi Memory 4">
+<div class="caption">Pure happiness and wild mud-fighting vibes on Holi day!</div>
+</div>
+
+</div>
+</div>
+
+<!-- SHIV JAYANTI PHOTO GALLERY -->
+<div style="margin-top: 35px;" class="section-container">
+<div class="section-header">
+<h2>Shiv Jayanti Memory Gallery</h2>
+</div>
+<div class="photo-grid">
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/RGsw2xbg/photo-2026-07-25-17-30-23.jpg', 'Grand Shiv Jayanti celebration vibes on campus!')">
+<img src="https://i.ibb.co/RGsw2xbg/photo-2026-07-25-17-30-23.jpg" alt="Shiv Jayanti Memory 1">
+<div class="caption">Grand Shiv Jayanti celebration vibes on campus!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/tMt0YPGL/photo-2026-07-25-17-30-51.jpg', 'Honoring Chhatrapati Shivaji Maharaj with energy and pride!')">
+<img src="https://i.ibb.co/tMt0YPGL/photo-2026-07-25-17-30-51.jpg" alt="Shiv Jayanti Memory 2">
+<div class="caption">Honoring Chhatrapati Shivaji Maharaj with energy and pride!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/nNzYXknk/photo-2026-07-25-17-30-02.jpg', 'Memorable moments from the Shiv Jayanti celebrations!')">
+<img src="https://i.ibb.co/nNzYXknk/photo-2026-07-25-17-30-02.jpg" alt="Shiv Jayanti Memory 3">
+<div class="caption">Memorable moments from the Shiv Jayanti celebrations!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/1t5rWW7d/photo-2026-07-25-17-30-13.jpg', 'Cultural fervor and togetherness on Shiv Jayanti!', true)">
+<img src="https://i.ibb.co/1t5rWW7d/photo-2026-07-25-17-30-13.jpg" alt="Shiv Jayanti Memory 4" class="rotate-counterclockwise">
+<div class="caption">Cultural fervor and togetherness on Shiv Jayanti!</div>
+</div>
+
+</div>
+</div>
+
+<!-- BHIM JAYANTI PHOTO GALLERY -->
+<div style="margin-top: 35px;" class="section-container">
+<div class="section-header">
+<h2>Bhim Jayanti Memory Gallery</h2>
+</div>
+<div class="photo-grid">
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/8nHPs5Tq/photo-2026-07-26-11-29-26.jpg', 'Honouring Dr. B. R. Ambedkar with pride and gratitude.')">
+<img src="https://i.ibb.co/8nHPs5Tq/photo-2026-07-26-11-29-26.jpg" alt="Bhim Jayanti Memory 1">
+<div class="caption">Celebrating Bhim Jayanti together with our Navodayan family</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/KpGp6PCb/photo-2026-07-26-11-29-38.jpg', 'Celebrating Bhim Jayanti together with our Navodayan family.')">
+<img src="https://i.ibb.co/KpGp6PCb/photo-2026-07-26-11-29-38.jpg" alt="Bhim Jayanti Memory 2">
+<div class="caption">Honouring Dr. B. R. Ambedkar with pride and gratitude.</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/TMQGYv3v/photo-2026-07-26-11-29-43.jpg', 'A memorable day filled with respect, unity, and inspiration.')">
+<img src="https://i.ibb.co/TMQGYv3v/photo-2026-07-26-11-29-43.jpg" alt="Bhim Jayanti Memory 3">
+<div class="caption">A memorable day filled with respect, unity, and inspiration.</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/DD45NDV9/photo-2026-07-26-11-37-36.jpg', 'A memorable day filled with respect, unity, and inspiration.')">
+<img src="https://i.ibb.co/DD45NDV9/photo-2026-07-26-11-37-36.jpg" alt="Bhim Jayanti Memory 4">
+<div class="caption">A memorable day filled with respect, unity, and inspiration.</div>
+</div>
+
+</div>
+</div>
+
+<!-- TEACHERS DAY PHOTO GALLERY -->
+<div style="margin-top: 35px;" class="section-container">
+<div class="section-header">
+<h2>Teacher's Day Memory Gallery</h2>
+</div>
+<div class="photo-grid">
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/1tqSg56Z/IMG-20220906-WA0014.jpg', 'Honoring our teachers with gratitude on Teacher\'s Day!')">
+<img src="https://i.ibb.co/1tqSg56Z/IMG-20220906-WA0014.jpg" alt="Teachers Day 1">
+<div class="caption">Taking over teacher roles for the day!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/5QJnMLg/IMG-20220906-WA0023.jpg', 'Taking over teacher roles for the day!')">
+<img src="https://i.ibb.co/5QJnMLg/IMG-20220906-WA0023.jpg" alt="Teachers Day 2">
+<div class="caption">That Feelings were priceless!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/zW3jx61S/IMG20220905081048-01.jpg', 'Special morning assembly setup for Teachers Day.')">
+<img src="https://i.ibb.co/zW3jx61S/IMG20220905081048-01.jpg" alt="Teachers Day 3">
+<div class="caption">Special morning assembly setup for Teacher's Day.</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/CX18q6P/IMG-20220905-WA0013-01.jpg', 'Memorable speeches and cultural honors.')">
+<img src="https://i.ibb.co/CX18q6P/IMG-20220905-WA0013-01.jpg" alt="Teachers Day 4">
+<div class="caption">Honoring our teachers with gratitude on Teacher's Day!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/bg3twFyy/IMG-20220905-WA0009-02.jpg', 'Celebrating with our beloved mentors!')">
+<img src="https://i.ibb.co/bg3twFyy/IMG-20220905-WA0009-02.jpg" alt="Teachers Day 5">
+<div class="caption">Celebrating with our beloved mentors!</div>
+</div>
+
+</div>
+</div>
+
+<!-- FAREWELL PHOTO GALLERY -->
+<div style="margin-top: 35px;" class="section-container">
+<div class="section-header">
+<h2>Farewell Memory Gallery</h2>
+</div>
+<div class="photo-grid">
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/QF6MXZcd/photo-2026-08-09-02-36-05.jpg', 'Holding onto these last moments before our paths split forever.')">
+<img src="https://i.ibb.co/QF6MXZcd/photo-2026-08-09-02-36-05.jpg" alt="Farewell Memory 1">
+<div class="caption">Holding onto these last moments before our paths split forever.</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/HTKt5WYs/photo-2026-08-09-02-34-56.jpg', 'Heavy hearts, teary eyes, but memories that will live on eternally.')">
+<img src="https://i.ibb.co/HTKt5WYs/photo-2026-08-09-02-34-56.jpg" alt="Farewell Memory 2">
+<div class="caption">Heavy hearts, teary eyes, but memories that will live on eternally.</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/pjM4Hq7W/627060121-18165940060402544-955399248010318089-n.webp', 'Saying goodbye to the campus that turned strangers into family.')">
+<img src="https://i.ibb.co/pjM4Hq7W/627060121-18165940060402544-955399248010318089-n.webp" alt="Farewell Memory 3">
+<div class="caption">Saying goodbye to the campus that turned strangers into family.</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/svXdD24L/photo-2026-08-09-02-36-10.jpg', 'One final photo together to lock seven priceless years in time.', true)">
+<img src="https://i.ibb.co/svXdD24L/photo-2026-08-09-02-36-10.jpg" alt="Farewell Memory 4" class="rotate-counterclockwise">
+<div class="caption">One final photo together to lock seven priceless years in time.</div>
+</div>
+
+</div>
+</div>
+
+<!-- WINDOW 5: BATCHMATES, CLASSMATES & TEACHERS -->
+<section class="section-container" id="batchmates">
+<div class="section-header">
+<h2>Batchmates & Teachers</h2>
+</div>
+
+<!-- PHOTOS GRID -->
+<div class="photo-grid">
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/VcXPdX96/photo-2026-08-09-02-35-30.jpg', 'The whole batch together, tied by seven years of shared history!')">
+<img src="https://i.ibb.co/VcXPdX96/photo-2026-08-09-02-35-30.jpg" alt="Batchmates Special">
+<div class="caption">The whole batch together, tied by seven years of shared history!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/wFxQrYZ4/photo-2022-04-17-23-00-05.jpg', 'Unforgettable batchmates bonding moments captured forever!')">
+<img src="https://i.ibb.co/wFxQrYZ4/photo-2022-04-17-23-00-05.jpg" alt="Batchmates Memory 1">
+<div class="caption">Unforgettable batchmates bonding moments captured forever!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/pr6BWzqF/photo-2023-08-07-08-23-45.jpg', 'Brothers for life standing together through every phase of school!')">
+<img src="https://i.ibb.co/pr6BWzqF/photo-2023-08-07-08-23-45.jpg" alt="Batchmates Memory 2">
+<div class="caption">Brothers for life standing together through every phase of school!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/gMvsncfM/IMG-20220226-220002-428.jpg', 'Batchmates group photo on campus!')">
+<img src="https://i.ibb.co/gMvsncfM/IMG-20220226-220002-428.jpg" alt="Batch Group Photo 1">
+<div class="caption">Batchmates group photo on campus!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/qFVD7Mzj/IMG-20220315-010124.jpg', 'Forever strong connection with our entire batch!')">
+<img src="https://i.ibb.co/qFVD7Mzj/IMG-20220315-010124.jpg" alt="Batch Group Photo 2">
+<div class="caption">Forever strong connection with our entire batch!</div>
+</div>
+
+<div class="polaroid" onclick="openModal('https://i.ibb.co/JFxGgwx2/SAVE-20220327-161237.jpg', 'Cherished moments with the whole class!', true)">
+<img src="https://i.ibb.co/JFxGgwx2/SAVE-20220327-161237.jpg" alt="Batch Group Photo 3" class="rotate-counterclockwise">
+<div class="caption">Cherished moments with the whole class!</div>
+</div>
+
+</div>
+
+<!-- CLASSMATES LIST BOX (CLASS XII) -->
+<div class="people-container">
+<div class="people-title">
+<span>👥</span> Our Classmates (Class XII)
+</div>
+
+<div class="people-grid">
+<div class="person-card"><span class="person-icon">👤</span> GAJANAN KADAM</div>
+<div class="person-card"><span class="person-icon">👤</span> VYANKATADHISH BHUSNAR</div>
+<div class="person-card"><span class="person-icon">👤</span> MAHESH SATWADHAR</div>
+<div class="person-card"><span class="person-icon">👤</span> NAGESH MUTKULE</div>
+<div class="person-card"><span class="person-icon">👤</span> TIRTHRAJ UPHADE</div>
+<div class="person-card"><span class="person-icon">👤</span> SURAJ WATODE</div>
+<div class="person-card"><span class="person-icon">👤</span> ANIL BURUD</div>
+<div class="person-card"><span class="person-icon">👤</span> DNYANESH SHINDE</div>
+<div class="person-card"><span class="person-icon">👤</span> ADITYA WAGHMARE</div>
+<div class="person-card"><span class="person-icon">👤</span> UMESH TUPSUNDAR</div>
+<div class="person-card"><span class="person-icon">👤</span> KSHITIJ KHOBRAGADE</div>
+<div class="person-card"><span class="person-icon">👤</span> ROHIT HAJARE</div>
+<div class="person-card"><span class="person-icon">👤</span> SHANKAR IRLE</div>
+<div class="person-card"><span class="person-icon">👤</span> PRATIK SHINDE</div>
+<div class="person-card"><span class="person-icon">👤</span> SANJAY KAMBLE</div>
+<div class="person-card"><span class="person-icon">👤</span> KRUSHNA DHOLE</div>
+<div class="person-card"><span class="person-icon">👤</span> DIPAK LOKADE</div>
+<div class="person-card"><span class="person-icon">👤</span> PARTH DARADE</div>
+<div class="person-card"><span class="person-icon">👤</span> DEVENDRA ADHE</div>
+<div class="person-card"><span class="person-icon">👤</span> VAIBHAV WATODE</div>
+<div class="person-card"><span class="person-icon">👤</span> BHAGWAN KALE</div>
+<div class="person-card"><span class="person-icon">👤</span> ANJALI KURHE</div>
+<div class="person-card"><span class="person-icon">👤</span> SAKSHI KADAM</div>
+<div class="person-card"><span class="person-icon">👤</span> RUTUJA BARGE</div>
+<div class="person-card"><span class="person-icon">👤</span> POOJA KULTHE</div>
+<div class="person-card"><span class="person-icon">👤</span> VAISHNAVI MOHITE</div>
+<div class="person-card"><span class="person-icon">👤</span> PRATIKSHA POLE</div>
+<div class="person-card"><span class="person-icon">👤</span> AKSHATA PAWAR</div>
+<div class="person-card"><span class="person-icon">👤</span> DROPADI WAGH</div>
+<div class="person-card"><span class="person-icon">👤</span> DURGA PATHADE</div>
+<div class="person-card"><span class="person-icon">👤</span> PRIYANKA MANE</div>
+<div class="person-card"><span class="person-icon">👤</span> DIPALI GHUGE</div>
+<div class="person-card"><span class="person-icon">👤</span> SAKSHI GAJBHARE</div>
+<div class="person-card"><span class="person-icon">👤</span> DURGA RADKAR</div>
+</div>
+</div>
+
+<!-- TEACHERS LIST BOX -->
+<div class="people-container">
+<div class="people-title">
+<span>👨‍🏫</span> Our Mentors & Teachers
+</div>
+
+<div class="people-grid">
+<div class="person-card teacher-card"><span class="person-icon">⭐</span> S.D. Lokhande Sir (Principal)</div>
+<div class="person-card teacher-card"><span class="person-icon">📖</span> Thorat Sir (Biology)</div>
+<div class="person-card teacher-card"><span class="person-icon">📖</span> Poghe Sir (English)</div>
+<div class="person-card teacher-card"><span class="person-icon">📖</span> Ramakant Sir (Physics)</div>
+<div class="person-card teacher-card"><span class="person-icon">📖</span> Jumde Sir (Maths)</div>
+<div class="person-card teacher-card"><span class="person-icon">📖</span> Sardar Paji Sir (Chemistry)</div>
+<div class="person-card teacher-card"><span class="person-icon">🏃</span> Ambekar Sir (Sports / Yoga)</div>
+</div>
+</div>
+
+</section>
+
+<!-- SAD & EMOTIONAL QUOTE SECTION -->
+<div class="quote-section">
+<div class="quote-container">
+<p class="quote-text">
+<span class="quote-icon">💭</span>
+"We wished to grow up so fast, not knowing that the hardest part of growing up would be leaving behind the best days of our lives. We didn't just study together; we grew up together."
+</p>
+<div class="quote-author">- Forever In Our Memories -</div>
+</div>
+</div>
+
+<!-- PERSONAL CREATOR INTRODUCTION AT BOTTOM -->
+<div class="creator-section">
+<div class="creator-card">
+<span class="creator-title">Curated With Memories By</span>
+<div class="creator-name">Gajanan Kadam</div>
+<span class="house-badge-aravali">Aravali House</span>
+<a href="https://instagram.com/gajukadam_96k" target="_blank" class="insta-link">
+<svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+<path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.148 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+</svg>
+@gajukadam_96k
+</a>
+</div>
+</div>
+
+<!-- LIGHTBOX MODAL -->
+<div class="modal" id="modal">
+<span class="close-btn" onclick="closeModal()">&times;</span>
+<img id="modal-img" src="" alt="Full Memory">
+<div class="modal-caption" id="modal-caption"></div>
+</div>
+
+<script>
+function openModal(src, caption, isRotated = false) {
+const modalImg = document.getElementById('modal-img');
+modalImg.src = src;
+if (isRotated) {
+modalImg.classList.add('rotate-counterclockwise');
+} else {
+modalImg.classList.remove('rotate-counterclockwise');
+}
+document.getElementById('modal-caption').innerText = caption;
+document.getElementById('modal').style.display = 'flex';
+}
+
+function closeModal() {
+document.getElementById('modal').style.display = 'none';
+}
+
+window.onclick = function(e) {
+const modal = document.getElementById('modal');
+if (e.target === modal) closeModal();
+};
+</script>
+
+</body>
+</html>
